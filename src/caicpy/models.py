@@ -6,18 +6,7 @@ from typing import Optional
 import pydantic
 
 from . import enums
-
-
-class Observation:
-    """A generic observation object returned by the CAIC API.
-    
-    Meant for subclassing, to group all *Observation models.
-
-    See `OBSERVATION_MODELS` for a mapping of all CAIC observation names
-    to their `Observation` subclass types.
-
-    See `enums.OBS_TYPES` for an enumeration of all possible types.
-    """
+from . import Observation
 
 
 class CaicObsRelationships(pydantic.BaseModel):
@@ -113,6 +102,15 @@ class AvalancheObservation(Observation, pydantic.BaseModel):
     road_status: Optional[str]
     road_depth: Optional[float]
     road_units: Optional[str]
+
+    async def fieldobs(self, caic_client) -> Observation | None:
+        """Get the associated `FieldObservation` using the provided `CaicClient`."""
+
+        if self.classic_observation_report_id is not None:
+            return await caic_client.field_report(self.classic_observation_report_id)
+
+        return None
+
 
 class CaicResponseMeta(pydantic.BaseModel):
     """The `meta` portion of a `CaicResponse`.

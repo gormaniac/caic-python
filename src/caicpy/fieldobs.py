@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 
+from . import Observation
+
 
 HTML = str
 """Any string that is valid HTML."""
@@ -43,7 +45,7 @@ class ImagesSection(ObsSection):
     """A special object that handles the Images section better."""
 
 @dataclass
-class Observation:
+class FieldObservation(Observation):
     """A field observation from the CAIC website."""
 
     details: ObsSection
