@@ -91,7 +91,7 @@ class CaicClient:
 
         return data
 
-    async def avy_obs(self, obs_before: str, obs_after: str) -> list[Observation]:
+    async def avy_obs(self, obs_before: str, obs_after: str) -> list[models.AvalancheObservation]:
         paginating = True
 
         obs = []
