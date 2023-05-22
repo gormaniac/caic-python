@@ -1,0 +1,62 @@
+{
+    "id": "2ff3be69-5b94-4143-b463-3cad6a4db7f8",
+    "type": "avalanche_observation",
+    "attributes": {
+        "observed_at": "2023-04-27T18:30:00Z",
+        "created_at": "2023-04-28T13:44:03Z",
+        "updated_at": "2023-04-28T13:44:03Z",
+        "latitude": 37.7950742,
+        "longitude": -107.6972076,
+        "classic_id": null,
+        "classic_observation_report_id": null,
+        "classic_observation_report_url": "https://classic.avalanche.state.co.us/caic/obs/obs_report.php?obs_id=",
+        "observation_report_status": "approved",
+        "observation_report_url": "https://avalanche.state.co.us/observations/field-report/ba00f49c-fd6f-42f4-86fc-567f4cb36d13",
+        "comments": "All originated at top of ridgeline near rock bands",
+        "location": null,
+        "date_known": "Known",
+        "time_known": "Unknown",
+        "op_name": null,
+        "number": 3,
+        "is_locked": false,
+        "hw_op_bc": "bc",
+        "path": null,
+        "landmark": null,
+        "type_code": "WL",
+        "aspect": "E",
+        "elevation": "&#62;TL",
+        "relative_size": "R1",
+        "destructive_size": "D1",
+        "primary_trigger": "N",
+        "secondary_trigger": "U",
+        "is_incident": false,
+        "area": "E facing terrain in Northstar bowl",
+        "angle_average": 40.0,
+        "angle_maximum": null,
+        "elevation_feet": 12200,
+        "surface": null,
+        "weak_layer": null,
+        "grain_type": null,
+        "crown_average": 6.0,
+        "crown_maximum": null,
+        "crown_units": "in",
+        "width_average": 20.0,
+        "width_maximum": null,
+        "width_units": "ft",
+        "vertical_average": 100.0,
+        "vertical_maximum": null,
+        "vertical_units": "ft",
+        "terminus": null,
+        "road_status": null,
+        "road_depth": null,
+        "road_units": "ft"
+    },
+    "relationships": {
+        "backcountry_zone": {
+            "data": {
+                "id": "d074e08f-cc75-41b1-93a0-04637480c832",
+                "type": "zone"
+            }
+        }
+    }
+}
