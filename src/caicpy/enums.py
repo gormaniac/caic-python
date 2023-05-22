@@ -16,6 +16,7 @@ class TypeCode(Enum):
     SF: str = "SF"
     C: str = "C"
     R: str = "R"
+    U: str = "U"
 
 class PrimaryTrigger(Enum):
     """Avalanche primary trigger codes."""

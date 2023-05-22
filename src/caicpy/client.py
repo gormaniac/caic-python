@@ -21,9 +21,13 @@ CAIC Website Avy Obs request::
         return await result.json();
     },
 
+
+A field reports example API call::
+
+    https://api.avalanche.state.co.us/api/v2/observation_reports?page=1&per=250&r[observed_at_gteq]=2023-05-14T06%3A00%3A00.000Z&r[observed_at_lteq]=2023-05-22T05%3A59%3A59.999Z&r[sorts][]=observed_at+desc&r[sorts][]=created_at+desc
+
 """
 
-import enum
 from json import JSONDecodeError
 import time
 import typing
@@ -37,19 +41,8 @@ from . import fieldobs
 from . import models
 
 
-API_BASE = "https://api.avalanche.state.co.us/api"
+API_BASE = "https://api.avalanche.state.co.us"
 CLASSIC_BASE = "https://classic.avalanche.state.co.us"
-
-
-class APIEndpoints(enum.Enum):
-    """Endpoints for `API_BASE`."""
-
-    AVY_OBS = "/avalanche_observations"
-
-class ClassicEndpoints(enum.Enum):
-    """Endpoints for `CLASSIC_BASE`."""
-
-    OBS_REPORT = "/caic/obs/obs_report.php"
 
 
 class CaicClient:
@@ -57,6 +50,10 @@ class CaicClient:
         self.headers = {}
         self.api_session = aiohttp.ClientSession(base_url=API_BASE)
         self.classic_session = aiohttp.ClientSession(base_url=CLASSIC_BASE)
+
+    async def close(self) -> None:
+        await self.api_session.close()
+        await self.classic_session.close()
 
     async def _api_get(self, endpoint: str, params: dict | None = None):
         try:
@@ -74,10 +71,10 @@ class CaicClient:
         else:
             return data
 
-    async def _classic_get(self, endpoint: ClassicEndpoints, params: dict | None = None):
+    async def _classic_get(self, endpoint: str, params: dict | None = None):
         return await self.classic_session.get(endpoint, params=params)
 
-    async def _classic_post(self, endpoint: ClassicEndpoints, json: dict | None = None):
+    async def _classic_post(self, endpoint: str, json: dict | None = None):
         return await self.classic_session.post(endpoint, json=json)
 
     async def _api_paginate_get(self, page: int, per: int, uri: str, params: typing.Mapping | None = None) -> dict | None:
@@ -100,12 +97,12 @@ class CaicClient:
         params = {
             "observed_after": obs_after,
             "observed_before": obs_before,
-            "t": time.time().split(".")[0]
+            "t": str(int(time.time()))
         }
 
         while paginating:
             try:
-                obs_resp = await self._api_paginate_get(page, 1000, APIEndpoints.AVY_OBS, params)
+                obs_resp = await self._api_paginate_get(page, 1000, "/api/avalanche_observations", params)
             except Exception as err:
                 LOGGER.error("Failed to request the CAIC avy obs endpoint: %s" % err)
                 page += 1
@@ -114,7 +111,7 @@ class CaicClient:
             try:
                 caic_resp = models.CaicResponse(**obs_resp)
             except pydantic.ValidationError as err:
-                LOGGER.warning("Unexpected response from the avy obs endpoint: %s\n%s" % (str(err), str(obs_resp)))
+                LOGGER.warning("Unexpected response from the avy obs endpoint: %s" % str(err))
                 page += 1
                 continue
 
@@ -122,14 +119,14 @@ class CaicClient:
                 paginating = False
             # Just a sanity check to avoid infinite looping
             elif page == caic_resp.meta.total_pages:
-                LOGGER.debug("Paginating mismatch: %s" % caic_resp.json())
+                LOGGER.debug("Paginating mismatch: %s" % "caic_resp.json()")
                 paginating = False
 
             for item in caic_resp.data:
                 try:
                     obs_obj = item.attrs_to_obs()
                 except (pydantic.ValidationError, ValueError) as err:
-                    LOGGER.warning("Unable to cast a response object to an Observation: %s\n%s" % (str(err), str(obs_resp)))
+                    LOGGER.warning("Unable to cast a response object to an Observation: %s" % str(err))
                 else:
                     obs.append(obs_obj)
 
@@ -144,7 +141,7 @@ class CaicClient:
             obs_id=report_id,
         )
 
-        resp = await self._classic_get(ClassicEndpoints.OBS_REPORT, params)
+        resp = await self._classic_get("/caic/obs/obs_report.php", params)
         page = await resp.text
 
         return fieldobs.FieldObservation.from_obs_page(page)

@@ -10,7 +10,8 @@ AVALANCHE_TYPES = {
     "I": "Ice Fall",
     "SF": "Slush Flow",
     "C": "Cornice Fall",
-    "R": "Roof"
+    "R": "Roof",
+    "U": "Unknown",
 }
 
 PRIMARY_TRIGGER_DESC = {

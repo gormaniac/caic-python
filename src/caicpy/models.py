@@ -43,8 +43,8 @@ class CaicObsObject(pydantic.BaseModel):
             If somehow `self.type` is not in `OBSERVATION_MODELS`.
         """
 
-        if self.type in OBSERVATION_MODELS:
-            return OBSERVATION_MODELS[self.type](
+        if self.type.value in OBSERVATION_MODELS.keys():
+            return OBSERVATION_MODELS[self.type.value](
                 id=self.id, rel_dict=self.relationships, **self.attributes
             )
 
@@ -58,8 +58,8 @@ class AvalancheObservation(Observation, pydantic.BaseModel):
     observed_at: Optional[datetime.datetime]
     created_at: Optional[datetime.datetime]
     updated_at: Optional[datetime.datetime]
-    latitude: Optional[int]
-    longitude: Optional[int]
+    latitude: Optional[float]
+    longitude: Optional[float]
     classic_id: Optional[int]
     classic_observation_report_id: Optional[int]
     classic_observation_report_url: Optional[str]
@@ -70,7 +70,7 @@ class AvalancheObservation(Observation, pydantic.BaseModel):
     date_known: Optional[str]
     time_known: Optional[str]
     op_name: Optional[str]
-    number: Optional[str]
+    number: Optional[int]
     hw_op_bc: Optional[str]
     path: Optional[str]
     landmark: Optional[str]
