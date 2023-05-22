@@ -25,6 +25,20 @@ CAIC Website Avy Obs request::
 A field reports example API call::
 
     https://api.avalanche.state.co.us/api/v2/observation_reports?page=1&per=250&r[observed_at_gteq]=2023-05-14T06%3A00%3A00.000Z&r[observed_at_lteq]=2023-05-22T05%3A59%3A59.999Z&r[sorts][]=observed_at+desc&r[sorts][]=created_at+desc
+    https://api.avalanche.state.co.us/api/v2/observation_reports?page=1&per=250&r[backcountry_zone_title_in][]=Front+Range&r[snowpack_observations_cracking_in][]=Minor&r[snowpack_observations_collapsing_in][]=Rumbling&r[observed_at_gteq]=2023-05-14T06:00:00.000Z&r[observed_at_lteq]=2023-05-22T05:59:59.999Z&r[sorts][]=observed_at+desc&r[sorts][]=created_at+desc
+    https://api.avalanche.state.co.us/api/v2/observation_reports?page=1&per=250&r[observed_at_gteq]=2023-05-14T06:00:00.000Z&r[observed_at_lteq]=2023-05-22T05:59:59.999Z&r[saw_avalanche_eq]=true&r[sorts][]=observed_at%20desc&r[sorts][]=created_at%20desc
+
+A forecast API call - must use the proxy for these - the avid API is behind auth::
+
+    https://avalanche.state.co.us/api-proxy/avid?_api_proxy_uri=/products/all?datetime=2023-05-22T06:31:00.000Z&includeExpired=true
+
+Weather dispatches API call - also a different domain 😠::
+
+    https://m.avalanche.state.co.us/api/dispatches/current?type=zone-weather-forecast
+
+Example weather plot download::
+
+    https://classic.avalanche.state.co.us/caic/obs_stns/hplot.php?title=VailResort%20CAVMM%20(10303%20ft)%20-%20Vail%20&%20Summit%20County&st=CAVMM&date=2023-05-22-06
 
 """
 

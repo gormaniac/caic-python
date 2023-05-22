@@ -1,4 +1,9 @@
-"""Mappings of abbreviations to definitions/long-names."""
+"""Mappings of abbreviations to definitions/long-names.
+
+See more here - https://avalanche.state.co.us/forecasts/help/observation-avalanche
+
+Helpful warnings.
+"""
 
 AVALANCHE_TYPES = {
     "L": "Loose",
