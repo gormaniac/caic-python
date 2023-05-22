@@ -101,3 +101,4 @@ class ObsTypes(Enum):
     """The types that Observation objects can have."""
 
     AVY_OBS: str = "avalanche_observation"
+    REPORT_OBS: str = "report_observation"

@@ -9,23 +9,6 @@ from . import enums
 from . import Observation
 
 
-class CaicObsRelationships(pydantic.BaseModel):
-    """The relationships a `CAICObsObject` can have.
-    
-    Example::
-
-        "relationships": {
-            "backcountry_zone": {
-                "data": {
-                    "id": "d074e08f-cc75-41b1-93a0-04637480c832",
-                    "type": "zone"
-                }
-            }
-        }
-
-    """
-
-
 class CaicObsObject(pydantic.BaseModel):
     """A single object returned by the API, may be part of a list of other objects."""
 
@@ -50,11 +33,19 @@ class CaicObsObject(pydantic.BaseModel):
 
         raise ValueError(f"An unsupported observation type ({self.type}) was encountered.")
 
+
+class BackcountryZone(pydantic.BaseModel):
+    """A backcountry_zone object - these are in most responses."""
+
+    id: str
+    type: str
+
+
 class AvalancheObservation(Observation, pydantic.BaseModel):
     """A single avalanche observation from the CAIC website."""
 
     id: str
-    rel_dict: dict = pydantic.Field(default_factory=dict)
+    rel_dict: dict
     observed_at: Optional[datetime.datetime]
     created_at: Optional[datetime.datetime]
     updated_at: Optional[datetime.datetime]
