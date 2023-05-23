@@ -1,6 +1,7 @@
 """Pydantic models used by caicpy."""
 
 import datetime
+import enum
 from typing import Optional
 
 import pydantic
@@ -9,29 +10,33 @@ from . import enums
 from . import Observation
 
 
-class CaicObsObject(pydantic.BaseModel):
-    """A single object returned by the API, may be part of a list of other objects."""
+class CaicAvyObsResponse(pydantic.BaseModel):
+    """A single avalanche observation from the /api/avalanche_observations endpoint.
+    
+    The `/api/avalanche_observations` endpoint returns a slightly different
+    object than the `avalanche_observations` key in an `/api/observation_report`
+    response.
+
+    This object allows us to transform to the standardized `AvalancheObservation`
+    via `to_obs`.
+    """
 
     id: str
     type: enums.ObsTypes
     attributes: dict
     relationships: dict
 
-    def attrs_to_obs(self) -> Observation:
-        """Convert this instance to an `Observation` based on `type`.
-        
-        Raises
-        ------
-        ValueError
-            If somehow `self.type` is not in `OBSERVATION_MODELS`.
-        """
+    def to_obs(self) -> 'AvalancheObservation':
+        """Convert this instance to an `AvalancheObservation`."""
 
-        if self.type.value in OBSERVATION_MODELS.keys():
-            return OBSERVATION_MODELS[self.type.value](
-                id=self.id, rel_dict=self.relationships, **self.attributes
-            )
+        if (bc_zone := "backcountry_zone") in self.relationships.keys():
+            zone_dict = self.relationships[bc_zone]
+        else:
+            zone_dict = None
 
-        raise ValueError(f"An unsupported observation type ({self.type}) was encountered.")
+        return AvalancheObservation(
+            id=self.id, type=self.type, backcountry_zone=zone_dict, **self.attributes
+        )
 
 
 class BackcountryZone(pydantic.BaseModel):
@@ -39,13 +44,29 @@ class BackcountryZone(pydantic.BaseModel):
 
     id: str
     type: str
+    parent_id: Optional[str]
+    slug: Optional[str]
+    title: Optional[str]
+    category: Optional[str]
+    category_order: Optional[int]
+    is_root: Optional[bool]
+    is_leaf: Optional[bool]
+    tree_level: Optional[int]
+    parent_url: Optional[str]
+    created_at: Optional[datetime.datetime]
+    updated_at: Optional[datetime.datetime]
+    url: Optional[str]
+    geojson_url: Optional[str]
 
 
 class AvalancheObservation(Observation, pydantic.BaseModel):
     """A single avalanche observation from the CAIC website."""
 
     id: str
-    rel_dict: dict
+    type: Optional[str]
+    backcountry_zone_id: Optional[str]
+    backcountry_zone: Optional[BackcountryZone]
+    rel_dict: Optional[dict]
     observed_at: Optional[datetime.datetime]
     created_at: Optional[datetime.datetime]
     updated_at: Optional[datetime.datetime]
@@ -56,6 +77,7 @@ class AvalancheObservation(Observation, pydantic.BaseModel):
     classic_observation_report_url: Optional[str]
     observation_report_status: Optional[str]
     observation_report_url: Optional[str]
+    url: Optional[str]
     comments: Optional[str]
     location: Optional[str]
     date_known: Optional[str]
@@ -93,6 +115,7 @@ class AvalancheObservation(Observation, pydantic.BaseModel):
     road_status: Optional[str]
     road_depth: Optional[float]
     road_units: Optional[str]
+    highway_zone_id: Optional[str]
 
     async def fieldobs(self, caic_client) -> Observation | None:
         """Get the associated `FieldObservation` using the provided `CaicClient`."""
@@ -150,6 +173,104 @@ class CaicResponse(pydantic.BaseModel):
     data: list[CaicObsObject]
 
 
+class SnowpackObservation(Observation, pydantic.BaseModel):
+    """An observation about the snowpack in a field report."""
+
+    id: str
+    type: enums.ObsTypes
+    backcountry_zone_id: str
+    backcountry_zone: BackcountryZone
+    highway_zone_id: Optional[str]
+    observed_at: Optional[datetime.datetime]
+    created_at: Optional[datetime.datetime]
+    updated_at: Optional[datetime.datetime]
+    latitude: Optional[float]
+    longitude: Optional[float]
+    comments: Optional[str]
+    url: Optional[str]
+    cracking: Optional[str]
+    collapsing: Optional[str]
+    weak_layers: Optional[str]
+    rose: Optional[str]
+
+
+class ObservationAsset(pydantic.BaseModel):
+    """An asset (image/video) attached to a field report."""
+
+    id: str
+    type: str
+    status: Optional[str]
+    caption: Optional[str]
+    tags: Optional[str]
+    is_redacted: Optional[bool]
+    is_locked: Optional[bool]
+    is_avalanche: Optional[bool]
+    location_context: Optional[str]
+    full_url: Optional[str]
+    reduced_url: Optional[str]
+    thumb_url: Optional[str]
+    external_url: Optional[str]
+    created_at: Optional[datetime.datetime]
+    updated_at: Optional[datetime.datetime]
+
+
+class WeatherObservation(Observation, pydantic.BaseModel):
+    """An observation about the weather in a field report."""
+
+class FieldReport(Observation, pydantic.BaseModel):
+    """A field (or observation) report."""
+
+    id: str
+    type: enums.ObsTypes
+    backcountry_zone: str
+    backcountry_zone: BackcountryZone
+    url: str
+    avalanche_observations_count: int
+    avalanche_observations: AvalancheObservation
+    weather_observations_count: int
+    weather_observations: list[WeatherObservation]
+    snowpack_observations_count: int
+    snowpack_observations: list[SnowpackObservation]
+    assets_count: int
+    assets: list[ObservationAsset]
+    highway_zone_id: Optional[str]
+    observed_at: Optional[datetime.datetime]
+    observation_form: Optional[str]
+    is_anonymous: Optional[bool]
+    firstname: Optional[str]
+    lastname: Optional[str]
+    full_name: Optional[str]
+    status: Optional[str]
+    date_known: Optional[str]
+    time_known: Optional[str]
+    hw_op_bc: Optional[str]
+    area: Optional[str]
+    route: Optional[str]
+    is_locked: Optional[bool]
+    objective: Optional[str]
+    saw_avalanche: Optional[bool]
+    triggered_avalanche: Optional[bool]
+    caught_in_avalanche: Optional[bool]
+    state: Optional[str]
+    landmark: Optional[str]
+    description: Optional[str]
+    created_at: Optional[datetime.datetime]
+    updated_at: Optional[datetime.datetime]
+    is_anonymous_location: Optional[bool]
+    latitude: Optional[float]
+    longitude: Optional[float]
+
+
+class ObsClasses(enum.Enum):
+    """Observation classes enum for (CaicResponse)."""
+
+    FIELD_REPORT = FieldReport
+    WEATHER_OBSERVATION = WeatherObservation
+    SNOWPACK_OBSERVATION = SnowpackObservation
+    AVALANCHE_OBSERVATION = CaicAvyObsResponse
+    
+
 OBSERVATION_MODELS = {
-    "avalanche_observation": AvalancheObservation
+    "avalanche_observation": AvalancheObservation,
+    "observation_report": FieldReport,
 }

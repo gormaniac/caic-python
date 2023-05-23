@@ -102,3 +102,7 @@ class ObsTypes(Enum):
 
     AVY_OBS: str = "avalanche_observation"
     REPORT_OBS: str = "report_observation"
+    SNOWPACK_OBS: str = "snowpack_observation"
+    IMAGE_ASSET: str = "image_asset"
+    WEATHER_OBS: str = "weather_observation"
+    BC_ZONE: str = "backcountry_zone"
