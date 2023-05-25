@@ -45,7 +45,7 @@ async def main():
 
     match args.command:
         case "avy-obs":
-            obs = await client.avy_obs(args.before.isoformat(), args.after.isoformat())
+            obs = await client.avy_obs(args.after.isoformat(), args.before.isoformat())
             for ob in obs:
                 print("\n", ob, "\n")
         case _:

@@ -106,3 +106,49 @@ class ObsTypes(Enum):
     IMAGE_ASSET: str = "image_asset"
     WEATHER_OBS: str = "weather_observation"
     BC_ZONE: str = "backcountry_zone"
+    HWY_ZONE: str = "highway_zone"
+
+class BCZoneTitles(Enum):
+    """Titles for backcountry zones."""
+
+    ASPEN = "Aspen"
+    FRONT_RANGE = "Front Range"
+    GRAND_MESA = "Grand Mesa"
+    GUNNINSON = "Gunnison"
+    N_SAN_JAUN = "Northern San Juan"
+    S_SAN_JAUN = "Southern San Juan"
+    SANGRE = "Sangre de Cristo"
+    SAWATCH = "Sawatch"
+    STEAMBOAT = "Steamboat & Flat Tops"
+    VAIL_SUMMIT = "Vail & Summit County"
+
+class ReportsSearchCrackObs(Enum):
+    """Cracking observation options in a Field Reports search."""
+
+    NONE = "None"
+    MINOR = "Minor"
+    MODERATE = "Moderate"
+    SHOOTING = "Shooting"
+    UNKNOWN = "Unknown"
+
+class ReportsSearchCollapseObs(Enum):
+    """Collapsing observation options in a Field Reports search."""
+
+    NONE = "None"
+    MINOR = "Minor"
+    MODERATE = "Moderate"
+    RUMBLING = "Rumbling"
+    UNKNOWN = "Unknown"
+
+class ReportsSearchAvyObs(Enum):
+    """Avalanche observation options in a Field Reports search."""
+
+    SAW = "Saw"
+    CAUGHT = "Caught"
+    TRIGGERED = "Triggered"
+
+class DetailsTypes(Enum):
+
+    AVY = "avalanche_detail"
+    SNOW = "snowpack_detail"
+    WEATHER = "weather_detail"

@@ -1,0 +1,1242 @@
+{
+    "data": [
+        {
+            "id": "9e9b491f-e2fd-4b73-8668-b8bb7ee6d58f",
+            "type": "zone_weather_forecast",
+            "attributes": {
+                "status": "published",
+                "body": "<p>We have finished issuing Backcountry Weather Forecasts for the 2022-2023 season. You can get up-to-date weather forecasts from the National Weather Service by visiting <a href=\"https://www.weather.gov/\">weather.gov</a>. You can also get model forecasts on our <a href=\"https://avalanche.state.co.us/forecasts/weather/point-forecasts\" target=\"_blank\">Point Forecasts</a> page and <a title=\"Model Forecast\" href=\"https://avalanche.state.co.us/forecasts/weather/model-forecasts\" target=\"_blank\">Model Forecast</a> page. You can check current weather conditions across Colorado on our <a href=\"https://classic.avalanche.state.co.us/observations/weather-stations/\" target=\"_blank\">Weather Stations</a> page. Our next scheduled Backcountry Weather Forecast is November 1, 2023. We will continue to issue avalanche forecasts with a danger rating through May and will update conditions over the summer as necessary at <a href=\"https://avalanche.state.co.us/\">colorado.gov/avalanche</a>.</p>",
+                "issued_at": "2023-05-01T14:29:00Z",
+                "starts_at": "2023-05-01T14:29:00Z",
+                "stops_at": null,
+                "created_at": "2023-05-01T06:00:00Z",
+                "updated_at": "2023-05-01T14:29:28Z"
+            },
+            "relationships": {
+                "zone": {
+                    "data": {
+                        "id": "6026c1ff-00e3-485a-b18b-aaa57f5db146",
+                        "type": "zone"
+                    }
+                },
+                "issuer": {
+                    "data": {
+                        "id": "d19ac02d-b5eb-448b-a578-f5a804fa3dad",
+                        "type": "user"
+                    }
+                },
+                "zone_weather_forecast_details": {
+                    "data": [
+                        {
+                            "id": "a0a34075-b227-40a8-9e3f-a88327f7bbc1",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "9f47c2e7-efa0-47ec-9d01-c360d460f530",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "eabfc266-6146-4aa0-aa97-7f62c14289b6",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "f6d194bb-b65a-4fc6-a755-cc7ef4f8d05d",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "f0d6c217-879f-4266-8495-51cd78ebd1c7",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "e7db5c18-faed-4c6a-9715-74f1da9e978b",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "7d3d170a-9614-493a-a71c-9ccde99b4fc7",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "e488980e-a4da-44a2-b9a2-0295b61c0c5d",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "ac140414-68fb-40a4-813f-2078d8f965b5",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "7c281d06-3e4d-4065-ac7a-7f5ad2b051c2",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "81b4b7bc-57dd-4eaa-ad78-a381382428a4",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "cc71080c-dc76-44c2-b368-be1723a78634",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "95c75381-9fa5-43dc-85e5-1f4ffda89d9f",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "3d145943-c7ed-4b8e-a780-74c9cd16a848",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "5201ce21-09b6-4e59-9dc9-a036a3d2c61b",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "79d364e5-8a1a-4467-8af8-ca5694c4f5cc",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "8a660854-d024-4ade-b7a9-0d1a60b571d6",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "dfb04a2b-1fcf-4ba9-bbb3-d3a70ee510ef",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "daae3a02-f9dc-45a8-b115-fc94ee479910",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "001d05ba-d11f-4eb4-ad18-2d8c1304e049",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "d8113971-91f7-40c2-8e89-ea105d2ce770",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "cd2293fd-98db-47d8-9d9d-f5d69316c6f9",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "1150a37e-fd62-40ad-a5ee-ed5e28ffe70e",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "97c726f5-f9f6-4381-bfce-6503b8b8b303",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "79949f7b-5a97-4cd2-b385-c335a28457cf",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "1b16a44f-ad10-4418-a655-5ce9177051e1",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "68959fc3-b27c-445a-93fc-a1b3db94b45e",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "88bf1a22-0a6c-40e6-8684-7bce66f7a14a",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "b476bbf1-d2b9-4fb3-89ab-0536f9ea3a5f",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "374b1530-0bb8-42c1-9db1-e446e43654d4",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "81c2d682-16d6-416f-a979-05879e2b18c6",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "a0b31bb7-7e08-40d4-b8c6-1cbc6ed3b126",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "92898719-1974-4658-919f-b25e7d90a5f0",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "6f171459-dddb-43eb-99ab-0461d2d929a6",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "ab2d3d18-c57f-4d64-b5c5-63463b0d9c70",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "dafab132-7791-4245-a20d-8fb3bf49344f",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "82318d40-d04b-4b19-b752-42c39f839643",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "5e20d192-e5ef-4490-9e51-fce0f6fdc8d8",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "6016ae4c-8571-4628-826e-685557909c7a",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "1c644574-7fee-4386-ba3f-e0c943d527c0",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "aaa85227-3158-431e-94f7-8cf44e0ec99b",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "ec2f6467-90a5-4bf4-a23b-9d7089763e4e",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "c30fab59-9967-41ad-a074-8174c9775b3e",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "d4c1a943-d1e8-4b32-a73b-e85c4ff94555",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "c1d1b2a9-5b89-42ae-9dff-2c2b5631d986",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "5aaf589c-0bfd-43f8-a24e-4abaaa710166",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "fd866487-d272-4521-8e1d-4e8eaae4b916",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "fe5492aa-3121-49df-a893-7d4a2f237a0c",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "5ff391ba-0bd5-4e17-aa59-16501d3d478b",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "91fd72fb-250f-4989-8774-241616f87865",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "cd4842dc-c2ec-4e86-9f8b-522eecad16ae",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "770b0711-fa8b-47c1-879c-599e3d58c383",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "f79dac7a-f6d0-441a-b814-26b2323013d1",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "3d1198d2-396b-44c6-b65e-d2fdbfd0382c",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "b47bc7f9-91df-42ae-a02b-898e3b7db438",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "0b063965-48ae-48ff-898f-19f06a9eecaf",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "7b85d757-2de6-4df5-9f78-2432b4fae2da",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "066dc7da-15b3-41df-94d7-9d2c473fde7c",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "d9394a0a-ed74-4243-85f5-0a798f3877bb",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "92f8e1cc-0f2c-4ebd-a526-2500509cd4d7",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "aedb363a-c3f3-430a-9c6b-effbdfb2d338",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "6edbaf6b-22e9-4a16-b08c-45f5d55c89e4",
+                            "type": "zone_weather_forecast_detail"
+                        },
+                        {
+                            "id": "35bb5d5e-9e85-4177-aa98-1987c8eb636c",
+                            "type": "zone_weather_forecast_detail"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "included": [
+        {
+            "id": "d19ac02d-b5eb-448b-a578-f5a804fa3dad",
+            "type": "user",
+            "attributes": {
+                "full_name": "CAIC Staff",
+                "email": "caicnmountains@gmail.com"
+            }
+        },
+        {
+            "id": "6026c1ff-00e3-485a-b18b-aaa57f5db146",
+            "type": "zone",
+            "attributes": {
+                "parent_id": null,
+                "slug": "statewide",
+                "title": "Statewide",
+                "zone_type": "BackcountryZone",
+                "category": "statewide-backcountry",
+                "category_order": 0,
+                "is_root": true,
+                "tree_level": 0,
+                "is_leaf": false,
+                "created_at": "2019-10-31T21:42:01Z",
+                "updated_at": "2020-06-09T23:06:09Z"
+            },
+            "relationships": {
+                "parent": {
+                    "data": null
+                },
+                "children": {
+                    "data": [
+                        {
+                            "id": "eeffba3f-5aff-49b6-b566-9ad6b8d3f482",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "5e0b648c-ce81-4789-82d6-ccf5cefa353d",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "adf3ba81-de68-4323-b598-4bf983981064",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "397aef26-471d-43ce-a1f8-8d25ca0444ec",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "3ffc2e26-7641-422e-91ea-e025380c7777",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "98d47e0c-93ab-44be-bc01-679945e2cddd",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "40bbb49f-0d08-4dbc-aea1-243e6d2dee8d",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "4a052acf-08a5-4dda-8d90-7d212e56dab1",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "8b2b469c-9dff-42bd-a249-7aa3f7c4523d",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "6be42ae8-26b4-4ada-8d9a-b7e4b48661b6",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "67897ae9-7768-48f0-a1c9-1e497ab646e3",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "70ed38bb-0ad4-4e9f-8bfb-d3f3ddfc8644",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "b5aff353-44a6-41ca-b3f4-0dedc6ed9995",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "7d0a395b-bede-46ce-9c1d-df52ff244df4",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "743b73eb-deb4-4f10-b6f4-a1bd2bd9f55f",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "0042376d-cb77-4911-9cf1-aab23c586ba6",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "a30c961b-cfd7-4663-a117-897ccdd7b935",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "cb9c983b-5eaa-4a42-b827-5627d19c035f",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "bbaa62da-624a-4108-8058-cc94a916447c",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "516209c9-75a1-4ed2-9fab-cced0abe3a77",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "845a9599-1082-4eaa-9b2f-e34848c0bada",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "74cf9913-1833-4e3b-b838-859abf81b524",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "94dfa682-5fee-448d-85df-4e3848ed48f9",
+                            "type": "zone"
+                        },
+                        {
+                            "id": "b7ea689c-3d07-40ed-9b97-cfbc77091f63",
+                            "type": "zone"
+                        }
+                    ]
+                }
+            },
+            "links": {
+                "self": "https://api.avalanche.state.co.us/api/zones/statewide.json",
+                "geojson_url": "https://api.avalanche.state.co.us/api/zones/map/statewide.geojson"
+            }
+        },
+        {
+            "id": "a0a34075-b227-40a8-9e3f-a88327f7bbc1",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "adf3ba81-de68-4323-b598-4bf983981064",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "9f47c2e7-efa0-47ec-9d01-c360d460f530",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "adf3ba81-de68-4323-b598-4bf983981064",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "eabfc266-6146-4aa0-aa97-7f62c14289b6",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "adf3ba81-de68-4323-b598-4bf983981064",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "f6d194bb-b65a-4fc6-a755-cc7ef4f8d05d",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "5e0b648c-ce81-4789-82d6-ccf5cefa353d",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "f0d6c217-879f-4266-8495-51cd78ebd1c7",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "5e0b648c-ce81-4789-82d6-ccf5cefa353d",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "e7db5c18-faed-4c6a-9715-74f1da9e978b",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "5e0b648c-ce81-4789-82d6-ccf5cefa353d",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "7d3d170a-9614-493a-a71c-9ccde99b4fc7",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "397aef26-471d-43ce-a1f8-8d25ca0444ec",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "e488980e-a4da-44a2-b9a2-0295b61c0c5d",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "397aef26-471d-43ce-a1f8-8d25ca0444ec",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "ac140414-68fb-40a4-813f-2078d8f965b5",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "397aef26-471d-43ce-a1f8-8d25ca0444ec",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "7c281d06-3e4d-4065-ac7a-7f5ad2b051c2",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "4a052acf-08a5-4dda-8d90-7d212e56dab1",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "81b4b7bc-57dd-4eaa-ad78-a381382428a4",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "4a052acf-08a5-4dda-8d90-7d212e56dab1",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "cc71080c-dc76-44c2-b368-be1723a78634",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "4a052acf-08a5-4dda-8d90-7d212e56dab1",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "95c75381-9fa5-43dc-85e5-1f4ffda89d9f",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "40bbb49f-0d08-4dbc-aea1-243e6d2dee8d",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "3d145943-c7ed-4b8e-a780-74c9cd16a848",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "40bbb49f-0d08-4dbc-aea1-243e6d2dee8d",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "5201ce21-09b6-4e59-9dc9-a036a3d2c61b",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "40bbb49f-0d08-4dbc-aea1-243e6d2dee8d",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "79d364e5-8a1a-4467-8af8-ca5694c4f5cc",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "eeffba3f-5aff-49b6-b566-9ad6b8d3f482",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "8a660854-d024-4ade-b7a9-0d1a60b571d6",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "eeffba3f-5aff-49b6-b566-9ad6b8d3f482",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "dfb04a2b-1fcf-4ba9-bbb3-d3a70ee510ef",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "eeffba3f-5aff-49b6-b566-9ad6b8d3f482",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "daae3a02-f9dc-45a8-b115-fc94ee479910",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "70ed38bb-0ad4-4e9f-8bfb-d3f3ddfc8644",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "001d05ba-d11f-4eb4-ad18-2d8c1304e049",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "70ed38bb-0ad4-4e9f-8bfb-d3f3ddfc8644",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "d8113971-91f7-40c2-8e89-ea105d2ce770",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "70ed38bb-0ad4-4e9f-8bfb-d3f3ddfc8644",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "cd2293fd-98db-47d8-9d9d-f5d69316c6f9",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "94dfa682-5fee-448d-85df-4e3848ed48f9",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "1150a37e-fd62-40ad-a5ee-ed5e28ffe70e",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "94dfa682-5fee-448d-85df-4e3848ed48f9",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "97c726f5-f9f6-4381-bfce-6503b8b8b303",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "94dfa682-5fee-448d-85df-4e3848ed48f9",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "79949f7b-5a97-4cd2-b385-c335a28457cf",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "0042376d-cb77-4911-9cf1-aab23c586ba6",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "1b16a44f-ad10-4418-a655-5ce9177051e1",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "0042376d-cb77-4911-9cf1-aab23c586ba6",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "68959fc3-b27c-445a-93fc-a1b3db94b45e",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "0042376d-cb77-4911-9cf1-aab23c586ba6",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "88bf1a22-0a6c-40e6-8684-7bce66f7a14a",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "6be42ae8-26b4-4ada-8d9a-b7e4b48661b6",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "b476bbf1-d2b9-4fb3-89ab-0536f9ea3a5f",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "6be42ae8-26b4-4ada-8d9a-b7e4b48661b6",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "374b1530-0bb8-42c1-9db1-e446e43654d4",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "6be42ae8-26b4-4ada-8d9a-b7e4b48661b6",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "81c2d682-16d6-416f-a979-05879e2b18c6",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "8b2b469c-9dff-42bd-a249-7aa3f7c4523d",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "a0b31bb7-7e08-40d4-b8c6-1cbc6ed3b126",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "8b2b469c-9dff-42bd-a249-7aa3f7c4523d",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "92898719-1974-4658-919f-b25e7d90a5f0",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "8b2b469c-9dff-42bd-a249-7aa3f7c4523d",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "6f171459-dddb-43eb-99ab-0461d2d929a6",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "cb9c983b-5eaa-4a42-b827-5627d19c035f",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "ab2d3d18-c57f-4d64-b5c5-63463b0d9c70",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "cb9c983b-5eaa-4a42-b827-5627d19c035f",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "dafab132-7791-4245-a20d-8fb3bf49344f",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "cb9c983b-5eaa-4a42-b827-5627d19c035f",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "82318d40-d04b-4b19-b752-42c39f839643",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "b5aff353-44a6-41ca-b3f4-0dedc6ed9995",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "5e20d192-e5ef-4490-9e51-fce0f6fdc8d8",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "b5aff353-44a6-41ca-b3f4-0dedc6ed9995",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "6016ae4c-8571-4628-826e-685557909c7a",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "b5aff353-44a6-41ca-b3f4-0dedc6ed9995",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "1c644574-7fee-4386-ba3f-e0c943d527c0",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "bbaa62da-624a-4108-8058-cc94a916447c",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "aaa85227-3158-431e-94f7-8cf44e0ec99b",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "bbaa62da-624a-4108-8058-cc94a916447c",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "ec2f6467-90a5-4bf4-a23b-9d7089763e4e",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "bbaa62da-624a-4108-8058-cc94a916447c",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "c30fab59-9967-41ad-a074-8174c9775b3e",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "7d0a395b-bede-46ce-9c1d-df52ff244df4",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "d4c1a943-d1e8-4b32-a73b-e85c4ff94555",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "7d0a395b-bede-46ce-9c1d-df52ff244df4",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "c1d1b2a9-5b89-42ae-9dff-2c2b5631d986",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "7d0a395b-bede-46ce-9c1d-df52ff244df4",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "5aaf589c-0bfd-43f8-a24e-4abaaa710166",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "516209c9-75a1-4ed2-9fab-cced0abe3a77",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "fd866487-d272-4521-8e1d-4e8eaae4b916",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "516209c9-75a1-4ed2-9fab-cced0abe3a77",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "fe5492aa-3121-49df-a893-7d4a2f237a0c",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "516209c9-75a1-4ed2-9fab-cced0abe3a77",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "5ff391ba-0bd5-4e17-aa59-16501d3d478b",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "a30c961b-cfd7-4663-a117-897ccdd7b935",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "91fd72fb-250f-4989-8774-241616f87865",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "a30c961b-cfd7-4663-a117-897ccdd7b935",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "cd4842dc-c2ec-4e86-9f8b-522eecad16ae",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "a30c961b-cfd7-4663-a117-897ccdd7b935",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "770b0711-fa8b-47c1-879c-599e3d58c383",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "98d47e0c-93ab-44be-bc01-679945e2cddd",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "f79dac7a-f6d0-441a-b814-26b2323013d1",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "98d47e0c-93ab-44be-bc01-679945e2cddd",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "3d1198d2-396b-44c6-b65e-d2fdbfd0382c",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "98d47e0c-93ab-44be-bc01-679945e2cddd",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "b47bc7f9-91df-42ae-a02b-898e3b7db438",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "67897ae9-7768-48f0-a1c9-1e497ab646e3",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "0b063965-48ae-48ff-898f-19f06a9eecaf",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "67897ae9-7768-48f0-a1c9-1e497ab646e3",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "7b85d757-2de6-4df5-9f78-2432b4fae2da",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "67897ae9-7768-48f0-a1c9-1e497ab646e3",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "066dc7da-15b3-41df-94d7-9d2c473fde7c",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "b7ea689c-3d07-40ed-9b97-cfbc77091f63",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "d9394a0a-ed74-4243-85f5-0a798f3877bb",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "b7ea689c-3d07-40ed-9b97-cfbc77091f63",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "92f8e1cc-0f2c-4ebd-a526-2500509cd4d7",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "b7ea689c-3d07-40ed-9b97-cfbc77091f63",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "aedb363a-c3f3-430a-9c6b-effbdfb2d338",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "845a9599-1082-4eaa-9b2f-e34848c0bada",
+                "period": 0,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "6edbaf6b-22e9-4a16-b08c-45f5d55c89e4",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "845a9599-1082-4eaa-9b2f-e34848c0bada",
+                "period": 1,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        },
+        {
+            "id": "35bb5d5e-9e85-4177-aa98-1987c8eb636c",
+            "type": "zone_weather_forecast_detail",
+            "attributes": {
+                "zone_id": "845a9599-1082-4eaa-9b2f-e34848c0bada",
+                "period": 2,
+                "temperature_f": "---",
+                "wind_speed_mph": "---",
+                "wind_direction": "---",
+                "sky_cover": "OV",
+                "snow_inches": "---"
+            }
+        }
+    ]
+}
