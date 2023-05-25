@@ -146,6 +146,17 @@ class CaicClient:
         else:
             return data
 
+    async def _api_id_get(self, obj_id: str, endpoint: str, resp_model: pydantic.BaseModel) -> models.FieldReport | None:
+        resp_data = await self._get(
+            f"{CaicURLs.API}/{endpoint}/{obj_id}.json"
+        )
+
+        try:
+            return resp_model(**resp_data)
+        except pydantic.ValidationError as err:
+            LOGGER.warning("Error parsing '%s' response (ID: %s): %s", (endpoint, obj_id, str(err)))
+            return None
+
     async def _api_paginate_get(
         self, page: int, per: int, uri: str, params: typing.Mapping | None = None
     ) -> dict:
@@ -426,17 +437,6 @@ class CaicClient:
         )
 
         return obs
-
-    async def _api_id_get(self, obj_id: str, endpoint: str, resp_model: pydantic.BaseModel) -> models.FieldReport | None:
-        resp_data = await self._get(
-            f"{CaicURLs.API}/{endpoint}/{obj_id}.json"
-        )
-
-        try:
-            return resp_model(**resp_data)
-        except pydantic.ValidationError as err:
-            LOGGER.warning("Error parsing '%s' response (ID: %s): %s", (endpoint, obj_id, str(err)))
-            return None
 
     async def field_report(self, report_id: str) -> models.FieldReport | None:
         report = await self._api_id_get(report_id, CaicEndpoints.OBS_REPORT, models.FieldReport)

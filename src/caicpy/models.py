@@ -232,8 +232,8 @@ class SnowpackObservation(pydantic.BaseModel):
 
     id: str
     type: enums.ObsTypes
-    backcountry_zone_id: str
-    backcountry_zone: BackcountryZone
+    backcountry_zone_id: Optional[str] = None
+    backcountry_zone: Optional[BackcountryZone] = None
     highway_zone_id: Optional[str] = None
     observed_at: Optional[datetime.datetime] = None
     created_at: Optional[datetime.datetime] = None
