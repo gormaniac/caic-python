@@ -17,8 +17,8 @@ class DetailObject(pydantic.BaseModel):
 
     id: str
     type: enums.DetailsTypes
-    description: Optional[str]
-    classic_id: Optional[str]
+    description: Optional[str] = None
+    classic_id: Optional[str] = None
 
 
 class AvalancheDetail(DetailObject):
@@ -75,86 +75,95 @@ class BackcountryZone(pydantic.BaseModel):
 
     id: str
     type: enums.ObsTypes
-    parent_id: Optional[str]
-    slug: Optional[str]
-    title: Optional[str]
-    category: Optional[str]
-    category_order: Optional[int]
-    is_root: Optional[bool]
-    is_leaf: Optional[bool]
-    tree_level: Optional[int]
-    parent_url: Optional[str]
-    created_at: Optional[datetime.datetime]
-    updated_at: Optional[datetime.datetime]
-    url: Optional[str]
-    geojson_url: Optional[str]
+    parent_id: Optional[str] = None
+    slug: Optional[str] = None
+    title: Optional[str] = None
+    category: Optional[str] = None
+    category_order: Optional[int] = None
+    is_root: Optional[bool] = None
+    is_leaf: Optional[bool] = None
+    tree_level: Optional[int] = None
+    parent_url: Optional[str] = None
+    created_at: Optional[datetime.datetime] = None
+    updated_at: Optional[datetime.datetime] = None
+    url: Optional[str] = None
+    geojson_url: Optional[str] = None
 
+
+class ObsReport(pydantic.BaseModel):
+    """Really a pared down FieldReport."""
+
+    id: Optional[str] = None
+    status: Optional[str] = None
+    is_locked: Optional[bool] = None
+    is_anonymous: Optional[bool] = None
+    url: Optional[str] = None
 
 class AvalancheObservation(pydantic.BaseModel):
     """A single avalanche observation from the CAIC website."""
 
     id: str
-    type: Optional[str]
-    backcountry_zone_id: Optional[str]
-    backcountry_zone: Optional[BackcountryZone]
-    highway_zone_id: Optional[str]
-    observed_at: Optional[datetime.datetime]
-    created_at: Optional[datetime.datetime]
-    updated_at: Optional[datetime.datetime]
-    latitude: Optional[float]
-    longitude: Optional[float]
-    classic_id: Optional[int] = pydantic.Field(description="V1 only")
-    classic_observation_report_id: Optional[int] = pydantic.Field(description="V1 only")
-    classic_observation_report_url: Optional[str] = pydantic.Field(description="V1 only")
-    observation_report_status: Optional[str] = pydantic.Field(description="V1 only")
-    observation_report_url: Optional[str] = pydantic.Field(description="V1 only")
-    comments: Optional[str]
-    location: Optional[str]
-    lastname: Optional[str]
-    full_name: Optional[str]
-    date_known: Optional[str]
-    time_known: Optional[str]
-    op_name: Optional[str]
-    is_locked: Optional[bool]
-    number: Optional[int]
-    hw_op_bc: Optional[str]
-    path: Optional[str]
-    landmark: Optional[str]
-    type_code: Optional[enums.TypeCode]
-    problem_type: Optional[str]
-    aspect: Optional[enums.Aspect]
-    elevation: Optional[str]
-    relative_size: Optional[enums.RSize]
-    destructive_size: Optional[enums.DSize]
-    primary_trigger: Optional[enums.PrimaryTrigger]
-    secondary_trigger: Optional[enums.SecondaryTrigger]
-    is_incident: Optional[bool]
-    area: Optional[str]
-    angle_average: Optional[float]
-    angle_maximum: Optional[float]
-    elevation_feet: Optional[int]
-    surface: Optional[str]
-    weak_layer: Optional[str]
-    grain_type: Optional[str]
-    crown_average: Optional[float]
-    crown_maximum: Optional[float]
-    crown_units: Optional[str]
-    width_average: Optional[float]
-    width_maximum: Optional[float]
-    width_units: Optional[str]
-    vertical_average: Optional[float]
-    vertical_maximum: Optional[float]
-    vertical_units: Optional[str]
-    terminus: Optional[str]
-    road_status: Optional[str]
-    road_depth: Optional[float]
-    road_units: Optional[str]
-    road_depth_units: Optional[str]
-    highway_zone_id: Optional[str]
-    road_length: Optional[str]
-    road_length_units: Optional[str]
-    observation_report: Optional['FieldReport']
-    avalanche_detail: Optional['AvalancheDetail']
+    type: Optional[str] = None
+    backcountry_zone_id: Optional[str] = None
+    backcountry_zone: Optional[BackcountryZone] = None
+    highway_zone_id: Optional[str] = None
+    observed_at: Optional[datetime.datetime] = None
+    created_at: Optional[datetime.datetime] = None
+    updated_at: Optional[datetime.datetime] = None
+    latitude: Optional[float] = None
+    longitude: Optional[float] = None
+    classic_id: Optional[int] = pydantic.Field(default=None, description="V1 only")
+    classic_observation_report_id: Optional[int] = pydantic.Field(default=None, description="V1 only")
+    classic_observation_report_url: Optional[str] = pydantic.Field(default=None, description="V1 only")
+    observation_report_status: Optional[str] = pydantic.Field(default=None, description="V1 only")
+    observation_report_url: Optional[str] = pydantic.Field(default=None, description="V1 only")
+    comments: Optional[str] = None
+    location: Optional[str] = None
+    lastname: Optional[str] = None
+    full_name: Optional[str] = None
+    date_known: Optional[str] = None
+    time_known: Optional[str] = None
+    op_name: Optional[str] = None
+    is_locked: Optional[bool] = None
+    number: Optional[int] = None
+    hw_op_bc: Optional[str] = None
+    path: Optional[str] = None
+    landmark: Optional[str] = None
+    type_code: Optional[enums.TypeCode] = None
+    problem_type: Optional[str] = None
+    aspect: Optional[enums.Aspect] = None
+    elevation: Optional[str] = None
+    relative_size: Optional[enums.RSize] = None
+    destructive_size: Optional[enums.DSize] = None
+    primary_trigger: Optional[enums.PrimaryTrigger] = None
+    secondary_trigger: Optional[enums.SecondaryTrigger] = None
+    is_incident: Optional[bool] = None
+    area: Optional[str] = None
+    angle_average: Optional[float] = None
+    angle_maximum: Optional[float] = None
+    elevation_feet: Optional[int] = None
+    surface: Optional[str] = None
+    weak_layer: Optional[str] = None
+    grain_type: Optional[str] = None
+    crown_average: Optional[float] = None
+    crown_maximum: Optional[float] = None
+    crown_units: Optional[str] = None
+    width_average: Optional[float] = None
+    width_maximum: Optional[float] = None
+    width_units: Optional[str] = None
+    vertical_average: Optional[float] = None
+    vertical_maximum: Optional[float] = None
+    vertical_units: Optional[str] = None
+    terminus: Optional[str] = None
+    road_status: Optional[str] = None
+    road_depth: Optional[float] = None
+    road_units: Optional[str] = None
+    road_depth_units: Optional[str] = None
+    highway_zone_id: Optional[str] = None
+    road_length: Optional[str] = None
+    road_length_units: Optional[str] = None
+    observation_report: Optional[ObsReport] = None
+    avalanche_detail: Optional['AvalancheDetail'] = None
 
     async def fieldobs(self, caic_client) -> Union["FieldReport", None]:
         """Get the associated `FieldReport` using the provided `CaicClient`."""
@@ -201,10 +210,10 @@ class CaicResponseLinks(pydantic.BaseModel):
 
     """
 
-    first: Optional[str]
-    prev: Optional[str]
-    next: Optional[str]
-    last: Optional[str]
+    first: Optional[str] = None
+    prev: Optional[str] = None
+    next: Optional[str] = None
+    last: Optional[str] = None
 
 
 class V1AvyResponse(pydantic.BaseModel):
@@ -225,18 +234,18 @@ class SnowpackObservation(pydantic.BaseModel):
     type: enums.ObsTypes
     backcountry_zone_id: str
     backcountry_zone: BackcountryZone
-    highway_zone_id: Optional[str]
-    observed_at: Optional[datetime.datetime]
-    created_at: Optional[datetime.datetime]
-    updated_at: Optional[datetime.datetime]
-    latitude: Optional[float]
-    longitude: Optional[float]
-    comments: Optional[str]
-    url: Optional[str]
-    cracking: Optional[str]
-    collapsing: Optional[str]
-    weak_layers: Optional[str]
-    rose: Optional[str]
+    highway_zone_id: Optional[str] = None
+    observed_at: Optional[datetime.datetime] = None
+    created_at: Optional[datetime.datetime] = None
+    updated_at: Optional[datetime.datetime] = None
+    latitude: Optional[float] = None
+    longitude: Optional[float] = None
+    comments: Optional[str] = None
+    url: Optional[str] = None
+    cracking: Optional[str] = None
+    collapsing: Optional[str] = None
+    weak_layers: Optional[str] = None
+    rose: Optional[str] = None
 
 
 class ObservationAsset(pydantic.BaseModel):
@@ -244,89 +253,89 @@ class ObservationAsset(pydantic.BaseModel):
 
     id: str
     type: enums.ObsTypes
-    status: Optional[str]
-    caption: Optional[str]
-    tags: Optional[str]
-    is_redacted: Optional[bool]
-    is_locked: Optional[bool]
-    is_avalanche: Optional[bool]
-    location_context: Optional[str]
-    full_url: Optional[str]
-    reduced_url: Optional[str]
-    thumb_url: Optional[str]
-    external_url: Optional[str]
-    created_at: Optional[datetime.datetime]
-    updated_at: Optional[datetime.datetime]
+    status: Optional[str] = None
+    caption: Optional[str] = None
+    tags: Optional[str] = None
+    is_redacted: Optional[bool] = None
+    is_locked: Optional[bool] = None
+    is_avalanche: Optional[bool] = None
+    location_context: Optional[str] = None
+    full_url: Optional[str] = None
+    reduced_url: Optional[str] = None
+    thumb_url: Optional[str] = None
+    external_url: Optional[str] = None
+    created_at: Optional[datetime.datetime] = None
+    updated_at: Optional[datetime.datetime] = None
 
 
 class HighwayZone(pydantic.BaseModel):
 
-    id: Optional[str]
-    type: Optional[str]
-    parent_id: Optional[str]
-    slug: Optional[str]
-    title: Optional[str]
-    category: Optional[str]
-    category_order: Optional[int]
-    is_root: Optional[bool]
-    is_leaf: Optional[bool]
-    tree_level: Optional[int]
-    parent_url: Optional[str]
-    children_urls: Optional[list[str]]
-    created_at: Optional[datetime.datetime]
-    updated_at: Optional[datetime.datetime]
-    url: Optional[str]
-    geojson_url: Optional[str]
+    id: Optional[str] = None
+    type: Optional[str] = None
+    parent_id: Optional[str] = None
+    slug: Optional[str] = None
+    title: Optional[str] = None
+    category: Optional[str] = None
+    category_order: Optional[int] = None
+    is_root: Optional[bool] = None
+    is_leaf: Optional[bool] = None
+    tree_level: Optional[int] = None
+    parent_url: Optional[str] = None
+    children_urls: Optional[list[str]] = pydantic.Field(default_factory=list)
+    created_at: Optional[datetime.datetime] = None
+    updated_at: Optional[datetime.datetime] = None
+    url: Optional[str] = None
+    geojson_url: Optional[str] = None
 
 class WeatherObservation(pydantic.BaseModel):
     """An observation about the weather in a field report."""
 
     id: str
     type: enums.ObsTypes
-    backcountry_zone_id: Optional[str]
-    backcountry_zone: Optional[BackcountryZone]
-    highway_zone_id: Optional[str]
-    highway_zone: Optional[HighwayZone]
-    observed_at: Optional[datetime.datetime]
-    created_at: Optional[datetime.datetime]
-    updated_at: Optional[datetime.datetime]
-    latitude: Optional[float]
-    longitude: Optional[float]
-    classic_id: Optional[int]
-    classic_observation_report_id: Optional[int]
-    classic_observation_report_url: Optional[str]
-    comments: Optional[str]
-    url: Optional[str]
-    location: Optional[str]
-    temperature: Optional[int]
-    temperature_maximum: Optional[int]
-    temperature_minimum: Optional[int]
-    temperature_units: Optional[str]
-    temperature_at_negative_20cm: Optional[int]
-    temperature_at_negative_20cm_units: Optional[str]
-    relative_humidity: Optional[str]
-    precipitation_rate: Optional[str]
-    precipitation_type: Optional[str]
-    sky_cover: Optional[str]
-    height_of_snow: Optional[int]
-    height_of_snow_units: Optional[str]
-    height_of_new_snow_12_hours: Optional[int]
-    height_of_new_snow_24_hours: Optional[int]
-    height_of_new_snow_units: Optional[str]
-    height_of_new_snow_water_equivalent_12_hours: Optional[int]
-    height_of_new_snow_water_equivalent_24_hours: Optional[int]
-    height_of_new_snow_water_equivalent_units: Optional[str]
-    windspeed_ridgeline: Optional[str]
-    wind_direction_ridgeline: Optional[str]
-    windspeed: Optional[str]
-    wind_direction: Optional[str]
-    windspeed_units: Optional[str]
-    maximum_gust_speed: Optional[str]
-    maximum_gust_direction: Optional[str]
-    maximum_gust_duration_seconds: Optional[str]
-    blowing_snow: Optional[str]
-    windloading: Optional[str]
-    weather_detail: Optional['WeatherDetail']
+    backcountry_zone_id: Optional[str] = None
+    backcountry_zone: Optional[BackcountryZone] = None
+    highway_zone_id: Optional[str] = None
+    highway_zone: Optional[HighwayZone] = None
+    observed_at: Optional[datetime.datetime] = None
+    created_at: Optional[datetime.datetime] = None
+    updated_at: Optional[datetime.datetime] = None
+    latitude: Optional[float] = None
+    longitude: Optional[float] = None
+    classic_id: Optional[int] = None
+    classic_observation_report_id: Optional[int] = None
+    classic_observation_report_url: Optional[str] = None
+    comments: Optional[str] = None
+    url: Optional[str] = None
+    location: Optional[str] = None
+    temperature: Optional[int] = None
+    temperature_maximum: Optional[int] = None
+    temperature_minimum: Optional[int] = None
+    temperature_units: Optional[str] = None
+    temperature_at_negative_20cm: Optional[int] = None
+    temperature_at_negative_20cm_units: Optional[str] = None
+    relative_humidity: Optional[str] = None
+    precipitation_rate: Optional[str] = None
+    precipitation_type: Optional[str] = None
+    sky_cover: Optional[str] = None
+    height_of_snow: Optional[int] = None
+    height_of_snow_units: Optional[str] = None
+    height_of_new_snow_12_hours: Optional[int] = None
+    height_of_new_snow_24_hours: Optional[int] = None
+    height_of_new_snow_units: Optional[str] = None
+    height_of_new_snow_water_equivalent_12_hours: Optional[int] = None
+    height_of_new_snow_water_equivalent_24_hours: Optional[int] = None
+    height_of_new_snow_water_equivalent_units: Optional[str] = None
+    windspeed_ridgeline: Optional[str] = None
+    wind_direction_ridgeline: Optional[str] = None
+    windspeed: Optional[str] = None
+    wind_direction: Optional[str] = None
+    windspeed_units: Optional[str] = None
+    maximum_gust_speed: Optional[str] = None
+    maximum_gust_direction: Optional[str] = None
+    maximum_gust_duration_seconds: Optional[str] = None
+    blowing_snow: Optional[str] = None
+    windloading: Optional[str] = None
+    weather_detail: Optional['WeatherDetail'] = None
 
 class Creator(pydantic.BaseModel):
     """The creator object of a field report.
@@ -342,45 +351,51 @@ class FieldReport(pydantic.BaseModel):
 
     id: str
     type: enums.ObsTypes
-    backcountry_zone: Optional[str]
-    backcountry_zone: Optional[BackcountryZone]
-    url: Optional[str]
-    creator: Optional[Creator]
-    avalanche_observations_count: Optional[int]
-    avalanche_observations: Optional[list[AvalancheObservation]]
-    avalanche_detail: Optional[AvalancheDetail]
-    weather_observations_count: Optional[int]
-    weather_observations: Optional[list[WeatherObservation]]
-    weather_detail: Optional[WeatherDetail]
-    snowpack_observations_count: Optional[int]
-    snowpack_observations: Optional[list[SnowpackObservation]]
-    assets_count: Optional[int]
-    assets: Optional[list[ObservationAsset]]
-    highway_zone_id: Optional[str]
-    observed_at: Optional[datetime.datetime]
-    snowpack_detail: Optional[SnowpackDetail]
-    observation_form: Optional[str]
-    is_anonymous: Optional[bool]
-    firstname: Optional[str]
-    lastname: Optional[str]
-    full_name: Optional[str]
-    organization: Optional[str]
-    status: Optional[str]
-    date_known: Optional[str]
-    time_known: Optional[str]
-    hw_op_bc: Optional[str]
-    area: Optional[str]
-    route: Optional[str]
-    is_locked: Optional[bool]
-    objective: Optional[str]
-    saw_avalanche: Optional[bool]
-    triggered_avalanche: Optional[bool]
-    caught_in_avalanche: Optional[bool]
-    state: Optional[str]
-    landmark: Optional[str]
-    description: Optional[str]
-    created_at: Optional[datetime.datetime]
-    updated_at: Optional[datetime.datetime]
-    is_anonymous_location: Optional[bool]
-    latitude: Optional[float]
-    longitude: Optional[float]
+    backcountry_zone: Optional[str] = None
+    backcountry_zone: Optional[BackcountryZone] = None
+    url: Optional[str] = None
+    creator: Optional[Creator] = None
+    avalanche_observations_count: Optional[int] = None
+    avalanche_observations: Optional[list[AvalancheObservation]] = pydantic.Field(default_factory=list)
+    avalanche_detail: Optional[AvalancheDetail] = None
+    weather_observations_count: Optional[int] = None
+    weather_observations: Optional[list[WeatherObservation]] = pydantic.Field(default_factory=list)
+    weather_detail: Optional[WeatherDetail] = None
+    snowpack_observations_count: Optional[int] = None
+    snowpack_observations: Optional[list[SnowpackObservation]] = pydantic.Field(default_factory=list)
+    assets_count: Optional[int] = None
+    assets: Optional[list[ObservationAsset]] = pydantic.Field(default_factory=list)
+    highway_zone_id: Optional[str] = None
+    observed_at: Optional[datetime.datetime] = None
+    snowpack_detail: Optional[SnowpackDetail] = None
+    observation_form: Optional[str] = None
+    is_anonymous: Optional[bool] = None
+    firstname: Optional[str] = None
+    lastname: Optional[str] = None
+    full_name: Optional[str] = None
+    organization: Optional[str] = None
+    status: Optional[str] = None
+    date_known: Optional[str] = None
+    time_known: Optional[str] = None
+    hw_op_bc: Optional[str] = None
+    area: Optional[str] = None
+    route: Optional[str] = None
+    is_locked: Optional[bool] = None
+    objective: Optional[str] = None
+    saw_avalanche: Optional[bool] = None
+    triggered_avalanche: Optional[bool] = None
+    caught_in_avalanche: Optional[bool] = None
+    state: Optional[str] = None
+    landmark: Optional[str] = None
+    description: Optional[str] = None
+    created_at: Optional[datetime.datetime] = None
+    updated_at: Optional[datetime.datetime] = None
+    is_anonymous_location: Optional[bool] = None
+    latitude: Optional[float] = None
+    longitude: Optional[float] = None
+
+models = [value for value in locals().values() if isinstance(value, pydantic.BaseModel)]
+for model in models:
+    print(model)
+    if model.__module__ == __name__:
+        model.model_rebuild()
