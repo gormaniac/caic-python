@@ -1,0 +1,85 @@
+{
+    "id": "f9445932-ff31-4ac8-9631-7476241ad0d3",
+    "title": "Northern Mountains Regional Discussion",
+    "type": "regionaldiscussion",
+    "polygons": [
+        "05ae3371-a414-42c1-9888-a87074be5186",
+        "0c088141-9478-4fd8-9ad8-18438a4f0207",
+        "1a0d6115-d2f0-41c6-aa69-a3600e859e73",
+        "2508efac-44bc-459e-bc59-95e64f0103f4",
+        "32cc1061-d4a9-4477-b97a-a1cc9f50b624",
+        "353b5afd-9173-4762-8d9e-62c10ea11b26",
+        "38748dc6-9438-43cf-b349-7a5e25367492",
+        "41b4eca7-12fb-4b15-bb59-fa99ac1208be",
+        "4665bb9b-d3f1-4bbd-8129-3ed58af0145f",
+        "4ae849da-b830-4732-83c1-fb0184e50a42",
+        "5710583b-0131-4273-bca5-d78e13eedbe4",
+        "5e753e67-064d-4710-a85d-38c69138f040",
+        "653f93f4-e882-42a2-8693-91731a78b7b0",
+        "72fe7731-9150-4c20-878f-9cc0ee1c9740",
+        "7bacee87-c144-4407-8c1f-6283c561eacc",
+        "7bf19bea-c0da-4b42-a284-7d663d0294ff",
+        "89755543-26e8-4e19-8da2-3c60dd206225",
+        "8994f58d-aae8-42ed-8568-9df9506437e0",
+        "8b3c9795-34da-42d7-a333-07dd70862e66",
+        "8c012176-b293-4ccf-a6d8-2f46d6e064e4",
+        "8d5299c8-d78e-4ff8-99e1-614de7309aad",
+        "a4d6a65c-6c32-4218-8391-07be7a10bebb",
+        "a50ee394-99c1-4cc0-a93e-bdd7c86ee473",
+        "b03a3ed5-cddf-4875-b32c-facd99f3027b",
+        "b9a1d1e2-eb4c-4faa-b43e-67a5fd368739",
+        "cad96ad4-3e5b-424e-9a5c-f86d6dd11a83",
+        "d87ab0d9-b8eb-4a35-b6d6-9574cde807f7",
+        "ecb9f1f0-a119-4d14-b694-86ea958bb82e",
+        "fdfd194b-66cf-4300-bce3-6e4bd003b5a1"
+    ],
+    "areaId": "607edc6d1b21f703dcfc534c1a62bdcd810ca4b1a44c83b1e53856b1ea44a367",
+    "forecaster": "Andrew McWilliams",
+    "issueDateTime": "2023-01-21T23:30:00Z",
+    "expiryDateTime": "2023-01-22T23:30:00Z",
+    "message": "<p><strong>Northern Mountains Regional Discussion</strong></p><p>Light snow showers on Saturday night into Sunday will not elevate the danger in the Northern Mountains. The avalanche danger for Sunday is MODERATE across the region. Even though the danger has dropped to level 2 of 5, we are still managing a tricky Persistent Slab avalanche problem that requires careful terrain evaluation. The drop in danger correlates to a lower likelihood of triggering an avalanche but not to a decrease in avalanche size. If you do trigger a Persistent Slab avalanche that breaks near the ground, it will likely wrap around multiple terrain features and run farther than you anticipate. Not the type of avalanche that a rider can easily escape from or survive.</p><p>The two most likely ways to trigger one of these larger and more dangerous avalanches are by triggering a smaller avalanche first or by finding a sweet spot on the slope that causes a failure near the ground. Areas where you might trigger a smaller avalanche are generally easy to recognize. Look for and avoid smooth bulbous pillows of new snow just below ridgelines, within cross-loaded gully features, and downhill of convex rollovers. The second path to triggering a large slide is difficult to recognize just by looking at a slope. Often, the sweet spot to triggering an avalanche on a deeply buried weak layer is a shallow area of a slope. Because the slab is not as thick, it allows you to collapse weak layers that would otherwise not be affected by your weight. Shallow areas can be anywhere and without X-ray vision there is no way to tell for sure. Generally, avoid areas near exposed rocks, bushes, or grass that are on the margins of a potential slab.</p><p>The question then is how deep is the snowpack and how widespread are possible trigger points where you plan to travel. The shallower the snowpack, the more trigger points exist and the more widespread they will be on a slope. The deepest areas of the Northern Mountains are the Park Range and the Flat Tops, where snow depths exceed six feet in most places and it is difficult to affect the weak layers near the ground with the weight of a single person or snow machine. The Gore Range and the Front Range from Cameron Pass south to the Indian Peaks Wilderness are the next deepest areas in the Northern Mountains. While the height of the snowpack is similar in these two areas, the amount of wind-affect and the distribution of the snow over the terrain is keeping them separated. The areas around Berthoud Pass, Loveland Pass, and the Tenmile Range are thinner still and are the most likely place to trigger a Persistent Slab avalanche. The exception to everything written above is the areas around Fremont Pass, Park County, and Pikes Peak. Here, the snowpack is still shallow and weak and there is not a dense and continuous slab across the terrain like the areas further north. It will not take a significant load to create a widespread avalanche cycle in this area and when that happens expect the danger to rise.</p><p>Don’t get complacent around our Persistent Slab avalanche problem this weekend, especially in the thinner areas of the Northern Mountains like the Front Range and Summit County. The mountains don’t care about your experience level or how familiar you are with the terrain. The primary goal of any mountain adventure should be to return home safely at the end of the day. Stack the odds in your favor as much as possible and don’t put yourself in a situation where you just got lucky. It is not time to venture onto steep slopes just yet, lest we awake a dragon. The best way to stay safe is to avoid travel on or underneath slopes greater than about 30 degrees.</p>",
+    "communications": {
+        "headline": "<p></p>",
+        "sms": ""
+    },
+    "media": {
+        "Images": [
+            {
+                "id": "44073f3a-9cac-4a9e-91a5-85566b5a1264",
+                "url": "http://res.cloudinary.com/avalanche-ca/image/upload/v1673651413/avidfx/caic/hqovapm2qaganffswcya.jpg",
+                "width": 512,
+                "height": 384,
+                "credit": "",
+                "caption": "<p>A large skier-triggered avalanche near the summit of Loveland Pass on Friday, January 13, 2023. This slide was triggered when the rider approached a thinner area near the rock outcrops. Thankfully everyone escaped unharmed.</p>",
+                "tag": "avalanche"
+            },
+            {
+                "id": "342173c0-3ce3-45a2-be6e-5e63f164affc",
+                "url": "http://res.cloudinary.com/avalanche-ca/image/upload/v1673651521/avidfx/caic/y0gvbrflt5piyrfgzuvt.png",
+                "width": 507,
+                "height": 669,
+                "credit": "",
+                "caption": "<p>Thankfully, this avalanche near Vail Pass from January 12, 2023, did not bury or injure anybody. The party involved mentioned that they ignored obvious red flags telling them to avoid this slope. It appears that the avalanche could have become much larger, but the slope had already slid and taken some of that mass downhill as evidenced by the old crown still visible in the photograph.</p>",
+                "tag": "avalanche"
+            },
+            {
+                "id": "2d0e883f-db8f-490e-b47a-41fc72cc2673",
+                "url": "http://res.cloudinary.com/avalanche-ca/image/upload/v1673651591/avidfx/caic/tzqnqguxe7spv3mx7pdv.jpg",
+                "width": 800,
+                "height": 600,
+                "credit": "",
+                "caption": "<p>This natural avalanche on Thursday, January 12, 2023 on Mt. Trelease covered up skin tracks from earlier in the day. The party that snapped this photograph was dusted by the powder cloud and the debris stopped 100 yards from where they were transitioning - \"we were happy we'd given the face such a wide berth.\"</p>",
+                "tag": "avalanche"
+            },
+            {
+                "id": "308f0a79-b16f-4c4b-b862-78c351b02678",
+                "url": "http://res.cloudinary.com/avalanche-ca/image/upload/v1674254174/avidfx/caic/ttonakywealzvqimnx7w.jpg",
+                "width": 800,
+                "height": 600,
+                "credit": "",
+                "caption": "<p>These remotely triggered avalanches in the Tenmile Range from January 19, 2023 broke simultaneously when riders triggered them from a thinner area of the slope. Thankfully no one was caught.</p>",
+                "tag": "avalanche"
+            }
+        ]
+    }
+}

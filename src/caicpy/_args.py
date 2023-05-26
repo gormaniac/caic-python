@@ -58,3 +58,23 @@ SNOWPACK_PARSER = SUBPARSER.add_parser(
     description="Query for a single Snowpack Observation.",
     parents=[ID_PARSER],
 )
+AVALANCHE_PARSER = SUBPARSER.add_parser(
+    "avalanche-observation",
+    description="Query for a single Avalanche Observation.",
+    parents=[ID_PARSER],
+)
+WEATHER_PARSER = SUBPARSER.add_parser(
+    "weather-observation",
+    description="Query for a single Weather Observation.",
+    parents=[ID_PARSER],
+)
+BZONE_PARSER = SUBPARSER.add_parser(
+    "bc-zone",
+    description="Query for a single Backcountry Zone.",
+    parents=[ID_PARSER],
+)
+AVALANCHE_PARSER = SUBPARSER.add_parser(
+    "highway-zone",
+    description="Query for a single Highway Zone.",
+    parents=[ID_PARSER],
+)

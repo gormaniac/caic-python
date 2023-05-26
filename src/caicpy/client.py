@@ -33,7 +33,7 @@ A field reports example API call::
 
 A forecast API call - must use the proxy for these - the avid API is behind auth::
 
-    https://avalanche.state.co.us/api-proxy/avid?_api_proxy_uri=/products/all?datetime=2023-05-22T06:31:00.000Z&includeExpired=true
+    https://avalanche.state.co.us/api-proxy/avid?_api_proxy_uri=/products/all?datetime=2023-01-22T12:00:00.000Z&includeExpired=true
 
 Weather dispatches API call - also a different domain 😠::
 
@@ -42,6 +42,14 @@ Weather dispatches API call - also a different domain 😠::
 Example weather plot download::
 
     https://classic.avalanche.state.co.us/caic/obs_stns/hplot.php?title=VailResort%20CAVMM%20(10303%20ft)%20-%20Vail%20&%20Summit%20County&st=CAVMM&date=2023-05-22-06
+
+Example Wind Rose download::
+
+    https://classic.avalanche.state.co.us/caic/obs_stns/windrose.php?st=UP396&date=2023-01-12+17&elev=6325&unit=e&area=caic
+    
+Example Weather Station Tables - would require webpage scraping, but may be helpful.
+
+    https://classic.avalanche.state.co.us/caic/obs_stns/zones.php?date=2023-05-25+17&stnlink=hourly&unit=e&flag=on&area=caic&span=6
 
 """
 
@@ -327,7 +335,7 @@ class CaicClient:
                 results.extend(obj.data)
 
             else:
-                results.append(obj)
+                results.extend(obj)
 
             page += 1
 

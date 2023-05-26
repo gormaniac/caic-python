@@ -1,7 +1,7 @@
 """Pydantic models used by caicpy."""
 
 import datetime
-from typing import Optional, Union
+from typing import Literal, Optional, Union
 
 import pydantic
 
@@ -35,6 +35,108 @@ class WeatherDetail(DetailObject):
     There is occasionally data here even when
     not in `weather_observations` for a field report.
     """
+
+
+class ForecastSummaryDay(pydantic.BaseModel):
+    date: Optional[datetime.datetime]
+    content: Optional[str]
+
+
+class ForecastSummary(pydantic.BaseModel):
+    days: list[ForecastSummaryDay]
+
+
+class ExpectedSize(pydantic.BaseModel):
+    min: str
+    max: str
+
+
+class AvalancheProblem(pydantic.BaseModel):
+    #TODO do enums here for everything
+    type: str
+    aspectElevations: list[str]
+    likelihood: str
+    expectedSize: ExpectedSize
+    comment: str
+
+class AvalancheProblems(pydantic.BaseModel):
+    days: list[AvalancheProblem]
+
+
+class ForecastConfidence(pydantic.BaseModel):
+    date: datetime.datetime
+    rating: str
+    statements: list[str] = pydantic.Field(default_factory=list)
+
+
+class ForecastConfidences(pydantic.BaseModel):
+    days: list[ForecastConfidence]
+
+
+class ForecastComms(pydantic.BaseModel):
+    headline: str
+    sms: str
+
+
+class DangerRating(pydantic.BaseModel):
+    position: int
+    alp: str
+    tln: str
+    btl: str
+    date: datetime.datetime
+
+
+class DangerRatings(pydantic.BaseModel):
+    days: list[DangerRating]
+
+
+class ForecastImage(pydantic.BaseModel):
+    id: str
+    url: str
+    width: int
+    height: int
+    credit: str
+    caption: str
+    tag: str
+
+
+class ForecastMedia(pydantic.BaseModel):
+    Images: list[ForecastImage]
+
+
+class AvalancheForecast(pydantic.BaseModel):
+
+    id: str
+    title: str
+    type: Literal["avalancheforecast"]
+    polygons: list
+    areaId: str
+    forecaster: str
+    issueDateTime: datetime.datetime
+    expiryDateTime: datetime.datetime
+    weatherSummary: ForecastSummary
+    snowpackSummary: ForecastSummary
+    avalancheSummary: ForecastSummary
+    avalancheProblems: AvalancheProblems
+    terrainAndTravelAdvice: dict
+    confidence: ForecastConfidences
+    communication: ForecastComms
+    dangerRatings: DangerRatings
+    media: ForecastImage
+
+class RegionalDiscussionForecast(pydantic.BaseModel):
+
+    id: str
+    title: str
+    type: str
+    polygons: list[str]
+    areaId: str
+    forecaster: str
+    issueDateTime: datetime.datetime
+    expiryDateTime: datetime.datetime
+    message: str
+    communications: ForecastComms
+    media: ForecastMedia
 
 
 class V1AvalancheObservation(pydantic.BaseModel):

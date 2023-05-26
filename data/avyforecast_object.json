@@ -1,0 +1,190 @@
+{
+    "id": "8558590c-84b2-4551-b73d-334a8a42f736",
+    "title": "Berthoud Pass, Loveland Pass, Tenmile Range",
+    "type": "avalancheforecast",
+    "polygons": [
+        "2508efac-44bc-459e-bc59-95e64f0103f4",
+        "5710583b-0131-4273-bca5-d78e13eedbe4",
+        "7bacee87-c144-4407-8c1f-6283c561eacc",
+        "89755543-26e8-4e19-8da2-3c60dd206225",
+        "8d5299c8-d78e-4ff8-99e1-614de7309aad",
+        "a4d6a65c-6c32-4218-8391-07be7a10bebb",
+        "d87ab0d9-b8eb-4a35-b6d6-9574cde807f7",
+        "fdfd194b-66cf-4300-bce3-6e4bd003b5a1"
+    ],
+    "areaId": "86110b9ced6ba28c7cfa7bfa544104d45a394d73dcb6e3033adda044237f91e0",
+    "forecaster": "Andrew McWilliams",
+    "issueDateTime": "2023-01-21T23:30:00Z",
+    "expiryDateTime": "2023-01-22T23:30:00Z",
+    "weatherSummary": {
+        "days": []
+    },
+    "snowpackSummary": {
+        "days": []
+    },
+    "avalancheSummary": {
+        "days": [
+            {
+                "date": "2023-01-22T23:30:00Z",
+                "content": "<p>You can trigger a large avalanche on west through east to south-facing slopes at all elevations. You are most likely to trigger a large avalanche from a shallower area of a slope. Avoid areas on a slope with exposed rocks, bushes, or grass. You may be able to trigger a small slide near the surface in recently wind-drifted snow as well. If you do, it can easily break into the deeply buried weak layers near the ground and cause a wide and far-running avalanche. Look for and avoid smooth, bulbous pillows of snow below ridgelines, in cross-loaded gullies, and downhill of convex rollovers. If you are unsure how deep the snowpack is you can always stick to slopes less than about 30 degrees with no steep slopes above for safer backcountry travel.</p>"
+            }
+        ]
+    },
+    "avalancheProblems": {
+        "days": [
+            [
+                {
+                    "type": "persistentSlab",
+                    "aspectElevations": [
+                        "nw_btl",
+                        "nw_tln",
+                        "nw_alp",
+                        "n_btl",
+                        "n_tln",
+                        "n_alp",
+                        "ne_alp",
+                        "ne_tln",
+                        "ne_btl",
+                        "e_tln",
+                        "e_alp",
+                        "e_btl",
+                        "se_tln",
+                        "se_alp",
+                        "s_alp",
+                        "s_tln",
+                        "se_btl",
+                        "w_btl",
+                        "w_tln",
+                        "w_alp"
+                    ],
+                    "likelihood": "possible",
+                    "expectedSize": {
+                        "min": "1.5",
+                        "max": "2.5"
+                    },
+                    "comment": ""
+                }
+            ],
+            [
+                {
+                    "type": "persistentSlab",
+                    "aspectElevations": [
+                        "nw_btl",
+                        "nw_tln",
+                        "nw_alp",
+                        "n_btl",
+                        "n_tln",
+                        "n_alp",
+                        "ne_alp",
+                        "ne_tln",
+                        "ne_btl",
+                        "e_tln",
+                        "e_alp",
+                        "e_btl",
+                        "se_tln",
+                        "se_alp",
+                        "s_alp",
+                        "s_tln",
+                        "se_btl",
+                        "w_btl",
+                        "w_tln",
+                        "w_alp"
+                    ],
+                    "likelihood": "possible",
+                    "expectedSize": {
+                        "min": "1.5",
+                        "max": "2.5"
+                    },
+                    "comment": ""
+                }
+            ],
+            []
+        ]
+    },
+    "terrainAndTravelAdvice": {
+        "days": [
+            [],
+            [],
+            []
+        ]
+    },
+    "confidence": {
+        "days": [
+            {
+                "date": "2023-01-22T23:30:00Z",
+                "rating": "moderate",
+                "statements": []
+            },
+            {
+                "date": "2023-01-23T23:30:00Z",
+                "rating": "moderate",
+                "statements": []
+            },
+            {
+                "date": "2023-01-24T23:30:00Z",
+                "rating": "low",
+                "statements": []
+            }
+        ]
+    },
+    "communication": {
+        "headline": "",
+        "sms": ""
+    },
+    "dangerRatings": {
+        "days": [
+            {
+                "position": 1,
+                "alp": "moderate",
+                "tln": "moderate",
+                "btl": "moderate",
+                "date": "2023-01-22T23:30:00Z"
+            },
+            {
+                "position": 2,
+                "alp": "moderate",
+                "tln": "moderate",
+                "btl": "moderate",
+                "date": "2023-01-23T23:30:00Z"
+            },
+            {
+                "position": 3,
+                "alp": "noRating",
+                "tln": "noRating",
+                "btl": "noRating",
+                "date": "2023-01-24T23:30:00Z"
+            }
+        ]
+    },
+    "media": {
+        "Images": [
+            {
+                "id": "1157dfc6-a08c-48e5-89c8-be46d86b753f",
+                "url": "http://res.cloudinary.com/avalanche-ca/image/upload/v1673218362/avidfx/caic/ym8hjj7vtt7duxmwtor0.jpg",
+                "width": 2016,
+                "height": 1512,
+                "credit": "",
+                "caption": "<p>You can easily trigger a large avalanche that breaks deeply, near the ground on many steep slopes like this one triggered Sunday, January 8th, near Loveland Pass.</p>",
+                "tag": "avalanche"
+            },
+            {
+                "id": "4b5b1210-3c2c-4870-8bab-3bf2af5b8f83",
+                "url": "http://res.cloudinary.com/avalanche-ca/image/upload/v1673646462/avidfx/caic/gez4c6ytiocbwfwbqbum.jpg",
+                "width": 512,
+                "height": 384,
+                "credit": "",
+                "caption": "<p>A large skier-triggered avalanche near the summit of Loveland Pass on Friday, January 13, 2023. This slide was triggered when the rider approached a thinner area near the rock outcrops. Thankfully everyone escaped unharmed.</p>",
+                "tag": "avalanche"
+            },
+            {
+                "id": "177517be-0082-4602-8ba5-5895a52e149b",
+                "url": "http://res.cloudinary.com/avalanche-ca/image/upload/v1674250064/avidfx/caic/we0ht5yfjmxxtqmvk41u.jpg",
+                "width": 800,
+                "height": 600,
+                "credit": "",
+                "caption": "<p>These remotely triggered avalanches ran at the same time on westerly-facing slopes on January 19, 2023 in the Tenmile Range. The riders triggered them from a thin area of the slope as they descended into the trees.</p>",
+                "tag": "avalanche"
+            }
+        ]
+    }
+}
