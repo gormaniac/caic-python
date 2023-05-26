@@ -37,7 +37,11 @@ ID_PARSER.add_argument(
 MAIN_PARSER = argparse.ArgumentParser(
     description=__doc__,
 )
-MAIN_PARSER.add_argument("--debug", help="Display debug output.", action="store_true",)
+MAIN_PARSER.add_argument(
+    "--debug",
+    help="Display debug output.",
+    action="store_true",
+)
 SUBPARSER = MAIN_PARSER.add_subparsers(dest="command", title="Commands")
 
 AVY_OBS_PARSER = SUBPARSER.add_parser(
@@ -73,8 +77,19 @@ BZONE_PARSER = SUBPARSER.add_parser(
     description="Query for a single Backcountry Zone.",
     parents=[ID_PARSER],
 )
-AVALANCHE_PARSER = SUBPARSER.add_parser(
+HZONE_PARSER = SUBPARSER.add_parser(
     "highway-zone",
     description="Query for a single Highway Zone.",
     parents=[ID_PARSER],
+)
+AVYFORECAST_PARSER = SUBPARSER.add_parser(
+    "avy-forecast",
+    description="Query for a the avalanche forecast on the given date.",
+)
+AVYFORECAST_PARSER.add_argument(
+    "-d",
+    "--date",
+    help="The date (and optional time) to get the forecast for.",
+    type=dateutil.parser.parse,
+    default=datetime.datetime.now(),
 )

@@ -41,6 +41,10 @@ async def main():
         case "highway-zone":
             obs = await client.highway_zone(args.id)
             pprint(obs.model_dump(exclude_none=True), indent=2)
+        case "avy-forecast":
+            obs = await client.avy_forecast(args.date)
+            for ob in obs:
+                pprint(ob.model_dump(exclude_none=True), indent=2)
         case _:
             print("Unsupported command!")
 

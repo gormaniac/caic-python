@@ -60,7 +60,7 @@ class AvalancheProblem(pydantic.BaseModel):
     comment: str
 
 class AvalancheProblems(pydantic.BaseModel):
-    days: list[AvalancheProblem]
+    days: list[list[AvalancheProblem]]
 
 
 class ForecastConfidence(pydantic.BaseModel):
@@ -122,7 +122,7 @@ class AvalancheForecast(pydantic.BaseModel):
     confidence: ForecastConfidences
     communication: ForecastComms
     dangerRatings: DangerRatings
-    media: ForecastImage
+    media: ForecastMedia
 
 class RegionalDiscussionForecast(pydantic.BaseModel):
 

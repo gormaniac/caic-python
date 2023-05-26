@@ -56,6 +56,7 @@ Example Weather Station Tables - would require webpage scraping, but may be help
 from json import JSONDecodeError
 import time
 import typing
+import urllib.parse
 
 import aiohttp
 import pydantic
@@ -103,7 +104,7 @@ class CaicClient:
         """Close the underlying session."""
         await self.session.close()
 
-    async def _get(self, url: str, params: dict | None = None) -> dict:
+    async def _get(self, url: str, params: dict | list | None = None) -> dict:
         """
         Get a URL using this client.
 
@@ -136,6 +137,7 @@ class CaicClient:
             resp = await self.session.get(url, params=params)
             if resp.status >= 400:
                 error = await resp.text()
+                breakpoint()
                 raise errors.CaicRequestException(
                     f"Error status from CAIC: {resp.status} - {error}"
                 )
@@ -154,15 +156,17 @@ class CaicClient:
         else:
             return data
 
-    async def _api_id_get(self, obj_id: str, endpoint: str, resp_model: pydantic.BaseModel) -> models.FieldReport | None:
-        resp_data = await self._get(
-            f"{CaicURLs.API}/{endpoint}/{obj_id}.json"
-        )
+    async def _api_id_get(
+        self, obj_id: str, endpoint: str, resp_model: pydantic.BaseModel
+    ) -> models.FieldReport | None:
+        resp_data = await self._get(f"{CaicURLs.API}/{endpoint}/{obj_id}.json")
 
         try:
             return resp_model(**resp_data)
         except pydantic.ValidationError as err:
-            LOGGER.warning("Error parsing '%s' response (ID: %s): %s", (endpoint, obj_id, str(err)))
+            LOGGER.warning(
+                "Error parsing '%s' response (ID: %s): %s", (endpoint, obj_id, str(err))
+            )
             return None
 
     async def _api_paginate_get(
@@ -447,31 +451,79 @@ class CaicClient:
         return obs
 
     async def field_report(self, report_id: str) -> models.FieldReport | None:
-        report = await self._api_id_get(report_id, CaicEndpoints.OBS_REPORT, models.FieldReport)
-        
+        report = await self._api_id_get(
+            report_id, CaicEndpoints.OBS_REPORT, models.FieldReport
+        )
+
         return report
 
-    async def snowpack_observation(self, obs_id: str) -> models.SnowpackObservation | None:
-        report = await self._api_id_get(obs_id, CaicEndpoints.SNOWPACK_OBS, models.SnowpackObservation)
-        
+    async def snowpack_observation(
+        self, obs_id: str
+    ) -> models.SnowpackObservation | None:
+        report = await self._api_id_get(
+            obs_id, CaicEndpoints.SNOWPACK_OBS, models.SnowpackObservation
+        )
+
         return report
 
     async def avy_observation(self, obs_id: str) -> models.AvalancheObservation | None:
-        report = await self._api_id_get(obs_id, CaicEndpoints.AVY_OBS, models.AvalancheObservation)
-        
+        report = await self._api_id_get(
+            obs_id, CaicEndpoints.AVY_OBS, models.AvalancheObservation
+        )
+
         return report
 
-    async def weather_observation(self, obs_id: str) -> models.WeatherObservation | None:
-        report = await self._api_id_get(obs_id, CaicEndpoints.WEATHER_OBS, models.WeatherObservation)
-        
+    async def weather_observation(
+        self, obs_id: str
+    ) -> models.WeatherObservation | None:
+        report = await self._api_id_get(
+            obs_id, CaicEndpoints.WEATHER_OBS, models.WeatherObservation
+        )
+
         return report
 
     async def bc_zone(self, zone_slug: str) -> models.BackcountryZone | None:
-        report = await self._api_id_get(zone_slug, CaicEndpoints.ZONES, models.BackcountryZone)
-        
+        report = await self._api_id_get(
+            zone_slug, CaicEndpoints.ZONES, models.BackcountryZone
+        )
+
         return report
 
     async def highway_zone(self, zone_slug: str) -> models.HighwayZone | None:
-        report = await self._api_id_get(zone_slug, CaicEndpoints.ZONES, models.HighwayZone)
-        
+        report = await self._api_id_get(
+            zone_slug, CaicEndpoints.ZONES, models.HighwayZone
+        )
+
         return report
+
+    async def _proxy_get(
+        self, proxy_uri: str, proxy_params: dict
+    ) -> dict | list | None:
+        proxy_params_str = "&".join([f"{k}={v}" for k, v in proxy_params.items()])
+        params = {
+            "_api_proxy_uri": f"{proxy_uri}?{proxy_params_str}" 
+        }
+        return await self._get(CaicURLs.HOME + "/api-proxy/avid", params=params)
+
+    async def avy_forecast(
+        self, date: str
+    ) -> list[models.AvalancheForecast | models.RegionalDiscussionForecast]:
+        params = {
+            "datetime": date,
+            "includeExpired": "true"
+        }
+        resp = await self._proxy_get(proxy_uri="/products/all", proxy_params=params)
+
+        ret = []
+
+        if resp:
+            try:
+                for item in resp:
+                    if isinstance(item, dict) and item.get("type") == "avalancheforecast":
+                        ret.append(models.AvalancheForecast(**item))
+                    else:
+                        ret.append(models.RegionalDiscussionForecast(**item))
+            except pydantic.ValidationError as err:
+                LOGGER.error("Unable to decode forecast response: %s" % str(err))
+
+        return ret
