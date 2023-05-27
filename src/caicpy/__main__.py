@@ -8,6 +8,8 @@ from .client import CaicClient
 
 
 async def main():
+    """The caicpy CLI function."""
+
     args = MAIN_PARSER.parse_args()
 
     client = CaicClient()
@@ -16,12 +18,14 @@ async def main():
         case "avy-obs":
             obs = await client.avy_obs(args.start.isoformat(), args.end.isoformat())
             for ob in obs:
-                pprint("\n", ob, "\n")
+                print()
+                pprint(ob.model_dump(exclude_none=True), indent=2)
+                print()
         case "field-reports":
             obs = await client.field_reports(args.start.isoformat(), args.end.isoformat())
             for ob in obs:
                 print()
-                pprint(ob)
+                pprint(ob.model_dump(exclude_none=True), indent=2)
                 print()
         case "field-report":
             obs = await client.field_report(args.id)
@@ -45,8 +49,6 @@ async def main():
             obs = await client.avy_forecast(args.date)
             for ob in obs:
                 pprint(ob.model_dump(exclude_none=True), indent=2)
-        case _:
-            print("Unsupported command!")
 
     await client.close()
 

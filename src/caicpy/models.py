@@ -11,7 +11,7 @@ from . import LOGGER
 
 class DetailObject(pydantic.BaseModel):
     """A base for several, similar, details objects attached to a field report.
-    
+
     This is where `classic_id` ended up in the V2 API.
     """
 
@@ -31,54 +31,78 @@ class SnowpackDetail(DetailObject):
 
 class WeatherDetail(DetailObject):
     """Summary details of the observed weather.
-    
+
     There is occasionally data here even when
     not in `weather_observations` for a field report.
     """
 
 
 class ForecastSummaryDay(pydantic.BaseModel):
+    """An individual day's forecast summary - base for several forecast types."""
+
     date: Optional[datetime.datetime]
     content: Optional[str]
 
 
 class ForecastSummary(pydantic.BaseModel):
+    """Forecast summaries for several days - base for several forecast types."""
+
     days: list[ForecastSummaryDay]
 
 
 class ExpectedSize(pydantic.BaseModel):
+    """Expected avalanche size in an avalanche forecast."""
+
     min: str
     max: str
 
 
 class AvalancheProblem(pydantic.BaseModel):
-    #TODO do enums here for everything
+    """A described avalanche problem in a forecast.
+
+    TODO - enums here for everything
+    """
+
     type: str
     aspectElevations: list[str]
     likelihood: str
     expectedSize: ExpectedSize
     comment: str
 
+
 class AvalancheProblems(pydantic.BaseModel):
+    """A collection of the next few days' avalanche problems."""
+
     days: list[list[AvalancheProblem]]
 
 
 class ForecastConfidence(pydantic.BaseModel):
+    """An avalanche forecast's confidence details."""
+
     date: datetime.datetime
     rating: str
     statements: list[str] = pydantic.Field(default_factory=list)
 
 
 class ForecastConfidences(pydantic.BaseModel):
+    """The avalanche forecast confidence details for the next few days."""
+
     days: list[ForecastConfidence]
 
 
 class ForecastComms(pydantic.BaseModel):
+    """Special forecast communications - not sure how this get's used yet."""
+
     headline: str
     sms: str
 
 
 class DangerRating(pydantic.BaseModel):
+    """An avalanche forecast's danger rating.
+
+    TODO - enums for everything here.
+    """
+
     position: int
     alp: str
     tln: str
@@ -87,10 +111,14 @@ class DangerRating(pydantic.BaseModel):
 
 
 class DangerRatings(pydantic.BaseModel):
+    """A list of the avalanche danger ratings for the next few days."""
+
     days: list[DangerRating]
 
 
 class ForecastImage(pydantic.BaseModel):
+    """An image attached to an avalanche forecast."""
+
     id: str
     url: str
     width: int
@@ -101,10 +129,13 @@ class ForecastImage(pydantic.BaseModel):
 
 
 class ForecastMedia(pydantic.BaseModel):
+    """All of the images attached to an avalanche forecast."""
+
     Images: list[ForecastImage]
 
 
 class AvalancheForecast(pydantic.BaseModel):
+    """A CAIC avalanche forecast."""
 
     id: str
     title: str
@@ -124,7 +155,9 @@ class AvalancheForecast(pydantic.BaseModel):
     dangerRatings: DangerRatings
     media: ForecastMedia
 
+
 class RegionalDiscussionForecast(pydantic.BaseModel):
+    """An avalanche forecast discussion covering a regional area."""
 
     id: str
     title: str
@@ -201,6 +234,7 @@ class ObsReport(pydantic.BaseModel):
     is_anonymous: Optional[bool] = None
     url: Optional[str] = None
 
+
 class AvalancheObservation(pydantic.BaseModel):
     """A single avalanche observation from the CAIC website."""
 
@@ -215,10 +249,18 @@ class AvalancheObservation(pydantic.BaseModel):
     latitude: Optional[float] = None
     longitude: Optional[float] = None
     classic_id: Optional[int] = pydantic.Field(default=None, description="V1 only")
-    classic_observation_report_id: Optional[int] = pydantic.Field(default=None, description="V1 only")
-    classic_observation_report_url: Optional[str] = pydantic.Field(default=None, description="V1 only")
-    observation_report_status: Optional[str] = pydantic.Field(default=None, description="V1 only")
-    observation_report_url: Optional[str] = pydantic.Field(default=None, description="V1 only")
+    classic_observation_report_id: Optional[int] = pydantic.Field(
+        default=None, description="V1 only"
+    )
+    classic_observation_report_url: Optional[str] = pydantic.Field(
+        default=None, description="V1 only"
+    )
+    observation_report_status: Optional[str] = pydantic.Field(
+        default=None, description="V1 only"
+    )
+    observation_report_url: Optional[str] = pydantic.Field(
+        default=None, description="V1 only"
+    )
     comments: Optional[str] = None
     location: Optional[str] = None
     lastname: Optional[str] = None
@@ -265,7 +307,7 @@ class AvalancheObservation(pydantic.BaseModel):
     road_length: Optional[str] = None
     road_length_units: Optional[str] = None
     observation_report: Optional[ObsReport] = None
-    avalanche_detail: Optional['AvalancheDetail'] = None
+    avalanche_detail: Optional[AvalancheDetail] = None
 
     async def fieldobs(self, caic_client) -> Union["FieldReport", None]:
         """Get the associated `FieldReport` using the provided `CaicClient`."""
@@ -275,19 +317,11 @@ class AvalancheObservation(pydantic.BaseModel):
 
         return None
 
-    class Config:
-        undefined_types_warning=False
-
 
 class CaicResponseMeta(pydantic.BaseModel):
-    """The `meta` portion of a `CaicResponse`.
+    """The `meta` portion of a `V1AvyResponse`.
 
     Contains pagination info.
-
-    Example::
-
-        {"current_page":1,"page_items":100,"total_pages":241,"total_count":24045}
-
     """
 
     current_page: int
@@ -297,19 +331,9 @@ class CaicResponseMeta(pydantic.BaseModel):
 
 
 class CaicResponseLinks(pydantic.BaseModel):
-    """The `links` portion of a `CaicResponse`.
+    """The `links` portion of a `V1AvyResponse`.
 
     Contains pagination info.
-
-    Example::
-
-        {
-            "first": "https://api.avalanche.state.co.us/api/avalanche_observations?page=1\u0026per=100",
-            "prev": null,
-            "next": "https://api.avalanche.state.co.us/api/avalanche_observations?page=2\u0026per=100",
-            "last": "https://api.avalanche.state.co.us/api/avalanche_observations?page=241\u0026per=100"
-        }
-
     """
 
     first: Optional[str] = None
@@ -324,9 +348,6 @@ class V1AvyResponse(pydantic.BaseModel):
     meta: CaicResponseMeta
     links: CaicResponseLinks
     data: list[AvalancheObservation]
-
-    class Config:
-        undefined_types_warning=False
 
 
 class SnowpackObservation(pydantic.BaseModel):
@@ -371,6 +392,7 @@ class ObservationAsset(pydantic.BaseModel):
 
 
 class HighwayZone(pydantic.BaseModel):
+    """A highway avalanche zone - similar to a BC zone but specific to CDOT/CAIC avy control."""
 
     id: Optional[str] = None
     type: Optional[str] = None
@@ -388,6 +410,7 @@ class HighwayZone(pydantic.BaseModel):
     updated_at: Optional[datetime.datetime] = None
     url: Optional[str] = None
     geojson_url: Optional[str] = None
+
 
 class WeatherObservation(pydantic.BaseModel):
     """An observation about the weather in a field report."""
@@ -437,7 +460,8 @@ class WeatherObservation(pydantic.BaseModel):
     maximum_gust_duration_seconds: Optional[str] = None
     blowing_snow: Optional[str] = None
     windloading: Optional[str] = None
-    weather_detail: Optional['WeatherDetail'] = None
+    weather_detail: Optional["WeatherDetail"] = None
+
 
 class Creator(pydantic.BaseModel):
     """The creator object of a field report.
@@ -447,6 +471,7 @@ class Creator(pydantic.BaseModel):
 
     id: str
     type: str
+
 
 class FieldReport(pydantic.BaseModel):
     """A field (or observation) report."""
@@ -458,13 +483,19 @@ class FieldReport(pydantic.BaseModel):
     url: Optional[str] = None
     creator: Optional[Creator] = None
     avalanche_observations_count: Optional[int] = None
-    avalanche_observations: Optional[list[AvalancheObservation]] = pydantic.Field(default_factory=list)
+    avalanche_observations: Optional[list[AvalancheObservation]] = pydantic.Field(
+        default_factory=list
+    )
     avalanche_detail: Optional[AvalancheDetail] = None
     weather_observations_count: Optional[int] = None
-    weather_observations: Optional[list[WeatherObservation]] = pydantic.Field(default_factory=list)
+    weather_observations: Optional[list[WeatherObservation]] = pydantic.Field(
+        default_factory=list
+    )
     weather_detail: Optional[WeatherDetail] = None
     snowpack_observations_count: Optional[int] = None
-    snowpack_observations: Optional[list[SnowpackObservation]] = pydantic.Field(default_factory=list)
+    snowpack_observations: Optional[list[SnowpackObservation]] = pydantic.Field(
+        default_factory=list
+    )
     assets_count: Optional[int] = None
     assets: Optional[list[ObservationAsset]] = pydantic.Field(default_factory=list)
     highway_zone_id: Optional[str] = None
@@ -495,6 +526,7 @@ class FieldReport(pydantic.BaseModel):
     is_anonymous_location: Optional[bool] = None
     latitude: Optional[float] = None
     longitude: Optional[float] = None
+
 
 models = [value for value in locals().values() if isinstance(value, pydantic.BaseModel)]
 for model in models:

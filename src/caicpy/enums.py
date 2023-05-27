@@ -150,6 +150,7 @@ class ReportsSearchAvyObs(Enum):
     TRIGGERED = "Triggered"
 
 class DetailsTypes(Enum):
+    """The types of details objects from Field Reports."""
 
     AVY = "avalanche_detail"
     SNOW = "snowpack_detail"

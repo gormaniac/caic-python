@@ -56,7 +56,6 @@ Example Weather Station Tables - would require webpage scraping, but may be help
 from json import JSONDecodeError
 import time
 import typing
-import urllib.parse
 
 import aiohttp
 import pydantic
@@ -85,7 +84,9 @@ class CaicURLs:
     HOME: str = "https://avalanche.state.co.us"
 
 
-class CaicEndpoints:
+class CaicApiEndpoints:
+    """Endpoints for the CAIC API (api.avalanche.state.co.us)."""
+
     V1_AVY_OBS: str = "/api/avalanche_observations"
     AVY_OBS: str = "/api/v2/avalanche_observations"
     OBS_REPORT: str = "/api/v2/observation_reports"
@@ -95,7 +96,19 @@ class CaicEndpoints:
     WEATHER_OBS: str = "/api/v2/weather_observations"
 
 
+class ProxyEndpoints:
+    """The known CAIC proxy URLs.
+
+    Some underlying APIs (eg. avid) require auth, and this proxy auths for you.
+    """
+
+    AVID: str = "/api-proxy/avid"
+    DATA: str = "/api-proxy/caic_data_api"
+
+
 class CaicClient:
+    """An async HTTP client for the CAIC API(s)."""
+
     def __init__(self) -> None:
         self.headers = {}
         self.session = aiohttp.ClientSession()
@@ -137,7 +150,6 @@ class CaicClient:
             resp = await self.session.get(url, params=params)
             if resp.status >= 400:
                 error = await resp.text()
-                breakpoint()
                 raise errors.CaicRequestException(
                     f"Error status from CAIC: {resp.status} - {error}"
                 )
@@ -165,7 +177,7 @@ class CaicClient:
             return resp_model(**resp_data)
         except pydantic.ValidationError as err:
             LOGGER.warning(
-                "Error parsing '%s' response (ID: %s): %s", (endpoint, obj_id, str(err))
+                "Error parsing '%s' response (ID: %s): %s", endpoint, obj_id, str(err)
             )
             return None
 
@@ -285,9 +297,9 @@ class CaicClient:
 
             try:
                 resp = await self._api_paginate_get(page, per, endpoint, params)
-            except Exception as err:
+            except Exception as err:  # pylint: disable=W0718
                 LOGGER.error(
-                    "Failed to request the CAIC endpoint '%s': %s" % (endpoint, err)
+                    "Failed to request the CAIC endpoint '%s': %s", endpoint, err
                 )
                 if page_retries == retries:
                     page += 1
@@ -310,8 +322,11 @@ class CaicClient:
             except pydantic.ValidationError as err:
                 LOGGER.warning(
                     "Unable to validate response from the '%s' endpoint "
-                    "(Page# %s - Query (%s)): %s"
-                    % (endpoint, page, str(params), str(err))
+                    "(Page# %s - Query (%s)): %s",
+                    endpoint,
+                    page,
+                    str(params),
+                    str(err),
                 )
                 # Can't find a way around the duplicate code here.
                 if page_retries == retries:
@@ -345,10 +360,60 @@ class CaicClient:
 
         return results
 
+    async def _proxy_get(
+        self, proxy_endpoint: str, proxy_uri: str, proxy_params: dict
+    ) -> dict | list | None:
+        """Get a URL from the avalanche.state.co.us API proxy.
+
+        This is an endpoint that can proxy to other CAIC APIs.
+
+        Parameters
+        ----------
+        proxy_endpoint : str
+            The actual endpoint of the proxy to request, the real URI in the
+            HTTP request. Can be any of `ProxyEndpoints`.
+        proxy_uri : str
+            The URI used by the proxy in its request to the proxied API.
+        proxy_params : dict
+            URL parameters to pass in the request to the proxied API.
+
+        Returns
+        -------
+        dict | list
+            The response raw response, or None
+        """
+        proxy_params_str = "&".join([f"{k}={v}" for k, v in proxy_params.items()])
+        params = {"_api_proxy_uri": f"{proxy_uri}?{proxy_params_str}"}
+        return await self._get(CaicURLs.HOME + proxy_endpoint, params=params)
+
     async def avy_obs(
-        self, start: str, end: str, page_limit: int = 1000, v1: bool = False
+        self, start: str, end: str, page_limit: int = 1000, ver1: bool = False
     ) -> list[models.AvalancheObservation]:
-        if v1:
+        """Query for avalanche observations on the CAIC website.
+
+        Supports both the v1 and v2 APIs. FWIW, the website still uses v1 for this
+        particular endpoint. My guess is because it supports proper pagination
+        unlike v2, which supports pagination but does not return pagination
+        info in response objects so clients have to guess when they're done paging.
+
+        Parameters
+        ----------
+        start : str
+            Query for avalanches observed after at this day (and time).
+        end : str
+            Query for avalanches observed before this day (and time).
+        page_limit : int, optional
+            Limit per page results to this amount, by default 1000.
+        ver1 : bool, optional
+            Use the v1 endpoint instead, not recommended, by default False.
+
+        Returns
+        -------
+        list[models.AvalancheObservation]
+            A list of all avalanche observations returned by the query.
+        """
+
+        if ver1:
             endpoint = "/api/avalanche_observations"
             model = models.V1AvyResponse
         else:
@@ -370,7 +435,7 @@ class CaicClient:
 
         return obs
 
-    async def field_reports(
+    async def field_reports(  # pylint: disable=W0102
         self,
         start: str,
         end: str,
@@ -451,8 +516,22 @@ class CaicClient:
         return obs
 
     async def field_report(self, report_id: str) -> models.FieldReport | None:
+        """Get a single CAIC Feild Report (aka Observation Report) by UUID.
+
+        Parameters
+        ----------
+        report_id : str
+            The UUID of the field report to retrieve.
+
+        Returns
+        -------
+        models.FieldReport | None
+            The retrieved field report, or
+            None if there was an error validating response.
+        """
+
         report = await self._api_id_get(
-            report_id, CaicEndpoints.OBS_REPORT, models.FieldReport
+            report_id, CaicApiEndpoints.OBS_REPORT, models.FieldReport
         )
 
         return report
@@ -460,15 +539,43 @@ class CaicClient:
     async def snowpack_observation(
         self, obs_id: str
     ) -> models.SnowpackObservation | None:
+        """Get a single snowpack observation by UUID.
+
+        Parameters
+        ----------
+        obs_id : str
+            The ID of the snowpack observation.
+
+        Returns
+        -------
+        models.SnowpackObservation | None
+            The retrieved snowpack observation, or
+            None if there was an error validating response.
+        """
+
         report = await self._api_id_get(
-            obs_id, CaicEndpoints.SNOWPACK_OBS, models.SnowpackObservation
+            obs_id, CaicApiEndpoints.SNOWPACK_OBS, models.SnowpackObservation
         )
 
         return report
 
     async def avy_observation(self, obs_id: str) -> models.AvalancheObservation | None:
+        """Get a single avalanche observation by UUID.
+
+        Parameters
+        ----------
+        obs_id : str
+            The UUID of the avalanche observation.
+
+        Returns
+        -------
+        models.AvalancheObservation | None
+            The retrieved avalanche observation, or
+            None if there was an error validating response.
+        """
+
         report = await self._api_id_get(
-            obs_id, CaicEndpoints.AVY_OBS, models.AvalancheObservation
+            obs_id, CaicApiEndpoints.AVY_OBS, models.AvalancheObservation
         )
 
         return report
@@ -476,54 +583,107 @@ class CaicClient:
     async def weather_observation(
         self, obs_id: str
     ) -> models.WeatherObservation | None:
+        """Get a single weather observation by UUID.
+
+        Parameters
+        ----------
+        obs_id : str
+            The UUID of the weather observation.
+
+        Returns
+        -------
+        models.WeatherObservation | None
+            The retrieved weather observation, or
+            None if there was an error validating response.
+        """
         report = await self._api_id_get(
-            obs_id, CaicEndpoints.WEATHER_OBS, models.WeatherObservation
+            obs_id, CaicApiEndpoints.WEATHER_OBS, models.WeatherObservation
         )
 
         return report
 
     async def bc_zone(self, zone_slug: str) -> models.BackcountryZone | None:
+        """Get a single backcountry zone by UUID.
+
+        Parameters
+        ----------
+        zone_slug : str
+            The zone's slug name.
+
+        Returns
+        -------
+        models.BackcountryZone | None
+            The backcountry zone, or
+            None if there was an error validating response.
+        """
+
         report = await self._api_id_get(
-            zone_slug, CaicEndpoints.ZONES, models.BackcountryZone
+            zone_slug, CaicApiEndpoints.ZONES, models.BackcountryZone
         )
 
         return report
 
     async def highway_zone(self, zone_slug: str) -> models.HighwayZone | None:
+        """Get a single highway zone by UUID.
+
+        Parameters
+        ----------
+        zone_slug : str
+            The zone's slug name.
+
+        Returns
+        -------
+        models.HighwayZone | None
+            The highway zone, or
+            None if there was an error validating response.
+        """
+
         report = await self._api_id_get(
-            zone_slug, CaicEndpoints.ZONES, models.HighwayZone
+            zone_slug, CaicApiEndpoints.ZONES, models.HighwayZone
         )
 
         return report
 
-    async def _proxy_get(
-        self, proxy_uri: str, proxy_params: dict
-    ) -> dict | list | None:
-        proxy_params_str = "&".join([f"{k}={v}" for k, v in proxy_params.items()])
-        params = {
-            "_api_proxy_uri": f"{proxy_uri}?{proxy_params_str}" 
-        }
-        return await self._get(CaicURLs.HOME + "/api-proxy/avid", params=params)
-
     async def avy_forecast(
         self, date: str
     ) -> list[models.AvalancheForecast | models.RegionalDiscussionForecast]:
-        params = {
-            "datetime": date,
-            "includeExpired": "true"
-        }
-        resp = await self._proxy_get(proxy_uri="/products/all", proxy_params=params)
+        """Get the avalanche forecasts as they were on the given date.
+
+        Forecasts cover the date given + the following two days.
+
+        Parameters
+        ----------
+        date : str
+            The date that the avalanche forecast was produced for.
+
+        Returns
+        -------
+        list[models.AvalancheForecast | models.RegionalDiscussionForecast]
+            A list of returned forecasts. The list should contain two types.
+            The localized forecast for detailed areas of CO, and the regional
+            discussion pieces that cover broader portions of the state.
+        """
+
+        params = {"datetime": date, "includeExpired": "true"}
+        resp = await self._proxy_get(
+            proxy_endpoint=ProxyEndpoints.AVID,
+            proxy_uri="/products/all",
+            proxy_params=params,
+        )
 
         ret = []
 
         if resp:
             try:
                 for item in resp:
-                    if isinstance(item, dict) and item.get("type") == "avalancheforecast":
+                    if (
+                        isinstance(item, dict)
+                        and item.get("type") == "avalancheforecast"
+                    ):
                         ret.append(models.AvalancheForecast(**item))
                     else:
                         ret.append(models.RegionalDiscussionForecast(**item))
             except pydantic.ValidationError as err:
-                LOGGER.error("Unable to decode forecast response: %s" % str(err))
+                LOGGER.error("Unable to decode forecast response: %s", str(err))
 
         return ret
