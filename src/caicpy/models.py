@@ -526,10 +526,3 @@ class FieldReport(pydantic.BaseModel):
     is_anonymous_location: Optional[bool] = None
     latitude: Optional[float] = None
     longitude: Optional[float] = None
-
-
-models = [value for value in locals().values() if isinstance(value, pydantic.BaseModel)]
-for model in models:
-    print(model)
-    if model.__module__ == __name__:
-        model.model_rebuild()
