@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction &#8212; caicpy  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Usage" href="usage.html" />
+    <link rel="prev" title="Welcome to caicpy’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h1>
+<p>The <cite>caicpy</cite> package helps researchers explore <a class="reference external" href="https://avalanche.state.co.us">CAIC</a> data locally and programmatically rather than on the CAIC website.</p>
+<p><cite>caicpy</cite> relies on the same API endpoints used by the CAIC website. Partial motivation for development of this package was to serve as pseodo-documentation for these endpoints as they are not documented elsewhere.</p>
+<p>While the <cite>caicpy</cite> module exposes a CLI (via <cite>python3 -m caicpy …</cite>), it is intended mostly for testing. The primary use case of <cite>caicpy</cite> is as library code called by other programs.</p>
+<p><cite>caicpy</cite> relies heavily on <a class="reference external" href="https://docs.pydantic.dev/latest/">Pydantic</a> models to validate response objects, and speed up development. Responses from CAIC APIs do not always contain values for all fields. As a result, most attributes of a <cite>caicpy</cite> Pydantic response model are optional, and may be <cite>None</cite> rather than a type appropriate default. Attempts were made to include all possible attributes of a response for a given endpoint for maximum use case coverage.</p>
+<p><cite>caicpy</cite> is capable of retrieving information on the following from the CAIC website:</p>
+<ul class="simple">
+<li><p>Search field reports (aka observation reports) submitted to the CAIC website.</p></li>
+<li><p>Search avalanche observation reports submitted as part of a field report.</p></li>
+<li><p>Retrieve the CAIC’s avalanche forecast on a given date.</p></li>
+<li><p>Retrieve information on CAIC’s defined backcountry zones and highway zones.</p></li>
+<li><dl class="simple">
+<dt>Retrieve individual observation objects of the following type:</dt><dd><ul>
+<li><p>Field Report</p></li>
+<li><p>Avalanche Observation</p></li>
+<li><p>Snowpack Observation</p></li>
+<li><p>Weather Observation</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Future versions of <cite>caicpy</cite> would like to include the following features:</p>
+<ul class="simple">
+<li><p>Weather forecast information</p></li>
+<li><p>Weather station information</p></li>
+<li><p>Weather station observation graphics</p></li>
+<li><p>Accident report details</p></li>
+<li><p>Further coverage of static avalanche reporting terms, abbreviations, codes, etc. in <cite>caicpy.enums</cite>.</p></li>
+</ul>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">caicpy</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=gormaniac&repo=https://github.com/gormaniac/caicpy&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caicpy.html">caicpy package</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to caicpy’s documentation!</a></li>
+      <li>Next: <a href="usage.html" title="next chapter">Usage</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, John Gorman.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/intro.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
