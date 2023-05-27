@@ -5,13 +5,15 @@ name = "pypi"
 
 [packages]
 python-dateutil = "==2.8.2"
-pydantic = "=>2.0"
+pydantic = "==2.0a4"
 aiohttp = "==3.8.4"
 
 [dev-packages]
 black = "*"
 pylint = "*"
 sphinx = "*"
+build = "*"
+setuptools = "*"
 
 [requires]
 python_version = "3.10"
