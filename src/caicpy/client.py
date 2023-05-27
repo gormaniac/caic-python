@@ -396,6 +396,9 @@ class CaicClient:
         unlike v2, which supports pagination but does not return pagination
         info in response objects so clients have to guess when they're done paging.
 
+        `start` and `end` arguments should be in this format - `YYYY-MM-DD HH:mm:ss`.
+        However, the return of a `datetime.datetime.isoformat()` call works as well.
+        
         Parameters
         ----------
         start : str
