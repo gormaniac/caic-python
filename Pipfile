@@ -14,6 +14,7 @@ pylint = "*"
 sphinx = "*"
 build = "*"
 setuptools = "*"
+tomlkit = "*"
 
 [requires]
 python_version = "3.10"
