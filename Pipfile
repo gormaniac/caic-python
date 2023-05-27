@@ -4,14 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-requests = "*"
-python-dateutil = "*"
-beautifulsoup4 = "*"
-pydantic = "*"
+python-dateutil = "==2.8.2"
+pydantic = "=>2.0"
+aiohttp = "==3.8.4"
 
 [dev-packages]
 black = "*"
 pylint = "*"
+sphinx = "*"
 
 [requires]
 python_version = "3.10"
