@@ -7,7 +7,10 @@ To get an idea of the data returned, or the endpoints you would like to use, you
 
 To use `caicpy` as a library, start with the `caicpy.client` module. Other supporting modules may be used if calling code requires it.
 
-Examples::
+Examples
+--------
+
+::
 
     import datetime
 
@@ -73,3 +76,11 @@ Examples::
         avy_seen=True,
     )
 
+Why async?
+----------
+
+The author has a future project that will require the HTTP requests that this client makes to be asynchronous.
+
+The author believes that asynchronous code will not hinder those that wish to use this library synchronously, but non-async code would hinder the author.
+
+Conversion to a synchronous API should be simple enough, simply replace the `aiohttp` calls with `requests` calls and remove all the `await` statements. If you go about this work, please submit a PR that defines a `SyncCaicClient` class with a `CaicClient` compatible API so that others may benefit.

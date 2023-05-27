@@ -36,7 +36,8 @@
 <p>Using <cite>caicpy</cite> is straight-forward. The CAIC APIs do not require any authentication, all that is needed is an internet connection.</p>
 <p>To get an idea of the data returned, or the endpoints you would like to use, you may start with the minimal <cite>caicpy</cite> CLI (<cite>python3 -m caicpy –help</cite>). The CLI uses subcommands that map to method names of <cite>caicpy.client.CaicClient</cite> (albeit with dash instead of an underscore).</p>
 <p>To use <cite>caicpy</cite> as a library, start with the <cite>caicpy.client</cite> module. Other supporting modules may be used if calling code requires it.</p>
-<p>Examples:</p>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
 
 <span class="kn">from</span> <span class="nn">caicpy.client</span> <span class="kn">import</span> <span class="n">CaicClient</span>
@@ -103,6 +104,13 @@
 </pre></div>
 </div>
 </section>
+<section id="why-async">
+<h2>Why async?<a class="headerlink" href="#why-async" title="Permalink to this heading">¶</a></h2>
+<p>The author has a future project that will require the HTTP requests that this client makes to be asynchronous.</p>
+<p>The author believes that asynchronous code will not hinder those that wish to use this library synchronously, but non-async code would hinder the author.</p>
+<p>Conversion to a synchronous API should be simple enough, simply replace the <cite>aiohttp</cite> calls with <cite>requests</cite> calls and remove all the <cite>await</cite> statements. If you go about this work, please submit a PR that defines a <cite>SyncCaicClient</cite> class with a <cite>CaicClient</cite> compatible API so that others may benefit.</p>
+</section>
+</section>
 
 
           </div>
@@ -131,7 +139,11 @@
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-async">Why async?</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="caicpy.html">caicpy package</a></li>
 </ul>
 
