@@ -79,8 +79,6 @@ Examples
 Why async?
 ----------
 
-The author has a future project that will require the HTTP requests that this client makes to be asynchronous.
+The author has a future project that will require the HTTP requests this client makes to be asynchronous.
 
-The author believes that asynchronous code will not hinder those that wish to use this library synchronously, but non-async code would hinder the author.
-
-Conversion to a synchronous API should be simple enough, simply replace the `aiohttp` calls with `requests` calls and remove all the `await` statements. If you go about this work, please submit a PR that defines a `SyncCaicClient` class with a `CaicClient` compatible API so that others may benefit.
+Conversion to a synchronous API should be easy enough, simply replace the `aiohttp` calls with `requests` calls and remove all the `await` statements. If you go about this work, please submit a PR that defines a `SyncCaicClient` class with a `CaicClient` compatible API so that others may benefit.

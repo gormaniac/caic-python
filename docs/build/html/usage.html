@@ -106,9 +106,8 @@
 </section>
 <section id="why-async">
 <h2>Why async?<a class="headerlink" href="#why-async" title="Permalink to this heading">¶</a></h2>
-<p>The author has a future project that will require the HTTP requests that this client makes to be asynchronous.</p>
-<p>The author believes that asynchronous code will not hinder those that wish to use this library synchronously, but non-async code would hinder the author.</p>
-<p>Conversion to a synchronous API should be simple enough, simply replace the <cite>aiohttp</cite> calls with <cite>requests</cite> calls and remove all the <cite>await</cite> statements. If you go about this work, please submit a PR that defines a <cite>SyncCaicClient</cite> class with a <cite>CaicClient</cite> compatible API so that others may benefit.</p>
+<p>The author has a future project that will require the HTTP requests this client makes to be asynchronous.</p>
+<p>Conversion to a synchronous API should be easy enough, simply replace the <cite>aiohttp</cite> calls with <cite>requests</cite> calls and remove all the <cite>await</cite> statements. If you go about this work, please submit a PR that defines a <cite>SyncCaicClient</cite> class with a <cite>CaicClient</cite> compatible API so that others may benefit.</p>
 </section>
 </section>
 
