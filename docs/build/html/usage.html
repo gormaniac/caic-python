@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Usage &#8212; caicpy  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="caicpy package" href="caicpy.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h1>
+<p>Using <cite>caicpy</cite> is straight-forward. The CAIC APIs do not require any authentication, all that is needed is an internet connection.</p>
+<p>To get an idea of the data returned, or the endpoints you would like to use, you may start with the minimal <cite>caicpy</cite> CLI (<cite>python3 -m caicpy –help</cite>). The CLI uses subcommands that map to method names of <cite>caicpy.client.CaicClient</cite> (albeit with dash instead of an underscore).</p>
+<p>To use <cite>caicpy</cite> as a library, start with the <cite>caicpy.client</cite> module. Other supporting modules may be used if calling code requires it.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="kn">from</span> <span class="nn">caicpy.client</span> <span class="kn">import</span> <span class="n">CaicClient</span>
+<span class="kn">from</span> <span class="nn">caicpy.enums</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ObsTypes</span><span class="p">,</span> <span class="n">ReportsSearchCrackObs</span><span class="p">,</span> <span class="n">BCZoneTitles</span>
+<span class="p">)</span>
+
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+<span class="n">two_weeks_ago</span> <span class="o">=</span> <span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">14</span><span class="p">))</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">CaicClient</span><span class="p">()</span>
+
+<span class="c1"># For every D3 avalanche in the last 2 weeks, print some detials.</span>
+<span class="n">avy_observations</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">avy_obs</span><span class="p">(</span><span class="n">two_weeks_ago</span><span class="p">,</span> <span class="n">now</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">avy</span> <span class="ow">in</span> <span class="n">avy_observations</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">avy</span><span class="o">.</span><span class="n">destructive_size</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;D3&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Aspect: </span><span class="si">{</span><span class="n">avy</span><span class="o">.</span><span class="n">aspect</span><span class="si">}</span><span class="s2">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elevation: </span><span class="si">{</span><span class="n">avy</span><span class="o">.</span><span class="n">elevation_feet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Area: </span><span class="si">{</span><span class="n">avy</span><span class="o">.</span><span class="n">area</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Description: </span><span class="si">{</span><span class="n">avy</span><span class="o">.</span><span class="n">description</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Classic ID: </span><span class="si">{</span><span class="n">avy</span><span class="o">.</span><span class="n">avalanche_detail</span><span class="o">.</span><span class="n">classic_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Field Report: </span><span class="si">{</span><span class="n">avy</span><span class="o">.</span><span class="n">observation_report</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">field_reports</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">field_reports</span><span class="p">(</span><span class="n">two_weeks_ago</span><span class="p">,</span> <span class="n">now</span><span class="p">)</span>
+
+<span class="c1"># For every recent field report that has</span>
+<span class="c1"># multiple avalanches, download any attached images.</span>
+<span class="k">for</span> <span class="n">report</span> <span class="ow">in</span> <span class="n">field_reports</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">report</span><span class="o">.</span><span class="n">avalanche_observations_count</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">report</span><span class="o">.</span><span class="n">assets</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">assets</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">asset</span> <span class="ow">in</span> <span class="n">assets</span><span class="p">:</span>
+                <span class="c1"># There&#39;s also a VIDEO_ASSET type</span>
+                <span class="k">if</span> <span class="n">asset</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">ObsTypes</span><span class="o">.</span><span class="n">IMAGE_ASSET</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+                    <span class="c1"># HTTP GET request for `asset.full_url`</span>
+
+<span class="c1"># If a recent field report has a weather</span>
+<span class="c1"># observation, print the recorded temperature.</span>
+<span class="k">for</span> <span class="n">report</span> <span class="ow">in</span> <span class="n">field_reports</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">report</span><span class="o">.</span><span class="n">weather_observations_count</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">weather_obs</span> <span class="ow">in</span> <span class="n">report</span><span class="o">.</span><span class="n">weather_observations</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parent Field Report: </span><span class="si">{</span><span class="n">report</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Location: </span><span class="si">{</span><span class="n">weather_obs</span><span class="o">.</span><span class="n">location</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temperature: </span><span class="si">{</span><span class="n">weather_obs</span><span class="o">.</span><span class="n">temperature</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Some more refined field reports searches.</span>
+
+<span class="c1"># Show me all field reports from the Sawatch in</span>
+<span class="c1"># Jan 2023 that reported shooting cracks.</span>
+<span class="n">jan_cracking_reports</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">field_reports</span><span class="p">(</span>
+    <span class="s2">&quot;2023-01-01 00:00:00&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2023-01-31 11:59:59&quot;</span><span class="p">,</span>
+    <span class="n">bc_zones</span><span class="o">=</span><span class="p">[</span><span class="n">BCZoneTitles</span><span class="o">.</span><span class="n">SAWATCH</span><span class="p">],</span>
+    <span class="n">cracking_obs</span><span class="o">=</span><span class="p">[</span><span class="n">ReportsSearchCrackObs</span><span class="o">.</span><span class="n">SHOOTING</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Show me all field reports in 2022 where an avalanche</span>
+<span class="c1"># was seen and the word &quot;bluebird&quot; appears in the report.</span>
+<span class="n">bluebird_avys</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">field_reports</span><span class="p">(</span>
+    <span class="s2">&quot;2022-01-01 00:00:00&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2022-12-31 11:59:59&quot;</span><span class="p">,</span>
+    <span class="n">query</span><span class="o">=</span><span class="s2">&quot;bluebird&quot;</span><span class="p">,</span>
+    <span class="n">avy_seen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">caicpy</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=gormaniac&repo=https://github.com/gormaniac/caicpy&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caicpy.html">caicpy package</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="intro.html" title="previous chapter">Introduction</a></li>
+      <li>Next: <a href="caicpy.html" title="next chapter">caicpy package</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, John Gorman.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/usage.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
