@@ -2,11 +2,6 @@
 
 An async Python client for the [CAIC](https://avalanche.state.co.us) website data using the undocumented HTTP APIs.
 
-`caicpy` (will be) available on `PyPI`, run the following to get started!
-```
-pip3 install caicpy
-```
-
 `caicpy` is capable of retrieving information on the following from the CAIC website:
 - Search field reports (aka observation reports) submitted to the CAIC website.
 - Search avalanche observation reports submitted as part of a field report.
@@ -21,3 +16,30 @@ pip3 install caicpy
 See `docs/` for further information.
 
 The `data` directory contains sample API responses that were used to help build this client. They are saved in this repository to aid future research.
+
+# Installation
+
+`caicpy` (will be) available on `PyPI`, run the following to get started!
+```bash
+pip3 install caicpy
+```
+
+For local installation there are 3 options:
+
+- The make file
+```bash
+git clone https://github.com/gormaniac/caicpy.git
+cd caicpy
+make setup
+make install-self
+```
+- The install script containing the above
+```bash
+curl https://raw.githubusercontent.com/gormaniac/caicpy/main/scripts/install.sh | bash
+```
+- Or build manually after cloning the repo and entering the project dir
+```bash
+pip3 install build setuptools
+python3 -m build .
+pip3 install dist/caicpy-<VERSION>.tar.gz
+```
