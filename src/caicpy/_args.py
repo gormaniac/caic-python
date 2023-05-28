@@ -42,6 +42,11 @@ MAIN_PARSER.add_argument(
     help="Display debug output.",
     action="store_true",
 )
+MAIN_PARSER.add_argument(
+    "--version",
+    help="Display the version and exit.",
+    action="store_true",
+)
 SUBPARSER = MAIN_PARSER.add_subparsers(dest="command", title="Commands")
 
 AVY_OBS_PARSER = SUBPARSER.add_parser(

@@ -60,6 +60,7 @@ import typing
 import aiohttp
 import pydantic
 
+from .__version__ import VERSTR
 from . import errors
 from . import LOGGER
 from . import models
@@ -110,7 +111,7 @@ class CaicClient:
     """An async HTTP client for the CAIC API(s)."""
 
     def __init__(self) -> None:
-        self.headers = {}
+        self.headers = {"User-Agent": f"caicpy v{VERSTR}"}
         self.session = aiohttp.ClientSession()
 
     async def close(self) -> None:
