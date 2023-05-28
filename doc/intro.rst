@@ -30,6 +30,8 @@ Future versions of ``caicpy`` would like to include the following features:
 - Accident report details
 - Further coverage of static avalanche reporting terms, abbreviations, codes, etc. in ``caicpy.enums``.
 
+The data that helped build ``caicpy`` is stored in the `co-avy-research <https://github.com/gormaniac/co-avy-research/tree/main/data/caicpy>`_ repo.
+
 Why async?
 ----------
 
