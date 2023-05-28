@@ -1,6 +1,6 @@
 """Change a project's version in pyproject.toml.
 
-Intended to be run by Makefile, so execute from project root.
+Intended to be executed from project root.
 """
 
 import re
@@ -9,6 +9,8 @@ import sys
 import tomlkit
 
 PYPROJECT = "pyproject.toml"
+PKGVER = "src/caicpy/__version__.py"
+
 PYVERSIONRE = re.compile(r'(VERSION\=)"\d+.\d+.\d"(\n)')
 
 try:
@@ -25,10 +27,10 @@ with open(PYPROJECT, "r") as fd:
 with open(PYPROJECT, "w") as fd:
     tomlkit.dump(toml, fd)
 
-with open("src/caicpy/__version__.py", "r") as fd:
+with open(PKGVER, "r") as fd:
     data = fd.read()
 
     new_data = PYVERSIONRE.sub(f'\\1"{NEW_VER}"\\2', data)
 
-with open("src/caicpy/__version__.py", "w") as fd:
+with open(PKGVER, "w") as fd:
     fd.write(new_data)
