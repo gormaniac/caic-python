@@ -38,5 +38,5 @@ release: change-version clean setup build docs # Build a new versioned release a
 	git add dist/* docs/* docs/.doctrees docs/.buildinfo pyproject.toml
 	git commit -m "build: release v$(VERSION)"
 	git push
-	git tag v$(VERSION) -a "Release v$(VERSION)"
+	git tag -a v$(VERSION) -m "Release v$(VERSION)"
 	git push origin v$(VERSION)
