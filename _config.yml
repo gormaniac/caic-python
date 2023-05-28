@@ -1,0 +1,5 @@
+title: caicpy documentation
+author: John Gorman
+include:
+  - _static/
+  - _sources/
