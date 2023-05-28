@@ -26,6 +26,8 @@ docs: # Build the documentation for this package
 	pipenv run sphinx-apidoc -o doc/source $(PKG_DIR)
 	pipenv run sphinx-build -b html doc/source/ docs/
 
+# Occassionally, this fails if a make release fails after this was run but before
+# dist/* commited to git. Run `git add dist/*` and rerun make release.
 .PHONY: clean
 clean: # Remove build files - including a forced git rm of dist/*
 	rm -rf $(PKG_DIR)/__pycache__
@@ -35,7 +37,7 @@ clean: # Remove build files - including a forced git rm of dist/*
 
 .PHONY: release
 release: change-version clean setup build docs # Build a new versioned release and push it (requires VERSION=#.#.#)
-	git add dist/* docs/* docs/.doctrees docs/.buildinfo pyproject.toml $(PKG_DIR)/__version__.py
+	git add dist/* docs/* docs/.doctrees docs/.buildinfo pyproject.toml $(PKG_DIR)/__init__.py
 	git commit -m "build: release v$(VERSION)"
 	git push
 	git tag -a v$(VERSION) -m "Release v$(VERSION)"
