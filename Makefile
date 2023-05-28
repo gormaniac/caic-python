@@ -35,7 +35,7 @@ clean: # Remove build files - including a forced git rm of dist/*
 
 .PHONY: release
 release: change-version clean setup build docs # Build a new versioned release and push it (requires VERSION=#.#.#)
-	git add dist/* docs/* docs/.doctrees docs/.buildinfo pyproject.toml
+	git add dist/* docs/* docs/.doctrees docs/.buildinfo pyproject.toml $(PKG_DIR)/__version__.py
 	git commit -m "build: release v$(VERSION)"
 	git push
 	git tag -a v$(VERSION) -m "Release v$(VERSION)"
