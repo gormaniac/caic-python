@@ -96,3 +96,22 @@ Examples
         if (_id := report.avalanche_detail.classic_id):
             if _id not in id_map.keys():
                 id_map[_id] = report.id
+
+CLI
+---
+
+There is a minimal CLI to help test and explore the library. Help message::
+
+    usage: python3 -m caicpy [-h] [--debug] [--version]
+                         {avy-obs,field-reports,field-report,snowpack-observation,avalanche-observation,weather-observation,bc-zone,highway-zone,avy-forecast}
+                         ...
+
+    The caicpy CLI.
+    
+    options:
+      -h, --help            show this help message and exit
+      --debug               Display debug output.
+      --version             Display the version and exit.
+    
+    Commands:
+      {avy-obs,field-reports,field-report,snowpack-observation,avalanche-observation,weather-observation,bc-zone,highway-zone,avy-forecast}

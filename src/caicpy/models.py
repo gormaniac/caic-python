@@ -12,7 +12,7 @@ from . import LOGGER
 class DetailObject(pydantic.BaseModel):
     """A base for several, similar, details objects attached to a field report.
 
-    This is where `classic_id` ended up in the V2 API.
+    This is where ``classic_id`` ended up in the V2 API.
     """
 
     id: str
@@ -33,7 +33,7 @@ class WeatherDetail(DetailObject):
     """Summary details of the observed weather.
 
     There is occasionally data here even when
-    not in `weather_observations` for a field report.
+    not in ``weather_observations`` for a field report.
     """
 
 
@@ -175,11 +175,11 @@ class RegionalDiscussionForecast(pydantic.BaseModel):
 class V1AvalancheObservation(pydantic.BaseModel):
     """A single avalanche observation from the /api/avalanche_observations endpoint.
 
-    The `/api/avalanche_observations` endpoint returns a slightly different
-    object than the v2 `avalanche_observations` endpoint.
+    The ``/api/avalanche_observations`` endpoint returns a slightly different
+    object than the v2 ``avalanche_observations`` endpoint.
 
-    This object allows us to transform to the standardized `AvalancheObservation`
-    via `to_obs`.
+    This object allows us to transform to the standardized ``AvalancheObservation``
+    via ``to_obs``.
     """
 
     id: str
@@ -188,7 +188,7 @@ class V1AvalancheObservation(pydantic.BaseModel):
     relationships: dict
 
     def to_obs(self) -> "AvalancheObservation":
-        """Convert this instance to an `AvalancheObservation`."""
+        """Convert this instance to an ``AvalancheObservation``."""
 
         if (bc_zone := "backcountry_zone") in self.relationships.keys():
             zone_dict = self.relationships[bc_zone]
@@ -310,7 +310,7 @@ class AvalancheObservation(pydantic.BaseModel):
     avalanche_detail: Optional[AvalancheDetail] = None
 
     async def fieldobs(self, caic_client) -> Union["FieldReport", None]:
-        """Get the associated `FieldReport` using the provided `CaicClient`."""
+        """Get the associated ``FieldReport`` using the provided ``CaicClient``."""
 
         if self.id is not None:
             return await caic_client.field_report(self.id)
@@ -319,7 +319,7 @@ class AvalancheObservation(pydantic.BaseModel):
 
 
 class CaicResponseMeta(pydantic.BaseModel):
-    """The `meta` portion of a `V1AvyResponse`.
+    """The ``meta`` portion of a ``V1AvyResponse``.
 
     Contains pagination info.
     """
@@ -331,7 +331,7 @@ class CaicResponseMeta(pydantic.BaseModel):
 
 
 class CaicResponseLinks(pydantic.BaseModel):
-    """The `links` portion of a `V1AvyResponse`.
+    """The ``links`` portion of a ``V1AvyResponse``.
 
     Contains pagination info.
     """

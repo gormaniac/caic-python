@@ -13,25 +13,4 @@ An async Python client for the [CAIC](https://avalanche.state.co.us) website dat
     - Snowpack Observation
     - Weather Observation
 
-See `docs/` for further information.
-
-
-For local installation there are 3 options:
-
-- The make file
-```bash
-git clone https://github.com/gormaniac/caicpy.git
-cd caicpy
-make setup
-make install-self
-```
-- The install script containing the above
-```bash
-curl https://raw.githubusercontent.com/gormaniac/caicpy/main/scripts/install.sh | bash
-```
-- Or build manually after cloning the repo and entering the project dir
-```bash
-pip3 install build setuptools
-python3 -m build .
-pip3 install dist/caicpy-<VERSION>.tar.gz
-```
+Read the [full documentation](https://gormaniac.github.io/caicpy) for further details. It is also available locally via `make read-docs` or the `docs/` directory.

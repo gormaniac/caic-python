@@ -1,4 +1,4 @@
-"""ArgumentParser for `__main__`."""
+"""ArgumentParser for ``__main__``."""
 
 import argparse
 import datetime
@@ -35,7 +35,8 @@ ID_PARSER.add_argument(
 )
 
 MAIN_PARSER = argparse.ArgumentParser(
-    description=__doc__,
+    description="The caicpy CLI.",
+    prog="python3 -m caicpy"
 )
 MAIN_PARSER.add_argument(
     "--debug",

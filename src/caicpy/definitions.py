@@ -1,6 +1,8 @@
 """Mappings of abbreviations to definitions/long-names.
 
-See more here - https://avalanche.state.co.us/forecasts/help/observation-avalanche
+See more on the `CAIC website`_
+
+.. _CAIC website: https://avalanche.state.co.us/forecasts/help/observation-avalanche
 """
 
 AVALANCHE_TYPES = {
@@ -41,6 +43,7 @@ PRIMARY_TRIGGER_DESC = {
     "UKN": 'Unknown',
     "A": 'Unknown',
 }
+"""The codes for types of primary avalanche triggers mapped to their descriptive names."""
 
 SECONDARY_TRIGGER_DESC = {
     'u': 'An unintentional release',
@@ -48,12 +51,18 @@ SECONDARY_TRIGGER_DESC = {
     'r': 'A remote avalanche released by the indicated trigger',
     'y': 'An avalanche released in sympathy with another avalanche'
 }
+"""The codes for types of secondary avalanche triggers mapped to their descriptive names."""
 
 ELEV_DESC = {
     '>TL': 'Above Treeline',
     'TL': 'Near Treeline',
     '<TL': 'Below treeline',
 }
+"""The codes for elevation bands mapped to their descriptive names.
+
+The API returns the ``<`` and ``>`` URL encoded - so this object isn't useful
+for comparing to API responses.
+"""
 
 ASPECT_DESC = {
     "All": 'All aspects',

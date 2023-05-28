@@ -1,4 +1,17 @@
-"""Shared enums for typing."""
+"""Shared enums for typing/validation.
+
+The CAIC API can return multiple values when the particular code is not known.
+It is up to callers to normalize these values. They can be any of the following::
+
+    U
+    Un
+    Unknown
+    Unkn
+    UNKNOWN
+    UNK
+    ---
+
+"""
 
 from enum import Enum
 
@@ -113,7 +126,7 @@ class RSize(Enum):
 class DSize(Enum):
     """Avalanche desctructive size values.
 
-    Because these can have half values, `P` is a substitute for decimals.
+    Because these can have half values, ``P`` is a substitute for decimals.
     """
 
     D1: str = 'D1'
@@ -134,7 +147,7 @@ class DSize(Enum):
     DASHES: str = "---"
 
 class ObsTypes(Enum):
-    """The types that Observation objects can have."""
+    """The types that CAIC observation objects can have."""
 
     AVY_OBS: str = "avalanche_observation"
     REPORT_OBS: str = "report_observation"
