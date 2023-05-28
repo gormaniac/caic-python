@@ -12,7 +12,7 @@ Errors
 
 Non-paginating `caicpy.client.CaicClient` methods (all except `avy_obs` and `field_reports`) catch HTTP network errors and JSON decode errors and reraise them as `caicpy.errors.CaicRequestException`s. Pydantic validation errors are caught and cause a return value of `None`.
 
-The paginating `caicpy` methods intercept exceptions to attempt retries. Exceptions are logged, but ultimately, these methods will return an empty list if too many errors ocurred. But they may return partial data if errors ocurred but not enough to reach the max.
+The paginating `caicpy` methods intercept exceptions to attempt retries. Exceptions are logged, but ultimately, these methods will return an empty list if too many errors ocurred. However, they may return partial data if errors ocurred but not enough to reach the max.
 
 Examples
 --------

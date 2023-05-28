@@ -39,7 +39,7 @@
 <section id="errors">
 <h2>Errors<a class="headerlink" href="#errors" title="Permalink to this heading">¶</a></h2>
 <p>Non-paginating <cite>caicpy.client.CaicClient</cite> methods (all except <cite>avy_obs</cite> and <cite>field_reports</cite>) catch HTTP network errors and JSON decode errors and reraise them as <cite>caicpy.errors.CaicRequestException`s. Pydantic validation errors are caught and cause a return value of `None</cite>.</p>
-<p>The paginating <cite>caicpy</cite> methods intercept exceptions to attempt retries. Exceptions are logged, but ultimately, these methods will return an empty list if too many errors ocurred. But they may return partial data if errors ocurred but not enough to reach the max.</p>
+<p>The paginating <cite>caicpy</cite> methods intercept exceptions to attempt retries. Exceptions are logged, but ultimately, these methods will return an empty list if too many errors ocurred. However, they may return partial data if errors ocurred but not enough to reach the max.</p>
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
