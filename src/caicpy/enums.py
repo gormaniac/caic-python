@@ -28,6 +28,7 @@ class PrimaryTrigger(Enum):
     """Avalanche primary trigger codes."""
 
     N: str = "N"
+    AN: str = "AN"
     AS: str = "AS"
     AR: str = "AR"
     AI: str = "AI"
