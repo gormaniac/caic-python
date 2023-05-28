@@ -17,7 +17,7 @@ except IndexError:
     print("Must specify a version!")
     sys.exit(1)
 
-with open(PYPROJECT, "rw") as fd:
+with open(PYPROJECT, "r") as fd:
     toml = tomlkit.load(fd)
 
     toml["project"]["version"] = NEW_VER
