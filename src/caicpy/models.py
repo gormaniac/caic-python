@@ -378,7 +378,7 @@ class ObservationAsset(pydantic.BaseModel):
     type: enums.ObsTypes
     status: Optional[str] = None
     caption: Optional[str] = None
-    tags: Optional[str] = None
+    tags: Optional[list[str]] = pydantic.Field(default_factory=list)
     is_redacted: Optional[bool] = None
     is_locked: Optional[bool] = None
     is_avalanche: Optional[bool] = None
