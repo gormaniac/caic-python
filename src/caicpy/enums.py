@@ -22,6 +22,7 @@ class TypeCode(Enum):
     Unkn: str = "Unkn"
     UNKNOWN: str = "UNKNOWN"
     UNK: str = "UNK"
+    DASHES: str = "---"
 
 class PrimaryTrigger(Enum):
     """Avalanche primary trigger codes."""
@@ -52,6 +53,7 @@ class PrimaryTrigger(Enum):
     Unknown: str = "Unknown"
     Unkn: str = "Unkn"
     UNKNOWN: str = "UNKNOWN"
+    DASHES: str = "---"
 
 class SecondaryTrigger(Enum):
     """Avalanche secondary trigger codes."""
@@ -66,6 +68,7 @@ class SecondaryTrigger(Enum):
     Unkn: str = "Unkn"
     UNKNOWN: str = "UNKNOWN"
     UNK: str = "UNK"
+    DASHES: str = "---"
 
 
 class Aspect(Enum):
@@ -87,6 +90,7 @@ class Aspect(Enum):
     Unknown: str = "Unknown"
     Unkn: str = "Unkn"
     UNKNOWN: str = "UNKNOWN"
+    DASHES: str = "---"
 
 class RSize(Enum):
     """Avalanche relative size values."""
@@ -102,6 +106,7 @@ class RSize(Enum):
     Unknown: str = "Unknown"
     Unkn: str = "Unkn"
     UNKNOWN: str = "UNKNOWN"
+    DASHES: str = "---"
 
 
 class DSize(Enum):
@@ -125,6 +130,7 @@ class DSize(Enum):
     Unknown: str = "Unknown"
     Unkn: str = "Unkn"
     UNKNOWN: str = "UNKNOWN"
+    DASHES: str = "---"
 
 class ObsTypes(Enum):
     """The types that Observation objects can have."""
