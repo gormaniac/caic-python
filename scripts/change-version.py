@@ -9,9 +9,9 @@ import sys
 import tomlkit
 
 PYPROJECT = "pyproject.toml"
-PKGVER = "src/caicpy/__version__.py"
+PKGINIT = "src/caicpy/__init__.py"
 
-PYVERSIONRE = re.compile(r'(VERSION\=)"\d+.\d+.\d"(\n)')
+PYVERSIONRE = re.compile(r'(__version__\s?\=\s?)".+"(\n)')
 
 try:
     NEW_VER = sys.argv[1]
@@ -27,10 +27,10 @@ with open(PYPROJECT, "r") as fd:
 with open(PYPROJECT, "w") as fd:
     tomlkit.dump(toml, fd)
 
-with open(PKGVER, "r") as fd:
+with open(PKGINIT, "r") as fd:
     data = fd.read()
 
     new_data = PYVERSIONRE.sub(f'\\1"{NEW_VER}"\\2', data)
 
-with open(PKGVER, "w") as fd:
+with open(PKGINIT, "w") as fd:
     fd.write(new_data)

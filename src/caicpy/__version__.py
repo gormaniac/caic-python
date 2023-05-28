@@ -1,2 +1,0 @@
-VERSION="0.1.4"
-VERSTR=f"caicpy v{VERSION}"

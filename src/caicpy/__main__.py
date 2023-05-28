@@ -4,7 +4,7 @@ import asyncio
 from pprint import pprint
 import sys
 
-from .__version__ import VERSTR
+from . import __version__
 from ._args import MAIN_PARSER
 from .client import CaicClient
 
@@ -15,7 +15,7 @@ async def main():
     args = MAIN_PARSER.parse_args()
 
     if args.version:
-        print(VERSTR)
+        print(f"caicpy v{__version__}")
         sys.exit(0)
 
     client = CaicClient()
