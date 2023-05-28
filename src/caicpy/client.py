@@ -315,7 +315,7 @@ class CaicClient:
                 continue
 
             if len(resp) < per:
-                LOGGER.info("Got all the results!")
+                LOGGER.info("Got all the results for the query: %s", str(params))
                 paginating = False
 
             try:
