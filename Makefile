@@ -26,12 +26,15 @@ docs: # Build the documentation for this package
 	pipenv run sphinx-apidoc -f -o doc/source $(PKG_DIR)
 	pipenv run sphinx-build -b html doc/source/ docs/
 
+.PHONY: clean-py
+clean-py: # Clean up Python generated files
+	rm -rf $(PKG_DIR)/__pycache__
+	rm -rf src/*.egg-info
+
 # Occassionally, this fails if a make release fails after this was run but before
 # dist/* commited to git. Run `git add dist/*` and rerun make release.
 .PHONY: clean
-clean: # Remove build files - including a forced git rm of dist/*
-	rm -rf $(PKG_DIR)/__pycache__
-	rm -rf src/*.egg-info
+clean: clean-py # Remove build files - including a forced git rm of dist/*
 	git rm -f dist/*
 	rm -rf dist
 
@@ -42,3 +45,4 @@ release: change-version clean setup build docs # Build a new versioned release a
 	git push
 	git tag -a v$(VERSION) -m "Release v$(VERSION)"
 	git push origin v$(VERSION)
+	$(MAKE) clean-py
