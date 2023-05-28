@@ -7,6 +7,13 @@ To get an idea of the data returned, or the endpoints you would like to use, you
 
 To use `caicpy` as a library, start with the `caicpy.client` module. Other supporting modules may be used if calling code requires it.
 
+Errors
+------
+
+Non-paginating `caicpy.client.CaicClient` methods (all except `avy_obs` and `field_reports`) catch HTTP network errors and JSON decode errors and reraise them as `caicpy.errors.CaicRequestException`s. Pydantic validation errors are caught and cause a return value of `None`.
+
+The paginating `caicpy` methods intercept exceptions to attempt retries. Exceptions are logged, but ultimately, these methods will return an empty list if too many errors ocurred. But they may return partial data if errors ocurred but not enough to reach the max.
+
 Examples
 --------
 
@@ -75,6 +82,21 @@ Examples
         query="bluebird",
         avy_seen=True,
     )
+
+
+    # Show me all field reports in 2012 and
+    # map classic IDs to their new API UUID.
+    reports_2012 = await client.field_reports(
+        "2012-01-01 00:00:00",
+        "2012-12-31 11:59:59",
+    )
+
+    id_map = {}
+    for report in reports_2012:
+        if (_id := report.avalanche_detail.classic_id):
+            if _id not in id_map.keys():
+                id_map[_id] = report.id
+
 
 Why async?
 ----------

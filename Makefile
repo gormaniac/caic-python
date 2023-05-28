@@ -23,7 +23,7 @@ install-self: # Install this project's python package using the pipenv's pip
 
 .PHONY: docs
 docs: # Build the documentation for this package
-	pipenv run sphinx-apidoc -o doc/source $(PKG_DIR)
+	pipenv run sphinx-apidoc -f -o doc/source $(PKG_DIR)
 	pipenv run sphinx-build -b html doc/source/ docs/
 
 # Occassionally, this fails if a make release fails after this was run but before
