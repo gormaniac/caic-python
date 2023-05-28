@@ -35,7 +35,7 @@ A forecast API call - must use the proxy for these - the avid API is behind auth
 
     https://avalanche.state.co.us/api-proxy/avid?_api_proxy_uri=/products/all?datetime=2023-01-22T12:00:00.000Z&includeExpired=true
 
-Weather dispatches API call - also a different domain 😠::
+Weather dispatches API call - also a different domain::
 
     https://m.avalanche.state.co.us/api/dispatches/current?type=zone-weather-forecast
 
@@ -47,7 +47,7 @@ Example Wind Rose download::
 
     https://classic.avalanche.state.co.us/caic/obs_stns/windrose.php?st=UP396&date=2023-01-12+17&elev=6325&unit=e&area=caic
     
-Example Weather Station Tables - would require webpage scraping, but may be helpful.
+Example Weather Station Tables - would require webpage scraping, but may be helpful::
 
     https://classic.avalanche.state.co.us/caic/obs_stns/zones.php?date=2023-05-25+17&stnlink=hourly&unit=e&flag=on&area=caic&span=6
 
@@ -294,6 +294,9 @@ class CaicClient:
 
         while paginating:
             if retry_count == total_retries:
+                if not results:
+                    LOGGER.critical("All queries failed!")
+                LOGGER.error("Reached the maximum number of query retries.")
                 break
 
             try:
