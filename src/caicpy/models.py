@@ -18,7 +18,7 @@ class DetailObject(pydantic.BaseModel):
     id: str
     type: enums.DetailsTypes
     description: Optional[str] = None
-    classic_id: Optional[str] = None
+    classic_id: Optional[int] = None
 
 
 class AvalancheDetail(DetailObject):
