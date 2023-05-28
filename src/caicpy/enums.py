@@ -144,6 +144,7 @@ class ObsTypes(Enum):
     HWY_ZONE: str = "highway_zone"
     OBS_REPORT: str = "observation_report"
     VIDEO_ASSET: str = "video_asset"
+    SNOWPIT_ASSET: str = "snowpit_asset"
 
 class BCZoneTitles(Enum):
     """Titles for backcountry zones."""
