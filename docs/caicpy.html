@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Usage" href="usage.html" /> 
+    <link rel="prev" title="Development" href="dev.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,7 +44,9 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev.html">Development</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">caicpy package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-caicpy.client">caicpy.client module</a><ul>
@@ -822,7 +824,7 @@ https://api.avalanche.state.co.us/api/v2/observation_reports?page=1&amp;per=250&
 <dt class="sig sig-object py" id="caicpy.client.CaicApiEndpoints">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">caicpy.client.</span></span><span class="sig-name descname"><span class="pre">CaicApiEndpoints</span></span><a class="headerlink" href="#caicpy.client.CaicApiEndpoints" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Endpoints for the CAIC API (api.avalanche.state.co.us).</p>
+<p>Endpoints for the CAIC API (<code class="docutils literal notranslate"><span class="pre">api.avalanche.state.co.us</span></code>).</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="caicpy.client.CaicApiEndpoints.AVY_OBS">
 <span class="sig-name descname"><span class="pre">AVY_OBS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/api/v2/avalanche_observations'</span></em><a class="headerlink" href="#caicpy.client.CaicApiEndpoints.AVY_OBS" title="Permalink to this definition"></a></dt>
@@ -896,8 +898,8 @@ discussion pieces that cover broader portions of the state.</p>
 particular endpoint. My guess is because it supports proper pagination
 unlike v2, which supports pagination but does not return pagination
 info in response objects so clients have to guess when they’re done paging.</p>
-<p><cite>start</cite> and <cite>end</cite> arguments should be in this format - <cite>YYYY-MM-DD HH:mm:ss</cite>.
-However, the return of a <cite>datetime.datetime.isoformat()</cite> call works as well.</p>
+<p><code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> arguments should be in this format - <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DD</span> <span class="pre">HH:mm:ss</span></code>.
+However, the return of a <code class="docutils literal notranslate"><span class="pre">datetime.datetime.isoformat()</span></code> call works as well.</p>
 <section id="id1">
 <h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <dl class="simple">
@@ -993,7 +995,7 @@ None if there was an error validating response.</p>
 <dt class="sig sig-object py" id="caicpy.client.CaicClient.field_reports">
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">field_reports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bc_zones</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cracking_obs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collapsing_obs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">avy_seen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#caicpy.models.FieldReport" title="caicpy.models.FieldReport"><span class="pre">caicpy.models.FieldReport</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#caicpy.client.CaicClient.field_reports" title="Permalink to this definition"></a></dt>
 <dd><p>Search CAIC field reports.</p>
-<p>Replications the search on the CAIC <cite>View Field Reports</cite> page.</p>
+<p>Replicates the search on the CAIC <code class="docutils literal notranslate"><span class="pre">View</span> <span class="pre">Field</span> <span class="pre">Reports</span></code> page.</p>
 <section id="id9">
 <h3>Parameters<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
 <dl class="simple">
@@ -1002,13 +1004,13 @@ None if there was an error validating response.</p>
 <dt>end<span class="classifier">str</span></dt><dd><p>The end time for the query (observations before this date[+time]).</p>
 </dd>
 <dt>bc_zones<span class="classifier">list[str], optional</span></dt><dd><p>One or more Backcountry Zones to limit the search results by.
-Should be one of <cite>enums.BCZoneTitles</cite>. By default [].</p>
+Should be one of <code class="docutils literal notranslate"><span class="pre">enums.BCZoneTitles</span></code>. By default [].</p>
 </dd>
 <dt>cracking_obs<span class="classifier">list[str], optional</span></dt><dd><p>One or more Cracking Observations to limit the search results by.
-Should be one of <cite>enums.CrackingObsNames</cite>. By default [].</p>
+Should be one of <code class="docutils literal notranslate"><span class="pre">enums.CrackingObsNames</span></code>. By default [].</p>
 </dd>
 <dt>collapsing_obs<span class="classifier">list[str], optional</span></dt><dd><p>One or more Collapsing Observations to limit the search results by.
-Should be one of <cite>enums.CollapsingObsNames</cite>. By default [].</p>
+Should be one of <code class="docutils literal notranslate"><span class="pre">enums.CollapsingObsNames</span></code>. By default [].</p>
 </dd>
 <dt>query<span class="classifier">str, optional</span></dt><dd><p>A query string to limit searches by, by default “”.</p>
 </dd>
@@ -1030,7 +1032,7 @@ or a value error is raised. By default 100.</p>
 <section id="raises">
 <h3>Raises<a class="headerlink" href="#raises" title="Permalink to this heading"></a></h3>
 <dl class="simple">
-<dt>ValueError</dt><dd><p>If <cite>page_limit</cite> is less than 1.</p>
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">page_limit</span></code> is less than 1.</p>
 </dd>
 </dl>
 </section>
@@ -4018,7 +4020,7 @@ not in <cite>weather_observations</cite> for a field report.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dev.html" class="btn btn-neutral float-left" title="Development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

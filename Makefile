@@ -23,7 +23,7 @@ install-self: # Install this project's python package using the pipenv's pip
 
 .PHONY: docs
 docs: # Build the documentation for this package
-	pipenv run sphinx-apidoc -f -o doc $(PKG_DIR)
+	pipenv run sphinx-apidoc -T -f -o doc $(PKG_DIR)
 	pipenv run sphinx-build doc/ docs/
 
 .PHONY: clean-py
@@ -32,9 +32,9 @@ clean-py: # Clean up Python generated files
 	rm -rf src/*.egg-info
 
 # Occassionally, this fails if a make release fails after this was run but before
-# dist/* commited to git. Run `git add dist/*` and rerun make release.
+# "dist/*" commited to git. Run "git add dist/*" and rerun make release.
 .PHONY: clean
-clean: clean-py # Remove build files - including a forced git rm of dist/*
+clean: clean-py # Remove build files - including a forced "git rm" of "dist/*"
 	git rm -f dist/*
 	rm -rf dist
 
@@ -46,3 +46,7 @@ release: change-version clean setup build docs # Build a new versioned release a
 	git tag -a v$(VERSION) -m "Release v$(VERSION)"
 	git push origin v$(VERSION)
 	$(MAKE) clean-py
+
+.PHONY: read-docs
+read-docs: # Open the docs locally
+	open docs/index.html

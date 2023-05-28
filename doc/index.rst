@@ -1,3 +1,5 @@
+:github_url: https://github.com/gormaniac/caicpy
+
 Welcome to caicpy's documentation!
 ==================================
 
@@ -6,7 +8,9 @@ Welcome to caicpy's documentation!
    :caption: Contents:
 
    intro
+   install
    usage
+   dev
    caicpy
 
 * :ref:`modindex`

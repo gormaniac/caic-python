@@ -1,18 +1,18 @@
 Usage
 =====
 
-Using `caicpy` is straight-forward. The CAIC APIs do not require any authentication, all that is needed is an internet connection.
+Using ``caicpy`` is straight-forward. The CAIC APIs do not require any authentication, all that is needed is an internet connection.
 
-To get an idea of the data returned, or the endpoints you would like to use, you may start with the minimal `caicpy` CLI (`python3 -m caicpy --help`). The CLI uses subcommands that map to method names of `caicpy.client.CaicClient` (albeit with dash instead of an underscore).
+To get an idea of the data returned, or the endpoints you would like to use, you may start with the minimal ``caicpy`` CLI (``python3 -m caicpy --help``). The CLI uses subcommands that map to method names of ``caicpy.client.CaicClient`` (albeit with dash instead of an underscore).
 
-To use `caicpy` as a library, start with the `caicpy.client` module. Other supporting modules may be used if calling code requires it.
+To use ``caicpy`` as a library, start with the ``caicpy.client`` module. Other supporting modules may be used if calling code requires it.
 
 Errors
 ------
 
-Non-paginating `caicpy.client.CaicClient` methods (all except `avy_obs` and `field_reports`) catch HTTP network errors and JSON decode errors and reraise them as `caicpy.errors.CaicRequestException`s. Pydantic validation errors are caught and cause a return value of `None`.
+Non-paginating ``caicpy.client.CaicClient`` methods (all except ``avy_obs`` and ``field_reports``) catch HTTP network errors and JSON decode errors and reraise them as ``caicpy.errors.CaicRequestException``s. Pydantic validation errors are caught and cause a return value of ``None``.
 
-The paginating `caicpy` methods intercept exceptions to attempt retries. Exceptions are logged, but ultimately, these methods will return an empty list if too many errors ocurred. However, they may return partial data if errors ocurred but not enough to reach the max.
+The paginating ``caicpy`` methods intercept exceptions to attempt retries. Exceptions are logged, but ultimately, these methods will return an empty list if too many errors ocurred. However, they may return partial data if errors ocurred but not enough to reach the max.
 
 Examples
 --------
@@ -52,7 +52,7 @@ Examples
                 for asset in assets:
                     # There's also a VIDEO_ASSET type
                     if asset.type == ObsTypes.IMAGE_ASSET.value:
-                        # HTTP GET request for `asset.full_url`
+                        # HTTP GET request for ``asset.full_url``
 
     # If a recent field report has a weather
     # observation, print the recorded temperature.
@@ -96,11 +96,3 @@ Examples
         if (_id := report.avalanche_detail.classic_id):
             if _id not in id_map.keys():
                 id_map[_id] = report.id
-
-
-Why async?
-----------
-
-The author has a future project that will require the HTTP requests this client makes to be asynchronous.
-
-Conversion to a synchronous API should be easy enough, simply replace the `aiohttp` calls with `requests` calls and remove all the `await` statements. If you go about this work, please submit a PR that defines a `SyncCaicClient` class with a `CaicClient` compatible API so that others may benefit.

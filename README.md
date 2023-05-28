@@ -15,14 +15,6 @@ An async Python client for the [CAIC](https://avalanche.state.co.us) website dat
 
 See `docs/` for further information.
 
-The `data` directory contains sample API responses that were used to help build this client. They are saved in this repository to aid future research.
-
-# Installation
-
-`caicpy` (will be) available on `PyPI`, run the following to get started!
-```bash
-pip3 install caicpy
-```
 
 For local installation there are 3 options:
 

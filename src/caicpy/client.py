@@ -87,7 +87,7 @@ class CaicURLs:
 
 
 class CaicApiEndpoints:
-    """Endpoints for the CAIC API (api.avalanche.state.co.us)."""
+    """Endpoints for the CAIC API (``api.avalanche.state.co.us``)."""
 
     V1_AVY_OBS: str = "/api/avalanche_observations"
     AVY_OBS: str = "/api/v2/avalanche_observations"
@@ -125,12 +125,12 @@ class CaicClient:
         """
         Get a URL using this client.
 
-        Meant to be `CaicURLs` agnostic, so pass in a full URL.
+        Meant to be ``CaicURLs`` agnostic, so pass in a full URL.
 
         Parameters
         ----------
         url : str
-            The full URL, in other words, an attr of `CaicURLs` + an API endpoint.
+            The full URL, in other words, an attr of ``CaicURLs`` + an API endpoint.
         params : dict | None, optional
             Optional URL parameters to pass in - the CAIC
             APIs rely on params, by default None.
@@ -138,14 +138,14 @@ class CaicClient:
         Returns
         -------
         dict
-            The return from `aiohttp.ClientResponse.json` if, this call, or
+            The return from ``aiohttp.ClientResponse.json`` if, this call, or
             the HTTP request itself, did not throw an error.
 
         Raises
         ------
         errors.CaicRequestException
             For common HTTP errors, a >400 response status,
-            an `aiohttp.ClientError`, or a `JSONDecodeError`.
+            an ``aiohttp.ClientError``, or a ``JSONDecodeError``.
         """
 
         data = {}
@@ -191,7 +191,7 @@ class CaicClient:
         """
         A paginated get request to the CAIC API.
 
-        Only supports `CaicURLs.API` endpoints - these seem to be the only
+        Only supports ``CaicURLs.API`` endpoints - these seem to be the only
         ones that need pagination.
 
         Parameters
@@ -201,10 +201,10 @@ class CaicClient:
         per : int
             The number of items to get per page.
         uri : str
-            The `CaicURLs.API` endpoint to get.
+            The ``CaicURLs.API`` endpoint to get.
         params : typing.Mapping | None, optional
             Optional URL parameters to include with the get request.
-            Do not include `page` and `per` in `params` as these values
+            Do not include ``page`` and ``per`` in ``params`` as these values
             are overwritten/set by this method. By default None.
 
         Returns
@@ -215,7 +215,7 @@ class CaicClient:
         Raises
         ------
         errors.CaicRequestException
-            If raised by `_get`,
+            If raised by ``_get``,
         """
 
         if params is None:
@@ -239,26 +239,26 @@ class CaicClient:
         total_retries: int = 10,
     ) -> list[pydantic.BaseModel]:
         """
-        Loop over `_api_paginate_get` until done, or conditions are met.
+        Loop over ``_api_paginate_get`` until done, or conditions are met.
 
-        WARNING: The `/api/observation_reports` doesn't give us pagination metadata.
+        WARNING: The ``/api/observation_reports`` doesn't give us pagination metadata.
         This means it may be possible to get stuck in a loop if you intentionally
         bypass safeguards in this method.
 
         Loop exit conditions:
-            - The total results from a given page are less than `per` - in other words,
+            - The total results from a given page are less than ``per`` - in other words,
             we're on the last page.
             - The TOTAL number of caught, logged, and then thrown out exceptions is
-            equal to `total_retries`.
+            equal to ``total_retries``.
             - The total number of pages retrieved by this method is equal to
-            `page_limit`.
-                - If `page_limit` negative, this check is bypassed!
-            - If `resp_model` is `models.V1AvyObsResponse`, there is page metadata.
+            ``page_limit``.
+                - If ``page_limit`` negative, this check is bypassed!
+            - If ``resp_model`` is ``models.V1AvyObsResponse``, there is page metadata.
             The loop will exit when the metadata reports this method has retrieved
             the last page.
-                - Keep in mind that the `page_limit` check described above
+                - Keep in mind that the ``page_limit`` check described above
                 trumps this check. Users may have to increase or disable page
-                limit when calling this method on the `api/avalanche_observations`
+                limit when calling this method on the ``api/avalanche_observations``
                 endpoint.
 
         Parameters
@@ -274,7 +274,7 @@ class CaicClient:
         page_limit : int, optional
             The maximum number of pages to get. Set this to a negative number
             to disable this limit. By default 100.
-            DO NOT disable this limit if `endpoint` is `/api/observation_reports`.
+            DO NOT disable this limit if ``endpoint`` is ``/api/observation_reports``.
         retries : int, optional
             The number of retries on a given page before moving to the next page,
             by default 2.
@@ -284,7 +284,7 @@ class CaicClient:
         Returns
         -------
         list[pydantic.BaseModel]
-            A list of the `pydantic.BaseModel` objects defined by `resp_model`.
+            A list of the ``pydantic.BaseModel`` objects defined by ``resp_model``.
             An empty list may indicate no data or it may indicate that all requests
             failed.
         """
@@ -378,7 +378,7 @@ class CaicClient:
         ----------
         proxy_endpoint : str
             The actual endpoint of the proxy to request, the real URI in the
-            HTTP request. Can be any of `ProxyEndpoints`.
+            HTTP request. Can be any of ``ProxyEndpoints``.
         proxy_uri : str
             The URI used by the proxy in its request to the proxied API.
         proxy_params : dict
@@ -403,8 +403,8 @@ class CaicClient:
         unlike v2, which supports pagination but does not return pagination
         info in response objects so clients have to guess when they're done paging.
 
-        `start` and `end` arguments should be in this format - `YYYY-MM-DD HH:mm:ss`.
-        However, the return of a `datetime.datetime.isoformat()` call works as well.
+        ``start`` and ``end`` arguments should be in this format - ``YYYY-MM-DD HH:mm:ss``.
+        However, the return of a ``datetime.datetime.isoformat()`` call works as well.
         
         Parameters
         ----------
@@ -459,7 +459,7 @@ class CaicClient:
         """
         Search CAIC field reports.
 
-        Replications the search on the CAIC `View Field Reports` page.
+        Replicates the search on the CAIC ``View Field Reports`` page.
 
         Parameters
         ----------
@@ -469,13 +469,13 @@ class CaicClient:
             The end time for the query (observations before this date[+time]).
         bc_zones : list[str], optional
             One or more Backcountry Zones to limit the search results by.
-            Should be one of `enums.BCZoneTitles`. By default [].
+            Should be one of ``enums.BCZoneTitles``. By default [].
         cracking_obs : list[str], optional
             One or more Cracking Observations to limit the search results by.
-            Should be one of `enums.CrackingObsNames`. By default [].
+            Should be one of ``enums.CrackingObsNames``. By default [].
         collapsing_obs : list[str], optional
             One or more Collapsing Observations to limit the search results by.
-            Should be one of `enums.CollapsingObsNames`. By default [].
+            Should be one of ``enums.CollapsingObsNames``. By default [].
         query : str, optional
             A query string to limit searches by, by default "".
         avy_seen : bool | None, optional
@@ -493,7 +493,7 @@ class CaicClient:
         Raises
         ------
         ValueError
-            If `page_limit` is less than 1.
+            If ``page_limit`` is less than 1.
 
         """
 

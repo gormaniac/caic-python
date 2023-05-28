@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="caicpy package" href="caicpy.html" />
-    <link rel="prev" title="Introduction" href="intro.html" /> 
+    <link rel="next" title="Development" href="dev.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,12 +45,13 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#errors">Errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#why-async">Why async?</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="dev.html">Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caicpy.html">caicpy package</a></li>
 </ul>
 
@@ -80,13 +81,13 @@
              
   <section id="usage">
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h1>
-<p>Using <cite>caicpy</cite> is straight-forward. The CAIC APIs do not require any authentication, all that is needed is an internet connection.</p>
-<p>To get an idea of the data returned, or the endpoints you would like to use, you may start with the minimal <cite>caicpy</cite> CLI (<cite>python3 -m caicpy –help</cite>). The CLI uses subcommands that map to method names of <cite>caicpy.client.CaicClient</cite> (albeit with dash instead of an underscore).</p>
-<p>To use <cite>caicpy</cite> as a library, start with the <cite>caicpy.client</cite> module. Other supporting modules may be used if calling code requires it.</p>
+<p>Using <code class="docutils literal notranslate"><span class="pre">caicpy</span></code> is straight-forward. The CAIC APIs do not require any authentication, all that is needed is an internet connection.</p>
+<p>To get an idea of the data returned, or the endpoints you would like to use, you may start with the minimal <code class="docutils literal notranslate"><span class="pre">caicpy</span></code> CLI (<code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">caicpy</span> <span class="pre">--help</span></code>). The CLI uses subcommands that map to method names of <code class="docutils literal notranslate"><span class="pre">caicpy.client.CaicClient</span></code> (albeit with dash instead of an underscore).</p>
+<p>To use <code class="docutils literal notranslate"><span class="pre">caicpy</span></code> as a library, start with the <code class="docutils literal notranslate"><span class="pre">caicpy.client</span></code> module. Other supporting modules may be used if calling code requires it.</p>
 <section id="errors">
 <h2>Errors<a class="headerlink" href="#errors" title="Permalink to this heading"></a></h2>
-<p>Non-paginating <cite>caicpy.client.CaicClient</cite> methods (all except <cite>avy_obs</cite> and <cite>field_reports</cite>) catch HTTP network errors and JSON decode errors and reraise them as <cite>caicpy.errors.CaicRequestException`s. Pydantic validation errors are caught and cause a return value of `None</cite>.</p>
-<p>The paginating <cite>caicpy</cite> methods intercept exceptions to attempt retries. Exceptions are logged, but ultimately, these methods will return an empty list if too many errors ocurred. However, they may return partial data if errors ocurred but not enough to reach the max.</p>
+<p>Non-paginating <code class="docutils literal notranslate"><span class="pre">caicpy.client.CaicClient</span></code> methods (all except <code class="docutils literal notranslate"><span class="pre">avy_obs</span></code> and <code class="docutils literal notranslate"><span class="pre">field_reports</span></code>) catch HTTP network errors and JSON decode errors and reraise them as <code class="docutils literal notranslate"><span class="pre">caicpy.errors.CaicRequestException``s.</span> <span class="pre">Pydantic</span> <span class="pre">validation</span> <span class="pre">errors</span> <span class="pre">are</span> <span class="pre">caught</span> <span class="pre">and</span> <span class="pre">cause</span> <span class="pre">a</span> <span class="pre">return</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">``None</span></code>.</p>
+<p>The paginating <code class="docutils literal notranslate"><span class="pre">caicpy</span></code> methods intercept exceptions to attempt retries. Exceptions are logged, but ultimately, these methods will return an empty list if too many errors ocurred. However, they may return partial data if errors ocurred but not enough to reach the max.</p>
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
@@ -123,7 +124,7 @@
             <span class="k">for</span> <span class="n">asset</span> <span class="ow">in</span> <span class="n">assets</span><span class="p">:</span>
                 <span class="c1"># There&#39;s also a VIDEO_ASSET type</span>
                 <span class="k">if</span> <span class="n">asset</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">ObsTypes</span><span class="o">.</span><span class="n">IMAGE_ASSET</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
-                    <span class="c1"># HTTP GET request for `asset.full_url`</span>
+                    <span class="c1"># HTTP GET request for ``asset.full_url``</span>
 
 <span class="c1"># If a recent field report has a weather</span>
 <span class="c1"># observation, print the recorded temperature.</span>
@@ -170,19 +171,14 @@
 </pre></div>
 </div>
 </section>
-<section id="why-async">
-<h2>Why async?<a class="headerlink" href="#why-async" title="Permalink to this heading"></a></h2>
-<p>The author has a future project that will require the HTTP requests this client makes to be asynchronous.</p>
-<p>Conversion to a synchronous API should be easy enough, simply replace the <cite>aiohttp</cite> calls with <cite>requests</cite> calls and remove all the <cite>await</cite> statements. If you go about this work, please submit a PR that defines a <cite>SyncCaicClient</cite> class with a <cite>CaicClient</cite> compatible API so that others may benefit.</p>
-</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="intro.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="caicpy.html" class="btn btn-neutral float-right" title="caicpy package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dev.html" class="btn btn-neutral float-right" title="Development" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
