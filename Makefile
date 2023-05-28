@@ -23,8 +23,8 @@ install-self: # Install this project's python package using the pipenv's pip
 
 .PHONY: docs
 docs: # Build the documentation for this package
-	pipenv run sphinx-apidoc -f -o doc/source $(PKG_DIR)
-	pipenv run sphinx-build -b html doc/source/ docs/
+	pipenv run sphinx-apidoc -f -o doc $(PKG_DIR)
+	pipenv run sphinx-build doc/ docs/
 
 .PHONY: clean-py
 clean-py: # Clean up Python generated files

@@ -15,6 +15,7 @@ sphinx = "*"
 build = "*"
 setuptools = "*"
 tomlkit = "*"
+sphinx-rtd-theme = "*"
 
 [requires]
 python_version = "3.10"
