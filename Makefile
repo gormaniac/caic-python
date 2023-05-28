@@ -7,19 +7,18 @@ help: # Display help for all Makefile commands
 
 .PHONY: change-version
 change-version: # Change the version of this project (requires VERSION=#.#.#)
-    if [ -z "$(VERSION)" ]; then \
-		echo "Must specify a VERSION argument to change the version!"; \
-	else \
-		pipenv run scripts/change-version.py $(VERSION)
-	fi
+	pipenv run python3 scripts/change-version.py $(VERSION)
 
 .PHONY: build
 build: # Build the package tarball and wheel
 	pipenv run python3 -m build .
 
 .PHONY: setup
-setup: # Setup this project's development environment
+setup: # Setup this project's pipenv environment
 	pipenv install -d
+
+.PHONY: install-self
+install-self: # Install this project's python package using the pipenv's pip
 	pipenv run pip3 install --editable .
 
 .PHONY: docs
@@ -27,11 +26,17 @@ docs: # Build the documentation for this package
 	pipenv run sphinx-apidoc -o doc/source $(PKG_DIR)
 	pipenv run sphinx-build -b html doc/source/ docs/
 
-# .PHONY: release
-# release: # Build a new versioned release and push it
-
 .PHONY: clean
-clean: # Remove build files
+clean: # Remove build files - including a forced git rm of dist/*
 	rm -rf $(PKG_DIR)/__pycache__
 	rm -rf src/*.egg-info
+	git rm -f dist/*
 	rm -rf dist
+
+.PHONY: release
+release: change-version clean setup build docs # Build a new versioned release and push it (requires VERSION=#.#.#)
+	git add dist/* docs/* docs/.doctrees docs/.buildinfo pyproject.toml
+	git commit -m "build: release v$(VERSION)"
+	git push
+	git tag v$(VERSION) -a "Release v$(VERSION)"
+	git push origin v$(VERSION)
