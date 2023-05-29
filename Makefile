@@ -35,7 +35,7 @@ clean-py: # Clean up Python generated files
 # "dist/*" commited to git. Run "git add dist/*" and rerun make release.
 .PHONY: clean
 clean: clean-py # Remove build files - including a forced "git rm" of "dist/*"
-	git rm -f dist/*
+	git rm -f dist/* --ignore-unmatch
 	rm -rf dist
 
 .PHONY: read-docs
