@@ -44,6 +44,14 @@ caicpy.models module
    :undoc-members:
    :show-inheritance:
 
+caicpy.utils module
+-------------------
+
+.. automodule:: caicpy.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 
