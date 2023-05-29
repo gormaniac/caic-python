@@ -10,6 +10,7 @@ It is up to callers to normalize these values. They can be any of the following:
     UNKNOWN
     UNK
     ---
+    --
 
 """
 
@@ -35,7 +36,8 @@ class TypeCode(Enum):
     Unkn: str = "Unkn"
     UNKNOWN: str = "UNKNOWN"
     UNK: str = "UNK"
-    DASHES: str = "---"
+    DASHES3: str = "---"
+    DASHES2: str = "--"
 
 class PrimaryTrigger(Enum):
     """Avalanche primary trigger codes."""
@@ -67,7 +69,8 @@ class PrimaryTrigger(Enum):
     Unknown: str = "Unknown"
     Unkn: str = "Unkn"
     UNKNOWN: str = "UNKNOWN"
-    DASHES: str = "---"
+    DASHES3: str = "---"
+    DASHES2: str = "--"
 
 class SecondaryTrigger(Enum):
     """Avalanche secondary trigger codes."""
@@ -82,7 +85,8 @@ class SecondaryTrigger(Enum):
     Unkn: str = "Unkn"
     UNKNOWN: str = "UNKNOWN"
     UNK: str = "UNK"
-    DASHES: str = "---"
+    DASHES3: str = "---"
+    DASHES2: str = "--"
 
 
 class Aspect(Enum):
@@ -104,7 +108,8 @@ class Aspect(Enum):
     Unknown: str = "Unknown"
     Unkn: str = "Unkn"
     UNKNOWN: str = "UNKNOWN"
-    DASHES: str = "---"
+    DASHES3: str = "---"
+    DASHES2: str = "--"
 
 class RSize(Enum):
     """Avalanche relative size values."""
@@ -120,7 +125,8 @@ class RSize(Enum):
     Unknown: str = "Unknown"
     Unkn: str = "Unkn"
     UNKNOWN: str = "UNKNOWN"
-    DASHES: str = "---"
+    DASHES3: str = "---"
+    DASHES2: str = "--"
 
 
 class DSize(Enum):
@@ -144,7 +150,8 @@ class DSize(Enum):
     Unknown: str = "Unknown"
     Unkn: str = "Unkn"
     UNKNOWN: str = "UNKNOWN"
-    DASHES: str = "---"
+    DASHES3: str = "---"
+    DASHES2: str = "--"
 
 class ObsTypes(Enum):
     """The types that CAIC observation objects can have."""
