@@ -38,15 +38,19 @@ clean: clean-py # Remove build files - including a forced "git rm" of "dist/*"
 	git rm -f dist/*
 	rm -rf dist
 
+.PHONY: read-docs
+read-docs: # Open the package docs locally
+	open docs/index.html
+
+.PHONY: version
+version: # Display the version of caicpy installed in the pipenv
+	pipenv run python3 -m caicpy --version
+
 .PHONY: release
 release: change-version clean setup build docs # Build a new versioned release and push it (requires VERSION=#.#.#)
-	git add dist/* docs/* docs/.doctrees docs/.buildinfo pyproject.toml $(PKG_DIR)/__init__.py
+	git add dist/* docs/* pyproject.toml $(PKG_DIR)/__init__.py
 	git commit -m "build: release v$(VERSION)"
 	git push
 	git tag -a v$(VERSION) -m "Release v$(VERSION)"
 	git push origin v$(VERSION)
 	$(MAKE) clean-py
-
-.PHONY: read-docs
-read-docs: # Open the docs locally
-	open docs/index.html
