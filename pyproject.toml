@@ -22,7 +22,7 @@ file = "LICENSE"
 
 [project.urls]
 Homepage = "https://github.com/gormaniac/caic-python"
-Documentation = "https://github.com/gormaniac/caic-python"
+Documentation = "https://gormo.co/caic-python/"
 
 [tool.setuptools.packages.find]
 namespaces = true
