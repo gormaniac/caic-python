@@ -2,7 +2,7 @@ project = 'caicpy'
 copyright = '2023, John Gorman'
 author = 'John Gorman'
 
-extensions = ['sphinx.ext.autodoc']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.githubpages']
 
 templates_path = ['_templates']
 exclude_patterns = []
