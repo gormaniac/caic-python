@@ -83,21 +83,22 @@
   <section id="usage">
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h1>
 <p>Using <code class="docutils literal notranslate"><span class="pre">caic-python</span></code> is straight-forward. The CAIC APIs do not require any authentication, all that is needed is an internet connection.</p>
-<p>To get an idea of the data returned, or the endpoints you would like to use, you may start with the minimal <code class="docutils literal notranslate"><span class="pre">caic-python</span></code> CLI (<code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">caic-python</span> <span class="pre">--help</span></code>). The CLI uses subcommands that map to method names of <code class="docutils literal notranslate"><span class="pre">caic-python.client.CaicClient</span></code> (albeit with dash instead of an underscore).</p>
-<p>To use <code class="docutils literal notranslate"><span class="pre">caic-python</span></code> as a library, start with the <code class="docutils literal notranslate"><span class="pre">caic-python.client</span></code> module. Other supporting modules may be used if calling code requires it.</p>
+<p>To get an idea of the data returned, or the endpoints you would like to use, you may start with the minimal <code class="docutils literal notranslate"><span class="pre">caic-python</span></code> CLI (<code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">caic-python</span> <span class="pre">--help</span></code>). The CLI uses subcommands that map to method names of <code class="docutils literal notranslate"><span class="pre">caic_python.client.CaicClient</span></code> (albeit with dash instead of an underscore).</p>
+<p>To use <code class="docutils literal notranslate"><span class="pre">caic-python</span></code> as a library, start with the <code class="docutils literal notranslate"><span class="pre">caic_python.client</span></code> module. Other supporting modules may be used if calling code requires it.</p>
 <section id="errors">
 <h2>Errors<a class="headerlink" href="#errors" title="Permalink to this heading"></a></h2>
-<p>Non-paginating <code class="docutils literal notranslate"><span class="pre">caic-python.client.CaicClient</span></code> methods (all except <code class="docutils literal notranslate"><span class="pre">avy_obs</span></code> and <code class="docutils literal notranslate"><span class="pre">field_reports</span></code>) catch HTTP network errors and JSON decode errors and reraise them as <code class="docutils literal notranslate"><span class="pre">caic-python.errors.CaicRequestException``s.</span> <span class="pre">Pydantic</span> <span class="pre">validation</span> <span class="pre">errors</span> <span class="pre">are</span> <span class="pre">caught</span> <span class="pre">and</span> <span class="pre">cause</span> <span class="pre">a</span> <span class="pre">return</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">``None</span></code>.</p>
+<p>Non-paginating <code class="docutils literal notranslate"><span class="pre">caic_python.client.CaicClient</span></code> methods (all except <code class="docutils literal notranslate"><span class="pre">avy_obs</span></code> and <code class="docutils literal notranslate"><span class="pre">field_reports</span></code>) catch HTTP network errors and JSON decode errors and reraise them as a <code class="docutils literal notranslate"><span class="pre">caic_python.errors.CaicRequestException</span></code>. Pydantic validation errors are caught and cause a return value of <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 <p>The paginating <code class="docutils literal notranslate"><span class="pre">caic-python</span></code> methods intercept exceptions to attempt retries. Exceptions are logged, but ultimately, these methods will return an empty list if too many errors ocurred. However, they may return partial data if errors ocurred but not enough to reach the max.</p>
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
 
-<span class="kn">from</span> <span class="nn">caic</span><span class="o">-</span><span class="n">python</span><span class="o">.</span><span class="n">client</span> <span class="kn">import</span> <span class="nn">CaicClient</span>
-<span class="kn">from</span> <span class="nn">caic</span><span class="o">-</span><span class="n">python</span><span class="o">.</span><span class="n">enums</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span> <span class="nn">caic_python.client</span> <span class="kn">import</span> <span class="n">CaicClient</span>
+<span class="kn">from</span> <span class="nn">caic_python.enums</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">ObsTypes</span><span class="p">,</span> <span class="n">ReportsSearchCrackObs</span><span class="p">,</span> <span class="n">BCZoneTitles</span>
 <span class="p">)</span>
+<span class="kn">from</span> <span class="nn">caic_python.utils</span> <span class="kn">import</span> <span class="n">find_classic_id</span>
 
 <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
 <span class="n">two_weeks_ago</span> <span class="o">=</span> <span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">14</span><span class="p">))</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
@@ -166,9 +167,8 @@
 
 <span class="n">id_map</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">report</span> <span class="ow">in</span> <span class="n">reports_2012</span><span class="p">:</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">_id</span> <span class="o">:=</span> <span class="n">report</span><span class="o">.</span><span class="n">avalanche_detail</span><span class="o">.</span><span class="n">classic_id</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">id_map</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="n">id_map</span><span class="p">[</span><span class="n">_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">id</span>
+    <span class="n">classic_id</span> <span class="o">=</span> <span class="n">find_classic_id</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The Classic ID for </span><span class="si">{</span><span class="n">report</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">classic_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

@@ -10,7 +10,7 @@ To use ``caic-python`` as a library, start with the ``caic_python.client`` modul
 Errors
 ------
 
-Non-paginating ``caic_python.client.CaicClient`` methods (all except ``avy_obs`` and ``field_reports``) catch HTTP network errors and JSON decode errors and reraise them as ``caic_python.errors.CaicRequestException``s. Pydantic validation errors are caught and cause a return value of ``None``.
+Non-paginating ``caic_python.client.CaicClient`` methods (all except ``avy_obs`` and ``field_reports``) catch HTTP network errors and JSON decode errors and reraise them as a ``caic_python.errors.CaicRequestException``. Pydantic validation errors are caught and cause a return value of ``None``.
 
 The paginating ``caic-python`` methods intercept exceptions to attempt retries. Exceptions are logged, but ultimately, these methods will return an empty list if too many errors ocurred. However, they may return partial data if errors ocurred but not enough to reach the max.
 
