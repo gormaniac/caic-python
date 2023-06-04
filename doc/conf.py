@@ -2,7 +2,7 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
 
-project = 'caic-python'
+project = 'caic_python'
 copyright = '2023, John Gorman'
 author = 'John Gorman'
 

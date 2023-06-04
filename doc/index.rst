@@ -11,7 +11,7 @@ Welcome to caic-python's documentation!
    install
    usage
    dev
-   caic-python
+   caic_python
 
 * :ref:`modindex`
 * :ref:`search`

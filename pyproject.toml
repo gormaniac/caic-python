@@ -3,8 +3,8 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "caic-python"
-version = "0.1.9"
+name = "caic_python"
+version = "0.1.10"
 description = "An async Python client for working with Colorado Avalanche Information Center data."
 readme = "README.md"
 requires-python = ">=3.10"
