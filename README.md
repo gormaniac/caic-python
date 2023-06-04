@@ -1,8 +1,8 @@
-# caicpy
+# caic_python
 
 An async Python client for the [CAIC](https://avalanche.state.co.us) website data using the undocumented HTTP APIs.
 
-`caicpy` is capable of retrieving information on the following from the CAIC website:
+`caic_python` is capable of retrieving information on the following from the CAIC website:
 - Search field reports (aka observation reports) submitted to the CAIC website.
 - Search avalanche observation reports submitted as part of a field report.
 - Retrieve the CAIC's avalanche forecast on a given date.
@@ -13,4 +13,4 @@ An async Python client for the [CAIC](https://avalanche.state.co.us) website dat
     - Snowpack Observation
     - Weather Observation
 
-Read the [full documentation](https://gormo.co/caicpy/) for further details. It is also available locally via `make read-docs` or the `docs/` directory.
+Read the [full documentation](https://gormo.co/caic_python/) for further details. It is also available locally via `make read-docs` or the `docs/` directory.

@@ -1,4 +1,4 @@
-"""A CLI entry point for caicpy - meant for testing."""
+"""A CLI entry point for caic_python - meant for testing."""
 
 import asyncio
 from pprint import pprint
@@ -10,12 +10,12 @@ from .client import CaicClient
 
 
 async def main():
-    """The caicpy CLI function."""
+    """The caic_python CLI function."""
 
     args = MAIN_PARSER.parse_args()
 
     if args.version:
-        print(f"caicpy v{__version__}")
+        print(f"caic_python v{__version__}")
         sys.exit(0)
 
     client = CaicClient()

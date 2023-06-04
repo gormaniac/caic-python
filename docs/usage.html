@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Usage &mdash; caicpy  documentation</title>
+  <title>Usage &mdash; caic_python  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -32,7 +32,7 @@
           
           
           <a href="index.html" class="icon icon-home">
-            caicpy
+            caic_python
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -53,7 +53,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="dev.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="caicpy.html">caicpy package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caic_python.html">caic_python package</a></li>
 </ul>
 
         </div>
@@ -62,7 +62,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">caicpy</a>
+          <a href="index.html">caic_python</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -82,20 +82,20 @@
              
   <section id="usage">
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h1>
-<p>Using <code class="docutils literal notranslate"><span class="pre">caicpy</span></code> is straight-forward. The CAIC APIs do not require any authentication, all that is needed is an internet connection.</p>
-<p>To get an idea of the data returned, or the endpoints you would like to use, you may start with the minimal <code class="docutils literal notranslate"><span class="pre">caicpy</span></code> CLI (<code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">caicpy</span> <span class="pre">--help</span></code>). The CLI uses subcommands that map to method names of <code class="docutils literal notranslate"><span class="pre">caicpy.client.CaicClient</span></code> (albeit with dash instead of an underscore).</p>
-<p>To use <code class="docutils literal notranslate"><span class="pre">caicpy</span></code> as a library, start with the <code class="docutils literal notranslate"><span class="pre">caicpy.client</span></code> module. Other supporting modules may be used if calling code requires it.</p>
+<p>Using <code class="docutils literal notranslate"><span class="pre">caic_python</span></code> is straight-forward. The CAIC APIs do not require any authentication, all that is needed is an internet connection.</p>
+<p>To get an idea of the data returned, or the endpoints you would like to use, you may start with the minimal <code class="docutils literal notranslate"><span class="pre">caic_python</span></code> CLI (<code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">caic_python</span> <span class="pre">--help</span></code>). The CLI uses subcommands that map to method names of <code class="docutils literal notranslate"><span class="pre">caic_python.client.CaicClient</span></code> (albeit with dash instead of an underscore).</p>
+<p>To use <code class="docutils literal notranslate"><span class="pre">caic_python</span></code> as a library, start with the <code class="docutils literal notranslate"><span class="pre">caic_python.client</span></code> module. Other supporting modules may be used if calling code requires it.</p>
 <section id="errors">
 <h2>Errors<a class="headerlink" href="#errors" title="Permalink to this heading"></a></h2>
-<p>Non-paginating <code class="docutils literal notranslate"><span class="pre">caicpy.client.CaicClient</span></code> methods (all except <code class="docutils literal notranslate"><span class="pre">avy_obs</span></code> and <code class="docutils literal notranslate"><span class="pre">field_reports</span></code>) catch HTTP network errors and JSON decode errors and reraise them as <code class="docutils literal notranslate"><span class="pre">caicpy.errors.CaicRequestException``s.</span> <span class="pre">Pydantic</span> <span class="pre">validation</span> <span class="pre">errors</span> <span class="pre">are</span> <span class="pre">caught</span> <span class="pre">and</span> <span class="pre">cause</span> <span class="pre">a</span> <span class="pre">return</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">``None</span></code>.</p>
-<p>The paginating <code class="docutils literal notranslate"><span class="pre">caicpy</span></code> methods intercept exceptions to attempt retries. Exceptions are logged, but ultimately, these methods will return an empty list if too many errors ocurred. However, they may return partial data if errors ocurred but not enough to reach the max.</p>
+<p>Non-paginating <code class="docutils literal notranslate"><span class="pre">caic_python.client.CaicClient</span></code> methods (all except <code class="docutils literal notranslate"><span class="pre">avy_obs</span></code> and <code class="docutils literal notranslate"><span class="pre">field_reports</span></code>) catch HTTP network errors and JSON decode errors and reraise them as <code class="docutils literal notranslate"><span class="pre">caic_python.errors.CaicRequestException``s.</span> <span class="pre">Pydantic</span> <span class="pre">validation</span> <span class="pre">errors</span> <span class="pre">are</span> <span class="pre">caught</span> <span class="pre">and</span> <span class="pre">cause</span> <span class="pre">a</span> <span class="pre">return</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">``None</span></code>.</p>
+<p>The paginating <code class="docutils literal notranslate"><span class="pre">caic_python</span></code> methods intercept exceptions to attempt retries. Exceptions are logged, but ultimately, these methods will return an empty list if too many errors ocurred. However, they may return partial data if errors ocurred but not enough to reach the max.</p>
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
 
-<span class="kn">from</span> <span class="nn">caicpy.client</span> <span class="kn">import</span> <span class="n">CaicClient</span>
-<span class="kn">from</span> <span class="nn">caicpy.enums</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span> <span class="nn">caic_python.client</span> <span class="kn">import</span> <span class="n">CaicClient</span>
+<span class="kn">from</span> <span class="nn">caic_python.enums</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">ObsTypes</span><span class="p">,</span> <span class="n">ReportsSearchCrackObs</span><span class="p">,</span> <span class="n">BCZoneTitles</span>
 <span class="p">)</span>
 
@@ -175,11 +175,11 @@
 <section id="cli">
 <h2>CLI<a class="headerlink" href="#cli" title="Permalink to this heading"></a></h2>
 <p>There is a minimal CLI to help test and explore the library. Help message:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">caicpy</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">debug</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">version</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">caic_python</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">debug</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">version</span><span class="p">]</span>
                      <span class="p">{</span><span class="n">avy</span><span class="o">-</span><span class="n">obs</span><span class="p">,</span><span class="n">field</span><span class="o">-</span><span class="n">reports</span><span class="p">,</span><span class="n">field</span><span class="o">-</span><span class="n">report</span><span class="p">,</span><span class="n">snowpack</span><span class="o">-</span><span class="n">observation</span><span class="p">,</span><span class="n">avalanche</span><span class="o">-</span><span class="n">observation</span><span class="p">,</span><span class="n">weather</span><span class="o">-</span><span class="n">observation</span><span class="p">,</span><span class="n">bc</span><span class="o">-</span><span class="n">zone</span><span class="p">,</span><span class="n">highway</span><span class="o">-</span><span class="n">zone</span><span class="p">,</span><span class="n">avy</span><span class="o">-</span><span class="n">forecast</span><span class="p">}</span>
                      <span class="o">...</span>
 
-<span class="n">The</span> <span class="n">caicpy</span> <span class="n">CLI</span><span class="o">.</span>
+<span class="n">The</span> <span class="n">caic_python</span> <span class="n">CLI</span><span class="o">.</span>
 
 <span class="n">options</span><span class="p">:</span>
   <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>

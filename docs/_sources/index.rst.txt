@@ -1,7 +1,7 @@
-:github_url: https://github.com/gormaniac/caicpy
+:github_url: https://github.com/gormaniac/caic_python
 
-Welcome to caicpy's documentation!
-==================================
+Welcome to caic_python's documentation!
+=======================================
 
 .. toctree::
    :maxdepth: 3
@@ -11,7 +11,7 @@ Welcome to caicpy's documentation!
    install
    usage
    dev
-   caicpy
+   caic_python
 
 * :ref:`modindex`
 * :ref:`search`
