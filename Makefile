@@ -1,4 +1,4 @@
-NAME = 
+NAME = caic_python
 PKG_DIR = src/$(NAME)
 
 .PHONY: help
