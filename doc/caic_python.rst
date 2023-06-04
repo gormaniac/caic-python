@@ -7,7 +7,7 @@ Submodules
 caic\_python.client module
 --------------------------
 
-.. automodule:: caic_python.client
+.. automodule:: caic-python.client
    :members:
    :undoc-members:
    :show-inheritance:
@@ -15,7 +15,7 @@ caic\_python.client module
 caic\_python.definitions module
 -------------------------------
 
-.. automodule:: caic_python.definitions
+.. automodule:: caic-python.definitions
    :members:
    :undoc-members:
    :show-inheritance:
@@ -23,7 +23,7 @@ caic\_python.definitions module
 caic\_python.enums module
 -------------------------
 
-.. automodule:: caic_python.enums
+.. automodule:: caic-python.enums
    :members:
    :undoc-members:
    :show-inheritance:
@@ -31,7 +31,7 @@ caic\_python.enums module
 caic\_python.errors module
 --------------------------
 
-.. automodule:: caic_python.errors
+.. automodule:: caic-python.errors
    :members:
    :undoc-members:
    :show-inheritance:
@@ -39,7 +39,7 @@ caic\_python.errors module
 caic\_python.models module
 --------------------------
 
-.. automodule:: caic_python.models
+.. automodule:: caic-python.models
    :members:
    :undoc-members:
    :show-inheritance:
@@ -47,7 +47,7 @@ caic\_python.models module
 caic\_python.utils module
 -------------------------
 
-.. automodule:: caic_python.utils
+.. automodule:: caic-python.utils
    :members:
    :undoc-members:
    :show-inheritance:
@@ -55,7 +55,7 @@ caic\_python.utils module
 Module contents
 ---------------
 
-.. automodule:: caic_python
+.. automodule:: caic-python
    :members:
    :undoc-members:
    :show-inheritance:

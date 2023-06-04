@@ -3,8 +3,9 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "caic_python"
-version = "0.1.8"
+name = "caic-python"
+version = "0.1.9"
+description = "An async Python client for working with Colorado Avalanche Information Center data."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
@@ -12,6 +13,16 @@ dependencies = [
     "pydantic==2.0a4",
     "python-dateutil==2.8.*",
 ]
+
+[[project.authors]]
+name = "John Gorman"
+
+[project.license]
+file = "LICENSE"
+
+[project.urls]
+Homepage = "https://github.com/gormaniac/caic-python"
+Documentation = "https://github.com/gormaniac/caic-python"
 
 [tool.setuptools.packages.find]
 namespaces = true

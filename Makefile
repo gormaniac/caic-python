@@ -1,4 +1,4 @@
-NAME = caic_python
+NAME = caic-python
 PKG_DIR = src/$(NAME)
 
 .PHONY: help
@@ -43,8 +43,8 @@ read-docs: # Open the package docs locally
 	open docs/index.html
 
 .PHONY: version
-version: # Display the version of caic_python installed in the pipenv
-	pipenv run python3 -m caic_python --version
+version: # Display the version of caic-python installed in the pipenv
+	pipenv run python3 -m caic-python --version
 
 .PHONY: release
 release: change-version clean setup build docs # Build a new versioned release and push it (requires VERSION=#.#.#)

@@ -35,7 +35,7 @@ ID_PARSER.add_argument(
 )
 
 MAIN_PARSER = argparse.ArgumentParser(
-    description="The caic_python CLI.",
+    description="The caic-python CLI.",
     prog="python3 -m caic_python"
 )
 MAIN_PARSER.add_argument(

@@ -113,7 +113,7 @@ class CaicClient:
 
     def __init__(self) -> None:
         self.headers = {
-            "User-Agent": f"{aiohttp.http.SERVER_SOFTWARE} caic_python/{__version__}"
+            "User-Agent": f"{aiohttp.http.SERVER_SOFTWARE} caic-python/{__version__}"
         }
         self.session = aiohttp.ClientSession()
 

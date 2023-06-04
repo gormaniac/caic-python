@@ -1,4 +1,4 @@
-project = 'caic_python'
+project = 'caic-python'
 copyright = '2023, John Gorman'
 author = 'John Gorman'
 

@@ -1,4 +1,4 @@
-"""Pydantic models used by caic_python."""
+"""Pydantic models used by caic-python."""
 
 import datetime
 from typing import Literal, Optional, Union
