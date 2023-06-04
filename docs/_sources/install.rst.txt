@@ -1,15 +1,15 @@
 Installation
 ============
 
-- ``caic_python`` (will be) available on ``PyPI``, run the following to get started! ::
+- ``caic-python`` (will be) available on ``PyPI``, run the following to get started! ::
 
-    pip3 install caic_python
+    pip3 install caic-python
 
 - There are several additional installation options. With the exception of the ``curl`` command, the commands assume that you have cloned the repo and are in the repo's directory
 
     - An install script that uses this projects Makefile::
 
-        curl https://raw.githubusercontent.com/gormaniac/caic_python/main/scripts/install.sh | bash
+        curl https://raw.githubusercontent.com/gormaniac/caic-python/main/scripts/install.sh | bash
 
     - The Makefile (uses pipenv)::
 
@@ -20,7 +20,7 @@ Installation
 
         pip3 install build setuptools
         python3 -m build .
-        pip3 install dist/caic_python-<VERSION>.tar.gz
+        pip3 install dist/caic-python-<VERSION>.tar.gz
 
     - Basic install from source::
 

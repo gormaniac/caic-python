@@ -3,7 +3,7 @@ Development
 
 The project's Makefile provides many helpful shortcuts for common development tasks. Run ``make help`` for a full list of commands and their short help messages.
 
-To add features or fixes to ``caic_python`` - please open a new pull request.
+To add features or fixes to ``caic-python`` - please open a new pull request.
 
 Dev Environment
 ---------------

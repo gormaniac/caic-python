@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Introduction &mdash; caic_python  documentation</title>
+  <title>Introduction &mdash; caic-python  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Installation" href="install.html" />
-    <link rel="prev" title="Welcome to caic_python’s documentation!" href="index.html" /> 
+    <link rel="prev" title="Welcome to caic-python’s documentation!" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -32,7 +32,7 @@
           
           
           <a href="index.html" class="icon icon-home">
-            caic_python
+            caic-python
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -51,7 +51,7 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dev.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="caic_python.html">caic_python package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caic-python.html">caic-python package</a></li>
 </ul>
 
         </div>
@@ -60,7 +60,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">caic_python</a>
+          <a href="index.html">caic-python</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -80,11 +80,11 @@
              
   <section id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">caic_python</span></code> package helps researchers explore <a class="reference external" href="https://avalanche.state.co.us">CAIC</a> data locally and programmatically rather than on the CAIC website.</p>
-<p><code class="docutils literal notranslate"><span class="pre">caic_python</span></code> relies on the same API endpoints used by the CAIC website. Partial motivation for development of this package was to serve as pseodo-documentation for these endpoints as they are not documented elsewhere.</p>
-<p>While the <code class="docutils literal notranslate"><span class="pre">caic_python</span></code> module exposes a CLI (via <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">caic_python</span> <span class="pre">...</span></code>), it is intended mostly for testing. The primary use case of <code class="docutils literal notranslate"><span class="pre">caic_python</span></code> is as library code called by other programs.</p>
-<p><code class="docutils literal notranslate"><span class="pre">caic_python</span></code> relies heavily on <a class="reference external" href="https://docs.pydantic.dev/latest/">Pydantic</a> models to validate response objects, and speed up development. Responses from CAIC APIs do not always contain values for all fields. As a result, most attributes of a <code class="docutils literal notranslate"><span class="pre">caic_python</span></code> Pydantic response model are optional, and may be <code class="docutils literal notranslate"><span class="pre">None</span></code> rather than a type appropriate default. Attempts were made to include all possible attributes of a response for a given endpoint for maximum use case coverage.</p>
-<p><code class="docutils literal notranslate"><span class="pre">caic_python</span></code> is capable of retrieving information on the following from the CAIC website:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">caic-python</span></code> package helps researchers explore <a class="reference external" href="https://avalanche.state.co.us">CAIC</a> data locally and programmatically rather than on the CAIC website.</p>
+<p><code class="docutils literal notranslate"><span class="pre">caic-python</span></code> relies on the same API endpoints used by the CAIC website. Partial motivation for development of this package was to serve as pseodo-documentation for these endpoints as they are not documented elsewhere.</p>
+<p>While the <code class="docutils literal notranslate"><span class="pre">caic-python</span></code> module exposes a CLI (via <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">caic-python</span> <span class="pre">...</span></code>), it is intended mostly for testing. The primary use case of <code class="docutils literal notranslate"><span class="pre">caic-python</span></code> is as library code called by other programs.</p>
+<p><code class="docutils literal notranslate"><span class="pre">caic-python</span></code> relies heavily on <a class="reference external" href="https://docs.pydantic.dev/latest/">Pydantic</a> models to validate response objects, and speed up development. Responses from CAIC APIs do not always contain values for all fields. As a result, most attributes of a <code class="docutils literal notranslate"><span class="pre">caic-python</span></code> Pydantic response model are optional, and may be <code class="docutils literal notranslate"><span class="pre">None</span></code> rather than a type appropriate default. Attempts were made to include all possible attributes of a response for a given endpoint for maximum use case coverage.</p>
+<p><code class="docutils literal notranslate"><span class="pre">caic-python</span></code> is capable of retrieving information on the following from the CAIC website:</p>
 <ul>
 <li><p>Search field reports (aka observation reports) submitted to the CAIC website.</p></li>
 <li><p>Search avalanche observation reports submitted as part of a field report.</p></li>
@@ -101,15 +101,15 @@
 </div></blockquote>
 </li>
 </ul>
-<p>Future versions of <code class="docutils literal notranslate"><span class="pre">caic_python</span></code> would like to include the following features:</p>
+<p>Future versions of <code class="docutils literal notranslate"><span class="pre">caic-python</span></code> would like to include the following features:</p>
 <ul class="simple">
 <li><p>Weather forecast information</p></li>
 <li><p>Weather station information</p></li>
 <li><p>Weather station observation graphics</p></li>
 <li><p>Accident report details</p></li>
-<li><p>Further coverage of static avalanche reporting terms, abbreviations, codes, etc. in <code class="docutils literal notranslate"><span class="pre">caic_python.enums</span></code>.</p></li>
+<li><p>Further coverage of static avalanche reporting terms, abbreviations, codes, etc. in <code class="docutils literal notranslate"><span class="pre">caic-python.enums</span></code>.</p></li>
 </ul>
-<p>The data that helped build <code class="docutils literal notranslate"><span class="pre">caic_python</span></code> is stored in the <a class="reference external" href="https://github.com/gormaniac/co-avy-research/tree/main/data/caic_python">co-avy-research</a> repo.</p>
+<p>The data that helped build <code class="docutils literal notranslate"><span class="pre">caic-python</span></code> is stored in the <a class="reference external" href="https://github.com/gormaniac/co-avy-research/tree/main/data/caic-python">co-avy-research</a> repo.</p>
 <section id="why-async">
 <h2>Why async?<a class="headerlink" href="#why-async" title="Permalink to this heading"></a></h2>
 <p>The author has a future project that will require the HTTP requests this client makes to be asynchronous.</p>
@@ -121,7 +121,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to caic_python’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to caic-python’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

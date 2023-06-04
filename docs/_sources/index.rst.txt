@@ -1,6 +1,6 @@
-:github_url: https://github.com/gormaniac/caic_python
+:github_url: https://github.com/gormaniac/caic-python
 
-Welcome to caic_python's documentation!
+Welcome to caic-python's documentation!
 =======================================
 
 .. toctree::
@@ -11,7 +11,7 @@ Welcome to caic_python's documentation!
    install
    usage
    dev
-   caic_python
+   caic-python
 
 * :ref:`modindex`
 * :ref:`search`

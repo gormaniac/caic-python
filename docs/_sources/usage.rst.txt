@@ -1,18 +1,18 @@
 Usage
 =====
 
-Using ``caic_python`` is straight-forward. The CAIC APIs do not require any authentication, all that is needed is an internet connection.
+Using ``caic-python`` is straight-forward. The CAIC APIs do not require any authentication, all that is needed is an internet connection.
 
-To get an idea of the data returned, or the endpoints you would like to use, you may start with the minimal ``caic_python`` CLI (``python3 -m caic_python --help``). The CLI uses subcommands that map to method names of ``caic_python.client.CaicClient`` (albeit with dash instead of an underscore).
+To get an idea of the data returned, or the endpoints you would like to use, you may start with the minimal ``caic-python`` CLI (``python3 -m caic-python --help``). The CLI uses subcommands that map to method names of ``caic-python.client.CaicClient`` (albeit with dash instead of an underscore).
 
-To use ``caic_python`` as a library, start with the ``caic_python.client`` module. Other supporting modules may be used if calling code requires it.
+To use ``caic-python`` as a library, start with the ``caic-python.client`` module. Other supporting modules may be used if calling code requires it.
 
 Errors
 ------
 
-Non-paginating ``caic_python.client.CaicClient`` methods (all except ``avy_obs`` and ``field_reports``) catch HTTP network errors and JSON decode errors and reraise them as ``caic_python.errors.CaicRequestException``s. Pydantic validation errors are caught and cause a return value of ``None``.
+Non-paginating ``caic-python.client.CaicClient`` methods (all except ``avy_obs`` and ``field_reports``) catch HTTP network errors and JSON decode errors and reraise them as ``caic-python.errors.CaicRequestException``s. Pydantic validation errors are caught and cause a return value of ``None``.
 
-The paginating ``caic_python`` methods intercept exceptions to attempt retries. Exceptions are logged, but ultimately, these methods will return an empty list if too many errors ocurred. However, they may return partial data if errors ocurred but not enough to reach the max.
+The paginating ``caic-python`` methods intercept exceptions to attempt retries. Exceptions are logged, but ultimately, these methods will return an empty list if too many errors ocurred. However, they may return partial data if errors ocurred but not enough to reach the max.
 
 Examples
 --------
@@ -21,8 +21,8 @@ Examples
 
     import datetime
 
-    from caic_python.client import CaicClient
-    from caic_python.enums import (
+    from caic-python.client import CaicClient
+    from caic-python.enums import (
         ObsTypes, ReportsSearchCrackObs, BCZoneTitles
     )
 
@@ -106,7 +106,7 @@ There is a minimal CLI to help test and explore the library. Help message::
                          {avy-obs,field-reports,field-report,snowpack-observation,avalanche-observation,weather-observation,bc-zone,highway-zone,avy-forecast}
                          ...
 
-    The caic_python CLI.
+    The caic-python CLI.
     
     options:
       -h, --help            show this help message and exit
