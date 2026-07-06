@@ -7,6 +7,7 @@ name = "pypi"
 python-dateutil = "==2.8.2"
 pydantic = "==2.0a4"
 aiohttp = "==3.8.4"
+requests = "==2.32.3"
 
 [dev-packages]
 black = "*"
