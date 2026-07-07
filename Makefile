@@ -24,7 +24,7 @@ install-self: # Install this project's python package using the pipenv's pip
 .PHONY: docs
 docs: # Build the documentation for this package
 	pipenv run sphinx-apidoc -T -f -o doc $(PKG_DIR)
-	pipenv run sphinx-build doc/ docs/
+	pipenv run sphinx-build -b dirhtml doc/ docs/
 
 .PHONY: clean-py
 clean-py: # Clean up Python generated files
@@ -37,20 +37,22 @@ clean-py: # Clean up Python generated files
 clean: clean-py # Remove build files - including a forced "git rm" of "dist/*"
 	git rm -f dist/* --ignore-unmatch
 	rm -rf dist
+	git rm -f docs/* --ignore-unmatch
+	rm -rf docs
 
 .PHONY: read-docs
 read-docs: # Open the package docs locally
 	open docs/index.html
 
 .PHONY: version
-version: # Display the version of  installed in the pipenv
-	pipenv run python3 -m  --version
+version: # Display the version of caic_python installed in the pipenv
+	pipenv run python3 -m caic_python --version
 
 .PHONY: release
 release: change-version clean setup build docs # Build a new versioned release and push it (requires VERSION=#.#.#)
-	git add dist/* doc/* docs/* pyproject.toml $(PKG_DIR)/__init__.py
+	git add doc/* pyproject.toml $(PKG_DIR)/__init__.py
 	git commit -m "build: release v$(VERSION)"
 	git push
 	git tag -a v$(VERSION) -m "Release v$(VERSION)"
 	git push origin v$(VERSION)
-	$(MAKE) clean-py
+	$(MAKE) clean
