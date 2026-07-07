@@ -48,5 +48,7 @@ jobs:
           GH_TOKEN: ${{ secrets.DOCS_DISPATCH_TOKEN }}
         run: |
           gh api repos/gormaniac/cloud-infra/dispatches \
-          -f event_type=doc-release \
-          -F 'client_payload[ref]='{"tag": "${{ github.ref_name }}", "repository": "${{ github.repository }}", "github_sha": "${{ github.sha }}"}'
+            -f event_type=doc-release \
+            -f 'client_payload[tag]=${{ github.ref_name }}' \
+            -f 'client_payload[repository]=${{ github.repository }}' \
+            -f 'client_payload[github_sha]=${{ github.sha }}'
