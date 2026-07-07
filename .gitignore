@@ -3,3 +3,4 @@
 *.egg-info*
 docs/.buildinfo
 docs/.doctrees/
+Pipfile.lock
