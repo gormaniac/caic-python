@@ -13,4 +13,4 @@ An async Python client for the [CAIC](https://avalanche.state.co.us) website dat
     - Snowpack Observation
     - Weather Observation
 
-Read the [full documentation](https://gormo.co/caic-python/) for further details. It is also available locally via `make read-docs` or the `docs/` directory.
+Read the [full documentation](https://gormo.co/docs/caic-python/) for further details. It is also available locally via `make read-docs` or the `docs/` directory.
