@@ -43,11 +43,11 @@ jobs:
             dist/*
             docs.tar.gz
 
-      - name: Notify cloud-infra repo
+      - name: Notify docs.gormo.co repo
         env:
           GH_TOKEN: ${{ secrets.DOCS_DISPATCH_TOKEN }}
         run: |
-          gh api repos/gormaniac/cloud-infra/dispatches \
+          gh api repos/gormaniac/docs.gormo.co/dispatches \
             -f event_type=doc-release \
             -f 'client_payload[tag]=${{ github.ref_name }}' \
             -f 'client_payload[repository]=${{ github.repository }}' \
