@@ -2,7 +2,7 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../src'))
 
-project = 'caic-python'
+project = 'CAIC Python'
 copyright = '2023, John Gorman'
 author = 'John Gorman'
 
@@ -11,14 +11,37 @@ extensions = ['sphinx.ext.autodoc']
 templates_path = ['_templates']
 exclude_patterns = []
 
+html_theme = "shibuya"
+html_static_path = ["_static"]
+html_title = "CAIC Python Docs"
 
-html_theme = 'sphinx_rtd_theme'
-html_static_path = []
+html_baseurl = 'https://docs.gormo.co/caic-python/'
 
-html_baseurl = 'https://gormo.co/docs/caic-python/'
-# html_sidebars = {
-#     '**': [
-#         'relations.html',  # needs 'show_related': True theme option to display
-#         'searchbox.html',
-#     ]
-# }
+html_theme_options = {
+    "accent_color": "teal",
+    "color_mode": "auto",
+    "nav_socials": [
+        {
+            "name": "GitHub",
+            "url": "https://github.com/gormaniac/caic-python",
+            "icon": "simple-icons:github",
+        },
+        {
+            "name": "PyPI",
+            "url": "https://pypi.org/project/caic-python/",
+            "icon": "simple-icons:pypi",
+        },
+    ],
+    "foot_socials": [
+        {
+            "name": "GitHub",
+            "url": "https://github.com/gormaniac/caic-python",
+            "icon": "simple-icons:github",
+        },
+        {
+            "name": "PyPI",
+            "url": "https://pypi.org/project/caic-python/",
+            "icon": "simple-icons:pypi",
+        },
+    ]
+}

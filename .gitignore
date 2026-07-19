@@ -4,3 +4,5 @@
 docs/.buildinfo
 docs/.doctrees/
 Pipfile.lock
+docs
+.DS_Store

@@ -4,19 +4,19 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-python-dateutil = "==2.8.2"
-pydantic = "==2.0a4"
-aiohttp = "==3.8.4"
-requests = "==2.32.3"
+python-dateutil = ">=2.8.2"
+pydantic = ">=2.2.1"
+aiohttp = ">=3.8.4"
+requests = ">=2.32.3"
 
 [dev-packages]
 black = "*"
 pylint = "*"
-sphinx = "*"
 build = "*"
 setuptools = "*"
 tomlkit = "*"
-sphinx-rtd-theme = "*"
+shibuya = "*"
+sphinx = ">=8.0.0"
 
 [requires]
 python_version = "3.10"
