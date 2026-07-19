@@ -10,7 +10,7 @@ or ``scripts/change-version.py`` ensures this.
 
 import logging
 
-__version__ = "0.1.12"
+__version__ = "0.2.0"
 
 logging.basicConfig()
 LOGGER = logging.getLogger(__name__)

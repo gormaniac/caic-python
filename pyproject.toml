@@ -4,12 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "caic_python"
-version = "0.1.12"
+version = "0.2.0"
 description = "An async Python client for working with Colorado Avalanche Information Center data."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "requests==2.34.*"",
+    "requests==2.34.*",
     "aiohttp==3.14.*",
     "pydantic==2.14.*",
     "python-dateutil==2.9.*",
@@ -23,7 +23,7 @@ file = "LICENSE"
 
 [project.urls]
 Homepage = "https://github.com/gormaniac/caic-python"
-Documentation = "https://gormo.co/caic-python/"
+Documentation = "https://docs.gormo.co/caic-python/"
 
 [tool.setuptools.packages.find]
 namespaces = true
